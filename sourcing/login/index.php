@@ -1,4 +1,5 @@
 <?php
+include '../bdd.php';
     session_start();
 // Afficher les erreurs à l'écran
 ini_set('display_errors', 1);
@@ -43,7 +44,7 @@ ini_set('display_errors', 1);
 			$_SESSION['Nom_Utilisateur'] = $userinfo['Nom_Utilisateur'];
 			$_SESSION['Telephone'] = $userinfo['Telephone'];
 			$_SESSION['Mail_Utilisateur'] = $userinfo['Mail_Utilisateur'];
-			header('Location: ../cons/index.php'); // On redirige l'utilisateur sur la page d'accueil
+			header('Location: readme.txt'); // On redirige l'utilisateur sur la page d'accueil
 			exit();
 		}
 	}
@@ -86,7 +87,7 @@ ini_set('display_errors', 1);
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid eMail_Utilisateur is required: ex@abc.xyz">
-						<input class="input100" type="eMail_Utilisateur" name="Mail_Utilisateur" placeholder="EMail">
+						<input class="input100" type="email" name="Mail_Utilisateur" placeholder="EMail">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>

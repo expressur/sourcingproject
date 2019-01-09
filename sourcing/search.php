@@ -566,7 +566,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<script src="js/jquery.nice-select.min.js"></script>			
 			<script src="js/parallax.min.js"></script>		
 			<script src="js/mail-script.js"></script>	
-			<script src="js/main.js"></script>	
+			<script src="js/main.js"></script>
+                        <script type="text/javascript">
+     $(function(){
+    $("#monBouton").click(function(){
+        $("html, body").animate({scrollTop: 0},"slow");
+    });
+    
+});
+     </script>
 		</body>
 	</html>
 

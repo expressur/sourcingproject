@@ -1,3 +1,76 @@
+<?php
+// db configuration
+$db_user = 'tmsuser';
+$db_pwd = 'ezOwvGoLo6C4fhvO';
+$db_name = 'talent_manager';
+$db_host = 'localhost';
+        
+//db_connection
+ $bdd = new PDO('mysql:host='.$db_host.';dbname='.$db_name.';charset=utf8', $db_user,$db_pwd);	
+if(!empty($_POST)){
+		$error = false;
+		
+		// NOM
+		if(empty($_POST["Nom_Utilisateur"])) {
+			echo "Nom : Aucun nom n'a été entré";
+			$error = true;
+		}
+		
+		// PRENOM
+		if(empty($_POST["PNom_Utilisateur"])) {
+			if ($error == false) {
+				echo "Prénom : Aucun prénom n'a été entré";
+				$error = true;
+			}
+		}
+		
+		
+		/*// TELEPHONE
+		if(empty($_POST["NumeroDeTelephone"])) {
+			if ($error == false) {
+				echo "Téléphone : Aucun numéro de téléphone n'a été entré";
+				$error = true;
+			}
+		}*/
+		
+		// IDENTIFIANT
+		if(empty($_POST["Mail_Utilisateur"])) {
+			if ($error == false) {
+				echo "Identifiant : Aucun identifiant n'a été entré";
+				$error = true;
+			}
+		}else {
+			$check_u_login = $bdd->prepare("SELECT Id_Utilisateur FROM utilisateur WHERE Mail_Utilisateur = ?");
+			$check_u_login->execute([$_POST["Mail_Utilisateur"]]);
+			$u_login = $check_u_login->fetch();
+			if($u_login) {
+				if ($error == false) {
+					echo "Identifiant : Cet identifiant est déjà utilisé";
+					$error = true;
+				}
+			}
+		}
+		
+		// PASSWORD
+		if(empty($_POST["Mdp_Utilisateur"])){
+			if ($error == false) {
+				echo "Mot de passe : Aucun mot de passe n'a été rentré";
+				$error = true;
+			}
+		} else {
+			$u_password = password_hash($_POST["Mdp_Utilisateur"], PASSWORD_DEFAULT);
+		}
+		// INSCRIPTION
+		if($error == false){
+			$req = $bdd->prepare("INSERT INTO utilisateur (Nom_Utilisateur, PNom_Utilisateur, Mdp_Utilisateur, Mail_Utilisateur) VALUES ( ? , ? , ? , ? )");
+                        $req->execute(array($_POST['Nom_Utilisateur'], $_POST['PNom_Utilisateur'], $Mdp_Utilisateur, $_POST['Mail_Utilisateur']));
+            
+            sleep(1);
+            header('Location:index.php');
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -41,13 +114,13 @@
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="Prénom">
+                                            <input class="input--style-5" type="text" name="PNom_Utilisateur" id="PNom_Utilisateur">
                                             <label class="label--desc">Prénom</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="Nom de famille">
+                                            <input class="input--style-5" type="text" id="Nom_Utilisateur" name="Nom_Utilisateur">
                                             <label class="label--desc">Nom de famille</label>
                                         </div>
                                     </div>
@@ -55,65 +128,21 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Company</div>
+                            <div class="name">Mail</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="company">
+                                    <input class="input--style-5" type="email" id= "Mail_Utilisateur" name="Mail_Utilisateur">
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Email</div>
+                            <div class="name">Mdp</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="email" name="email">
+                                    <input class="input--style-5" type="password" name="Mdp_Utilisateur" id="Mdp_Utilisateur">
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-row m-b-55">
-                            <div class="name">N° de téléphone</div>
-                            <div class="value">
-                                
-                                    <div class="col-3">
-                                        
-                                    </div>
-                                  
-                                        <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="phone">
-                                        </div>
-                                    
-                                
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Subject</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <div class="rs-select2 js-select-simple select--no-search">
-                                        <select name="subject">
-                                            <option disabled="disabled" selected="selected">Choose option</option>
-                                            <option>Subject 1</option>
-                                            <option>Subject 2</option>
-                                            <option>Subject 3</option>
-                                        </select>
-                                        <div class="select-dropdown"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row p-t-20">
-                            <label class="label label--block">Are you an existing customer?</label>
-                            <div class="p-t-15">
-                                <label class="radio-container m-r-55">Yes
-                                    <input type="radio" checked="checked" name="exist">
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="radio-container">No
-                                    <input type="radio" name="exist">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
+                        </div>                 
                         <div>
                             <button class="btn btn--radius-2 btn--red" type="submit">S'INSCRIRE</button>
                         </div>
