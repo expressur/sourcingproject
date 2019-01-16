@@ -14,4 +14,10 @@ $db_host = 'localhost';
         
 //db_connection
  $bdd = new PDO('mysql:host='.$db_host.';dbname='.$db_name.';charset=utf8', $db_user,$db_pwd);
+ 
+ $nombre_offre = $bdd->query('
+SELECT 
+COUNT(*)
+FROM offres');
+$nb_offre = $nombre_offre->fetch();
  ?>
