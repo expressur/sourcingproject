@@ -20,4 +20,25 @@ SELECT
 COUNT(*)
 FROM offres');
 $nb_offre = $nombre_offre->fetch();
+
+$les_offres = $bdd->query('
+SELECT 
+Description_Offre,
+Date_Debut_Offre,
+Date_Fin_Offre,
+Remuneration_Offre,
+Remuneration_Type_Offre,
+Titre_Offre,
+Dep_Adresse,
+Num_Adresse, 
+Ville_Adresse, 
+Voie_Adresse,
+Type_OffreT 
+FROM
+offres,adresse,offres_type 
+WHERE offres.Id_Adresse = adresse.Id_Adresse 
+AND 
+offres_type.Id_OffreT = offres.Id_Offre
+ORDER BY Id_Offre DESC');
+
  ?>
