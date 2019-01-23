@@ -2213,15 +2213,15 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .p1-gradient-bg, .banner-area .overlay-bg, .sidebar .single-slidebar .cat-list li:hover, .callto-action-area, .single-price:hover .price-bottom, .single-service:hover, .submit-right, .submit-left, .contact-btns, .form-area .primary-btn {
-  background-image: -moz-linear-gradient(0deg, #bfacff 0%, #795fff 100%);
-  background-image: -webkit-linear-gradient(0deg, #bfacff 0%, #795fff 100%);
-  background-image: -ms-linear-gradient(0deg, #bfacff 0%, #795fff 100%);
+  background-image: -moz-linear-gradient(0deg, #63d0e8 0%, #141be2 100%);
+  background-image: -webkit-linear-gradient(0deg, #63d0e8 0%, #141be2 100%);
+  background-image: -ms-linear-gradient(0deg, #63d0e8 0%, #141be2 100%);
 }
 
 .p1-gradient-color, .feat-txt h1 {
-  background: -moz-linear-gradient(0deg, #bfacff 0%, #795fff 100%);
-  background: -webkit-linear-gradient(0deg, #67afff 0%, #4d2eec  100%)!important;
-  background: -ms-linear-gradient(0deg, #bfacff 0%, #795fff 100%);
+  background: -moz-linear-gradient(0deg, #63d0e8 0%, #141be2 100%);
+  background: -webkit-linear-gradient(0deg, #63d0e8 0%, #141be2 100%)!important;
+  background: -ms-linear-gradient(0deg, #63d0e8 0%, #141be2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -2864,7 +2864,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .callto-action-area .primary-btn:hover {
-  background-color: #ad9aff;
+  background-color: #35ecd687;
   color: #fff;
   border-color: transparent;
 }

@@ -14,7 +14,7 @@
         <!-- meta character set -->
         <meta charset="UTF-8">
         <!-- Site Title -->
-        <title>Job Listing</title>
+        <title>L'offre</title>
 
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
         <!--
@@ -44,9 +44,9 @@
                 <div class="row d-flex align-items-center justify-content-center">
                     <div class="about-content col-lg-12">
                         <h1 class="text-white">
-                            Job Details				
+                            Details de l'offre				
                         </h1>	
-                        <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="single.html"> Job Details</a></p>
+                        <p class="text-white link-nav"><a href="index.php">Acceuil </a>  <span class="lnr lnr-arrow-right"></span>  <a> Détails de l'offre</a></p>
                     </div>											
                 </div>
             </div>
@@ -169,127 +169,7 @@
                             </ul>
                         </div>														
                     </div>
-                    <div class="col-lg-4 sidebar">
-                        <div class="single-slidebar">
-                            <h4>Jobs by Location</h4>
-                            <ul class="cat-list">
-                                <li><a class="justify-content-between d-flex" href="category.html"><p>New York</p><span>37</span></a></li>
-                                <li><a class="justify-content-between d-flex" href="category.html"><p>Park Montana</p><span>57</span></a></li>
-                                <li><a class="justify-content-between d-flex" href="category.html"><p>Atlanta</p><span>33</span></a></li>
-                                <li><a class="justify-content-between d-flex" href="category.html"><p>Arizona</p><span>36</span></a></li>
-                                <li><a class="justify-content-between d-flex" href="category.html"><p>Florida</p><span>47</span></a></li>
-                                <li><a class="justify-content-between d-flex" href="category.html"><p>Rocky Beach</p><span>27</span></a></li>
-                                <li><a class="justify-content-between d-flex" href="category.html"><p>Chicago</p><span>17</span></a></li>
-                            </ul>
-                        </div>
-
-                        <div class="single-slidebar">
-                            <h4>Top rated job posts</h4>
-                            <div class="active-relatedjob-carusel">
-                                <div class="single-rated">
-                                    <img class="img-fluid" src="img/r1.jpg" alt="">
-                                    <a href="single.html"><h4>Creative Art Designer</h4></a>
-                                    <h6>Premium Labels Limited</h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                                    </p>
-                                    <h5>Job Nature: Full time</h5>
-                                    <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                                    <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                                    <a href="#" class="btns text-uppercase">Apply job</a>
-                                </div>
-                                <div class="single-rated">
-                                    <img class="img-fluid" src="img/r1.jpg" alt="">
-                                    <a href="single.html"><h4>Creative Art Designer</h4></a>
-                                    <h6>Premium Labels Limited</h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                                    </p>
-                                    <h5>Job Nature: Full time</h5>
-                                    <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                                    <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                                    <a href="#" class="btns text-uppercase">Apply job</a>
-                                </div>
-                                <div class="single-rated">
-                                    <img class="img-fluid" src="img/r1.jpg" alt="">
-                                    <a href="single.html"><h4>Creative Art Designer</h4></a>
-                                    <h6>Premium Labels Limited</h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                                    </p>
-                                    <h5>Job Nature: Full time</h5>
-                                    <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                                    <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                                    <a href="#" class="btns text-uppercase">Apply job</a>
-                                </div>																		
-                            </div>
-                        </div>							
-
-                        <div class="single-slidebar">
-                            <h4>Jobs by Category</h4>
-                            <ul class="cat-list">
-                                <li><a class="justify-content-between d-flex" href="category.html"><p>Technology</p><span>37</span></a></li>
-                                <li><a class="justify-content-between d-flex" href="category.html"><p>Media & News</p><span>57</span></a></li>
-                                <li><a class="justify-content-between d-flex" href="category.html"><p>Goverment</p><span>33</span></a></li>
-                                <li><a class="justify-content-between d-flex" href="category.html"><p>Medical</p><span>36</span></a></li>
-                                <li><a class="justify-content-between d-flex" href="category.html"><p>Restaurants</p><span>47</span></a></li>
-                                <li><a class="justify-content-between d-flex" href="category.html"><p>Developer</p><span>27</span></a></li>
-                                <li><a class="justify-content-between d-flex" href="category.html"><p>Accounting</p><span>17</span></a></li>
-                            </ul>
-                        </div>
-
-                        <div class="single-slidebar">
-                            <h4>Carrer Advice Blog</h4>
-                            <div class="blog-list">
-                                <div class="single-blog " style="background:#000 url(img/blog1.jpg);">
-                                    <a href="single.html"><h4>Home Audio Recording <br>
-                                            For Everyone</h4></a>
-                                    <div class="meta justify-content-between d-flex">
-                                        <p>
-                                            02 Hours ago
-                                        </p>
-                                        <p>
-                                            <span class="lnr lnr-heart"></span>
-                                            06
-                                            <span class="lnr lnr-bubble"></span>
-                                            02
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="single-blog " style="background:#000 url(img/blog2.jpg);">
-                                    <a href="single.html"><h4>Home Audio Recording <br>
-                                            For Everyone</h4></a>
-                                    <div class="meta justify-content-between d-flex">
-                                        <p>
-                                            02 Hours ago
-                                        </p>
-                                        <p>
-                                            <span class="lnr lnr-heart"></span>
-                                            06
-                                            <span class="lnr lnr-bubble"></span>
-                                            02
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="single-blog " style="background:#000 url(img/blog1.jpg);">
-                                    <a href="single.html"><h4>Home Audio Recording <br>
-                                            For Everyone</h4></a>
-                                    <div class="meta justify-content-between d-flex">
-                                        <p>
-                                            02 Hours ago
-                                        </p>
-                                        <p>
-                                            <span class="lnr lnr-heart"></span>
-                                            06
-                                            <span class="lnr lnr-bubble"></span>
-                                            02
-                                        </p>
-                                    </div>
-                                </div>																		
-                            </div>
-                        </div>							
-
-                    </div>
+<?php                include 'lateral.php'; ?>
                 </div>
             </div>	
         </section>

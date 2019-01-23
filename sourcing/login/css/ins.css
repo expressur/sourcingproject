@@ -296,10 +296,10 @@ h6 {
 
 .bg-gra-03 {
   background: -webkit-gradient(linear, left bottom, right top, from(#08aeea), to(#b721ff));
-  background: -webkit-linear-gradient(bottom left, #08aeea 0%, #b721ff 100%);
-  background: -moz-linear-gradient(bottom left, #08aeea 0%, #b721ff 100%);
-  background: -o-linear-gradient(bottom left, #08aeea 0%, #b721ff 100%);
-  background: linear-gradient(to top right, #08aeea 0%, #b721ff 100%);
+  background: -webkit-linear-gradient(bottom left, #141be2 0%, #63d0e8  100%);
+  background: -moz-linear-gradient(bottom left, #141be2 0%, #63d0e8  100%);
+  background: -o-linear-gradient(bottom left, #141be2 0%, #63d0e8  100%);
+  background: linear-gradient(to top right, #141be2 0%, #63d0e8  100%);
 }
 
 /* ==========================================================================
@@ -434,7 +434,7 @@ h6 {
 }
 
 .btn--red {
-  background: #ff4b5a;
+  background: #57b846;
 }
 
 .btn--red:hover {

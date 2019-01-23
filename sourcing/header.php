@@ -5,7 +5,7 @@
         <!-- Mobile Specific Meta -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Favicon-->
-        <link rel="shortcut icon" href="img/fav.png">
+        <link rel="shortcut icon" href="img/job.png">
         <!-- Author Meta -->
         <meta name="author" content="codepixer">
         <!-- Meta Description -->
@@ -41,19 +41,10 @@
                         <ul class="nav-menu">
                             <li class="menu-active"><a href="index.php">Acceuil</a></li>
                             <li><a href="about-us.php">A propos de nous</a></li>
-                            <li><a href="category.php">Toutes les offres</a></li>
+                            <li><a href="https://expressur.fr/">Site vitrine</a></li>
 
                             <li><a href="search.php">Recherche</a></li>
                             <li><a href="contact.php">Contactez-nous</a></li>
-                            <!--
-                             <li class="menu-has-children"><a href="">Pages</a>
-                               <ul>
-                                                   <li><a href="elements.php">elements</a></li>
-                                                   
-                                                   <li><a href="single.php">single</a></li>
-                               </ul>
-                             </li>
-                            -->
                             <li><a class="ticker-btn" href="login/inscription.php"><font color="#000000">Inscription</font></a></li>
                             <li><a class="ticker-btn" href="login/index.php"><font color="#000000">Se connecter</font></a></li>
 

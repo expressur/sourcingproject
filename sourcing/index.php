@@ -15,12 +15,12 @@ include 'header.php';
                 <form action="search.php" class="serach-form-area">
                     <div class="row justify-content-center form-wrap">
                         <div class="col-lg-4 form-cols">
-                            <input type="text" class="form-control" name="search" placeholder="what are you looging for?">
+                            <input type="text" class="form-control" name="search" placeholder="Recherche par mot-clé">
                         </div>
                         <div class="col-lg-3 form-cols">
                             <div class="default-select" id="default-selects"">
                                 <select>
-                                    <option value="1">Select area</option>
+                                    <option value="1">Séléctionnez un endroit</option>
                                     <option value="2">Dhaka</option>
                                     <option value="3">Rajshahi</option>
                                     <option value="4">Barishal</option>
@@ -31,7 +31,7 @@ include 'header.php';
                         <div class="col-lg-3 form-cols">
                             <div class="default-select" id="default-selects2">
                                 <select>
-                                    <option value="1">All Category</option>
+                                    <option value="1">Les catégories</option>
                                     <option value="2">Medical</option>
                                     <option value="3">Technology</option>
                                     <option value="4">Goverment</option>
@@ -41,12 +41,11 @@ include 'header.php';
                         </div>
                         <div class="col-lg-2 form-cols">
                             <button type="button" class="btn btn-info">
-                                <span class="lnr lnr-magnifier"></span> Search
+                                <span class="lnr"></span><font color="#000000">Recherche</font>
                             </button>
                         </div>								
                     </div>
                 </form>	
-                <p class="text-white"> <span>Search by tags:</span> Tecnology, Business, Consulting, IT Company, Design, Development</p>
             </div>											
         </div>
     </div>
@@ -100,6 +99,7 @@ include 'header.php';
 <section class="post-area section-gap">
     <div class="container">
         <div class="row justify-content-center d-flex">
+            
             <div class="col-lg-8 post-list">
                 <?php
                 for ($i = 1; $i <= 10; $i++) {
@@ -122,7 +122,7 @@ include 'header.php';
                     <div class="details">
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
-                                <a href="single.php"><h4>' . $offres[Titre_Offre] . '</h4></a>
+                                <a href="single.php?off='.$offres[Id_Offre].'"><h4>' . $offres[Titre_Offre] . '</h4></a>
                                 <h6> Type de contrat : ' . $offres[Type_OffreT] . '</h6>					
                             </div>
                             <ul class="btns ">
@@ -142,78 +142,10 @@ include 'header.php';
                 }
                 ?>											
 
-                <a class="text-uppercase loadmore-btn mx-auto d-block" href="category.php">Voir plus de job</a>
+                <a class="text-uppercase loadmore-btn mx-auto d-block" href="search.php"><font color="#000000">Voir plus de job</font></a>
 
             </div>
-            <div class="col-lg-4 sidebar">
-                <div class="single-slidebar">
-                    <h4>Offre par endroit</h4>
-                    <ul class="cat-list">
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>New York</p><span>37</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Park Montana</p><span>57</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Atlanta</p><span>33</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Arizona</p><span>36</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Florida</p><span>47</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Rocky Beach</p><span>27</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Chicago</p><span>17</span></a></li>
-                    </ul>
-                </div>
-
-                <div class="single-slidebar">
-                    <h4>Meilleurs offres</h4>
-                    <div class="active-relatedjob-carusel">
-                        <div class="single-rated">
-                            <img class="img-fluid" src="img/r1.jpg" alt="">
-                            <a href="single.php"><h4>Creative Art Designer</h4></a>
-                            <h6>Premium Labels Limited</h6>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                            </p>
-                            <h5>Job Nature: Full time</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                            <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                            <a href="#" class="btns text-uppercase">Apply job</a>
-                        </div>
-                        <div class="single-rated">
-                            <img class="img-fluid" src="img/r1.jpg" alt="">
-                            <a href="single.php"><h4>Creative Art Designer</h4></a>
-                            <h6>Premium Labels Limited</h6>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                            </p>
-                            <h5>Job Nature: Full time</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                            <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                            <a href="#" class="btns text-uppercase">Apply job</a>
-                        </div>
-                        <div class="single-rated">
-                            <img class="img-fluid" src="img/r1.jpg" alt="">
-                            <a href="single.php"><h4>Creative Art Designer</h4></a>
-                            <h6>Premium Labels Limited</h6>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
-                            </p>
-                            <h5>Job Nature: Full time</h5>
-                            <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                            <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
-                            <a href="#" class="btns text-uppercase">Apply job</a>
-                        </div>																		
-                    </div>
-                </div>							
-
-                <div class="single-slidebar">
-                    <h4>Offre par catégorie</h4>
-                    <ul class="cat-list">
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Technology</p><span>37</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Media & News</p><span>57</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Goverment</p><span>33</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Medical</p><span>36</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Restaurants</p><span>47</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Developer</p><span>27</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Accounting</p><span>17</span></a></li>
-                    </ul>
-                </div>				
-            </div>
+<?php                include 'lateral.php'; ?>
         </div>
     </div>	
 </section>

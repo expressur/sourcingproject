@@ -33,6 +33,7 @@ Dep_Adresse,
 Num_Adresse, 
 Ville_Adresse, 
 Voie_Adresse,
+Id_Offre,
 Type_OffreT 
 FROM
 offres,adresse,offres_type 
@@ -41,4 +42,25 @@ AND
 offres_type.Id_OffreT = offres.Id_Offre
 ORDER BY Id_Offre DESC');
 
+$detail_offre = $bdd->prepare('
+SELECT 
+Description_Offre,
+Date_Debut_Offre,
+Date_Fin_Offre,
+Remuneration_Offre,
+Remuneration_Type_Offre,
+Titre_Offre,
+Dep_Adresse,
+Num_Adresse, 
+Ville_Adresse, 
+Voie_Adresse,
+Type_OffreT 
+FROM
+offres,adresse,offres_type 
+WHERE offres.Id_Adresse = adresse.Id_Adresse 
+AND 
+offres_type.Id_OffreT = offres.Id_Offre
+AND
+Id_Offre =:off');
+$detail_offre->execute(array('off' =>$_GET['off']));
  ?>
