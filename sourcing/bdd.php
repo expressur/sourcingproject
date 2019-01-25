@@ -39,7 +39,7 @@ FROM
 offres,adresse,offres_type 
 WHERE offres.Id_Adresse = adresse.Id_Adresse 
 AND 
-offres_type.Id_OffreT = offres.Id_Offre
+offres_type.Id_OffreT = offres.Id_OffreT
 ORDER BY Id_Offre DESC');
 
 $detail_offre = $bdd->prepare('
@@ -63,4 +63,21 @@ offres_type.Id_OffreT = offres.Id_Offre
 AND
 Id_Offre =:off');
 $detail_offre->execute(array('off' =>$_GET['off']));
+
+$lieu_offre = $bdd ->query('
+SELECT
+DISTINCT
+Ville_Adresse 
+FROM
+offres,adresse
+WHERE
+offres.Id_Adresse = adresse.Id_Adresse');
+
+$lieu = $bdd ->query('SELECT
+DISTINCT
+Ville_Adresse 
+FROM
+offres,adresse
+WHERE
+offres.Id_Adresse = adresse.Id_Adresse');
  ?>

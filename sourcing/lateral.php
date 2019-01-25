@@ -2,13 +2,12 @@
                 <div class="single-slidebar">
                     <h4>Offre par endroit</h4>
                     <ul class="cat-list">
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>New York</p><span>37</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Park Montana</p><span>57</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Atlanta</p><span>33</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Arizona</p><span>36</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Florida</p><span>47</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Rocky Beach</p><span>27</span></a></li>
-                        <li><a class="justify-content-between d-flex" href="category.php"><p>Chicago</p><span>17</span></a></li>
+                        <?php 
+                        while ($li_offre = $lieu->fetch())
+                        {
+                            echo'<li><a class="justify-content-between d-flex" href="category.php"><p>'.$li_offre[Ville_Adresse].'</p></a></li>';
+                        }
+                        ?>
                     </ul>
                 </div>
                 <div class="single-slidebar">

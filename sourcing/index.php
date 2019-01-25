@@ -21,10 +21,14 @@ include 'header.php';
                             <div class="default-select" id="default-selects"">
                                 <select>
                                     <option value="1">Séléctionnez un endroit</option>
-                                    <option value="2">Dhaka</option>
-                                    <option value="3">Rajshahi</option>
-                                    <option value="4">Barishal</option>
-                                    <option value="5">Noakhali</option>
+                                    <?php
+                                    for ($i = 2; $i < 6 ; $i++) {
+                                        while ($l_offre = $lieu_offre->fetch()) {
+                                            echo'<option value="' . $i++ . '">' . $l_offre[Ville_Adresse] . '</option>';
+                                        }
+                                    }
+                                    ?>
+
                                 </select>
                             </div>
                         </div>
@@ -99,12 +103,13 @@ include 'header.php';
 <section class="post-area section-gap">
     <div class="container">
         <div class="row justify-content-center d-flex">
-            
+
             <div class="col-lg-8 post-list">
                 <?php
-                for ($i = 1; $i <= 10; $i++) {
-                    while ($offres = $les_offres->fetch()) {
-                        echo'<div class="single-post d-flex flex-row">
+                 for ($y = 0; $y <2; $y++) {
+                while ($offres = $les_offres->fetch()) {
+                    
+                    echo'<div class="single-post d-flex flex-row">
                     <div class="thumb">
                         <img src="img/post.png" alt="">
                         <ul class="tags">
@@ -122,30 +127,33 @@ include 'header.php';
                     <div class="details">
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
-                                <a href="single.php?off='.$offres[Id_Offre].'"><h4>' . $offres[Titre_Offre] . '</h4></a>
+                                <a href="single.php?off=' . $offres[Id_Offre] . '"><h4>' . $offres[Titre_Offre] . '</h4></a>
                                 <h6> Type de contrat : ' . $offres[Type_OffreT] . '</h6>					
                             </div>
+                              <div class="title text-center">
+                           
                             <ul class="btns ">
-                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-                                <li><a href="#">Apply</a></li>
+                                <li><a href="#">Candidater</a></li>
+                            
                             </ul>
+                            </div>
                         </div>
                         <p>'
-                        . $offres[Description_Offre] .
-                        '</p>
+                    . $offres[Description_Offre] .
+                    '</p>
                        
                         <p class="address"><span class="lnr lnr-map"></span> ' . $offres[Num_Adresse] . ' ' . $offres[Voie_Adresse] . ', ' . $offres[Dep_Adresse] . ' ' . $offres[Ville_Adresse] . '</p>
                         <p class="address"><span class="lnr lnr-database"></span> ' . $offres[Remuneration_Offre] . ' €</p>
                     </div>
                 </div>';
-                    }
                 }
+                 }
                 ?>											
 
                 <a class="text-uppercase loadmore-btn mx-auto d-block" href="search.php"><font color="#000000">Voir plus de job</font></a>
 
             </div>
-<?php                include 'lateral.php'; ?>
+<?php include 'lateral.php'; ?>
         </div>
     </div>	
 </section>
