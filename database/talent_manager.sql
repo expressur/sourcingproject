@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Ven 25 Janvier 2019 à 15:48
+-- Généré le :  Jeu 31 Janvier 2019 à 11:04
 -- Version du serveur :  5.7.25-0ubuntu0.18.10.2
 -- Version de PHP :  7.2.10-0ubuntu1
 
@@ -42,7 +42,7 @@ INSERT INTO `adresse` (`Id_Adresse`, `Num_Adresse`, `Voie_Adresse`, `Dep_Adresse
 (1, 216, 'rue de la mare a gondre', 77000, 'vaux le penil'),
 (2, 3, 'quai de gaillon', 78700, 'conflan st honorine'),
 (4, 45, 'rue des champs', 77000, 'Vaux Le Penil'),
-(5, 45, 'rue d\'un endroit', 75015, 'Paris');
+(5, 45, 'rue d un endroit', 75015, 'Paris');
 
 -- --------------------------------------------------------
 
