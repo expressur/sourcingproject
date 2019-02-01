@@ -126,7 +126,7 @@
                             </ul>
                         </div>
                         <p>'
-                        . $offres[Description_Offre] .
+                        . $offres[Petite_Description_Offre] .
                         '</p>
                        
                         <p class="address"><span class="lnr lnr-map"></span> ' . $offres[Num_Adresse] . ' ' . $offres[Voie_Adresse] . ', ' . $offres[Dep_Adresse] . ' ' . $offres[Ville_Adresse] . '</p>

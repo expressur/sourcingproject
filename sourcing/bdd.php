@@ -23,6 +23,7 @@ $nb_offre = $nombre_offre->fetch();
 
 $les_offres = $bdd->query('
 SELECT 
+Petite_Description_Offre,
 Description_Offre,
 Date_Debut_Offre,
 Date_Fin_Offre,
@@ -44,6 +45,7 @@ ORDER BY Id_Offre DESC');
 
 $detail_offre = $bdd->prepare('
 SELECT 
+Petite_Description_Offre,
 Description_Offre,
 Date_Debut_Offre,
 Date_Fin_Offre,
@@ -59,10 +61,11 @@ FROM
 offres,adresse,offres_type 
 WHERE offres.Id_Adresse = adresse.Id_Adresse 
 AND 
-offres_type.Id_OffreT = offres.Id_Offre
+offres_type.Id_OffreT = offres.Id_OffreT
 AND
 Id_Offre =:off');
 $detail_offre->execute(array('off' =>$_GET['off']));
+$d_offre = $detail_offre ->fetch();
 
 $lieu_offre = $bdd ->query('
 SELECT

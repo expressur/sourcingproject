@@ -14,7 +14,7 @@
         <!-- meta character set -->
         <meta charset="UTF-8">
         <!-- Site Title -->
-        <title>L'offre</title>
+        <title></title>
 
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
         <!--
@@ -76,33 +76,29 @@
                             <div class="details">
                                 <div class="title d-flex flex-row justify-content-between">
                                     <div class="titles">
-                                        <a href="#"><h4>Creative Art Designer</h4></a>
-                                        <h6>Premium Labels Limited</h6>					
+                                        <a href="#"><h4><?php echo $d_offre[Titre_Offre];?> </h4></a>
+                                        <h6> Type de contrat : <?php echo $d_offre[Type_OffreT]; ?></h6>					
                                     </div>
                                     <ul class="btns">
-                                        <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-                                        <li><a href="#">Apply</a></li>
+                                        <li><a href="#">Candidater</a></li>
                                     </ul>
                                 </div>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temporinc ididunt ut dolore magna aliqua.
+                                    <?php echo $d_offre[Petite_Description_Offre]; ?>
                                 </p>
-                                <h5>Job Nature: Full time</h5>
-                                <p class="address"><span class="lnr lnr-map"></span> 56/8, Panthapath Dhanmondi Dhaka</p>
-                                <p class="address"><span class="lnr lnr-database"></span> 15k - 25k</p>
+                                <p class="address"><span class="lnr lnr-map"></span> <?php echo $d_offre[Num_Adresse] . ' ' . $d_offre[Voie_Adresse] . ', ' . $d_offre[Dep_Adresse] . ' ' . $d_offre[Ville_Adresse] ; ?></p>
+                                <p class="address"><span class="lnr lnr-database"></span> <?php echo $d_offre[Remuneration_Offre].' € '. $d_offre[Remuneration_Type_Offre] ; ?></p>
                             </div>
                         </div>	
                         <div class="single-post job-details">
-                            <h4 class="single-title">Whom we are looking for</h4>
+                            <h4 class="single-title">Cette offre consicte à : </h4>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.
+                                <?php echo $d_offre[Description_Offre]; ?>
                             </p>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            </p>
+                            
                         </div>
                         <div class="single-post job-experience">
-                            <h4 class="single-title">Experience Requirements</h4>
+                            <h4 class="single-title">Experience requis</h4>
                             <ul>
                                 <li>
                                     <img src="img/pages/list.jpg" alt="">

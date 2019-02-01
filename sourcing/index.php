@@ -22,7 +22,7 @@ include 'header.php';
                                 <select>
                                     <option value="1">Séléctionnez un endroit</option>
                                     <?php
-                                    for ($i = 2; $i < 6 ; $i++) {
+                                    for ($i = 2; $i < 6; $i++) {
                                         while ($l_offre = $lieu_offre->fetch()) {
                                             echo'<option value="' . $i++ . '">' . $l_offre[Ville_Adresse] . '</option>';
                                         }
@@ -106,10 +106,10 @@ include 'header.php';
 
             <div class="col-lg-8 post-list">
                 <?php
-                 for ($y = 0; $y <2; $y++) {
-                while ($offres = $les_offres->fetch()) {
-                    
-                    echo'<div class="single-post d-flex flex-row">
+                for ($y = 0; $y < 2; $y++) {
+                    while ($offres = $les_offres->fetch()) {
+
+                        echo'<div class="single-post d-flex flex-row">
                     <div class="thumb">
                         <img src="img/post.png" alt="">
                         <ul class="tags">
@@ -139,21 +139,19 @@ include 'header.php';
                             </div>
                         </div>
                         <p>'
-                    . $offres[Description_Offre] .
-                    '</p>
+                        . $offres[Petite_Description_Offre] .
+                        '</p>
                        
                         <p class="address"><span class="lnr lnr-map"></span> ' . $offres[Num_Adresse] . ' ' . $offres[Voie_Adresse] . ', ' . $offres[Dep_Adresse] . ' ' . $offres[Ville_Adresse] . '</p>
                         <p class="address"><span class="lnr lnr-database"></span> ' . $offres[Remuneration_Offre] . ' €</p>
                     </div>
                 </div>';
+                    }
                 }
-                 }
                 ?>											
-
                 <a class="text-uppercase loadmore-btn mx-auto d-block" href="search.php"><font color="#000000">Voir plus de job</font></a>
-
             </div>
-<?php include 'lateral.php'; ?>
+            <?php include 'lateral.php'; ?>
         </div>
     </div>	
 </section>
@@ -188,6 +186,3 @@ include 'header.php';
 </script>
 </body>
 </php>
-
-
-
