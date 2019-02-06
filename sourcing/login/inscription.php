@@ -63,10 +63,10 @@ if(!empty($_POST)){
 		// INSCRIPTION
 		if($error == false){
 			$req = $bdd->prepare("INSERT INTO utilisateur (Nom_Utilisateur, PNom_Utilisateur, Mdp_Utilisateur, Mail_Utilisateur) VALUES ( ? , ? , ? , ? )");
-                        $req->execute(array($_POST['Nom_Utilisateur'], $_POST['PNom_Utilisateur'], $Mdp_Utilisateur, $_POST['Mail_Utilisateur']));
+                        $req->execute(array($_POST['Nom_Utilisateur'], $_POST['PNom_Utilisateur'], $u_password, $_POST['Mail_Utilisateur']));
             
             sleep(1);
-            header('Location:index.php');
+            header('Location:connexion.php');
 		}
 	}
 ?>
@@ -107,28 +107,28 @@ if(!empty($_POST)){
                     <h2 class="title">Formulaire d'inscription</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST">
+                    <form method="post">
                         <div class="form-row m-b-55">
-                            <div class="name">Identité</div>
+                            <div class="name">Identité *</div>
                             <div class="value">
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
                                             <input class="input--style-5" type="text" name="PNom_Utilisateur" id="PNom_Utilisateur">
-                                            <label class="label--desc">Prénom</label>
+                                            <label class="label--desc">Prénom *</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
                                             <input class="input--style-5" type="text" id="Nom_Utilisateur" name="Nom_Utilisateur">
-                                            <label class="label--desc">Nom de famille</label>
+                                            <label class="label--desc">Nom de famille *</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Mail</div>
+                            <div class="name">Mail *</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="email" id= "Mail_Utilisateur" name="Mail_Utilisateur">
@@ -136,16 +136,60 @@ if(!empty($_POST)){
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Mdp</div>
+                            <div class="name">Mot de passe *</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="password" name="Mdp_Utilisateur" id="Mdp_Utilisateur">
                                 </div>
                             </div>
-                        </div>                 
-                        <div>
+                        </div> 
+                        <center><h3>Adresse</h3></center></br>
+                        <div class="form-row m-b-55">
+                            
+                             <div class="name"></div>
+                            <div class="value">
+                                <div class="row row-space">
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" name="" id="">
+                                            <label class="label--desc">Numéro</label>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" id="" name="">
+                                            <label class="label--desc">Voie</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row m-b-55">
+                            <div class="name"></div>
+                            <div class="value">
+                                <div class="row row-space">
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" name="" id="">
+                                            <label class="label--desc">Departement</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" id="" name="">
+                                            <label class="label--desc">Ville</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <center><div>
                             <button class="btn btn--radius-2 btn--red" type="submit">S'INSCRIRE</button>
                         </div>
+                       <p> </br>Vous êtes obliger de remplir les champs où il y a l'astérisque (*). <p></center>
                     </form>
                 </div>
             </div>

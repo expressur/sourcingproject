@@ -2,7 +2,7 @@
 include '../bdd.php';
 session_start();
 // Afficher les erreurs à l'écran
-ini_set('display_errors', 1);
+
 // Connexion
 include '../bdd.php';
 if (!empty($_POST)) { // Si tous les input sont remplis
@@ -14,7 +14,7 @@ if (!empty($_POST)) { // Si tous les input sont remplis
         $errors['Mdp_Utilisateur'] = "Mot de passe : Aucun mot de passe n'a été entré"; // On vérifie si le mot de passe a été entré
     else {
         // on vérifie si l'identifiant entré existe bien dans la base de données
-        $check_login = $bdd->prepare("SELECT Mail_Utilisateur FROM UTILISATEUR WHERE Mail_Utilisateur = ? "); // On prépare une requête SQL
+        $check_login = $bdd->prepare("SELECT Mail_Utilisateur FROM utilisateur WHERE Mail_Utilisateur = ? "); // On prépare une requête SQL
         $check_login->execute([$_POST["Mail_Utilisateur"]]); // On exécute de la requête
         $checked_login = $check_login->fetch(); // On récupère les données de la requête
         $check_login->closeCursor(); // On ferme la connexion à la base de donnée
@@ -26,7 +26,7 @@ if (!empty($_POST)) { // Si tous les input sont remplis
             $user_password = $_POST['Mdp_Utilisateur'];
 
             // On vérifie si le mot de passe correspond à l'identifiant
-            $check_password = $bdd->query("SELECT Mdp_Utilisateur FROM UTILISATEUR WHERE Mail_Utilisateur='$user_login' ");
+            $check_password = $bdd->query("SELECT Mdp_Utilisateur FROM utilisateur WHERE Mail_Utilisateur='$user_login' ");
             $checked_password = $check_password->fetch(PDO::FETCH_ASSOC);
             $check_password->closeCursor();
             $hashed_password = $checked_password['Mdp_Utilisateur'];
@@ -37,18 +37,18 @@ if (!empty($_POST)) { // Si tous les input sont remplis
                 $errors["Mdp_Utilisateur"] = "Mot de passe : Le mot de passe est incorrect";
         }
     }
-    echo $user_login;
+    //echo $user_login;
     // S'il n'y a aucune erreur, on connecte l'utilisateur
     if (empty($errors)) {
-        $listinfo = $bdd->query("SELECT * FROM UTILISATEUR WHERE Mail_Utilisateur = '$user_login'"); // Requête SQL pour récupérer les informations de l'utilisateur
+        $listinfo = $bdd->query("SELECT * FROM utilisateur WHERE Mail_Utilisateur = '$user_login'"); // Requête SQL pour récupérer les informations de l'utilisateur
         $userinfo = $listinfo->fetch();
         $listinfo->closeCursor();
         $_SESSION['Id_Utilisateur'] = $userinfo['Id_Utilisateur']; // On récupère l'id, le nom, le prénom, le badge, ... de l'utilisateur
         $_SESSION['PNom_Utilisateur'] = $userinfo['PNom_Utilisateur'];
         $_SESSION['Nom_Utilisateur'] = $userinfo['Nom_Utilisateur'];
-        $_SESSION['Telephone'] = $userinfo['Telephone'];
+        //$_SESSION['Telephone'] = $userinfo['Telephone'];
         $_SESSION['Mail_Utilisateur'] = $userinfo['Mail_Utilisateur'];
-        header('Location: readme.txt'); // On redirige l'utilisateur sur la page d'accueil
+        header('Location: ../index.php'); // On redirige l'utilisateur sur la page d'accueil
         exit();
     }
 }

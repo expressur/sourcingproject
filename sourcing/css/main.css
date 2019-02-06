@@ -11,7 +11,9 @@
   background-color: #49e4fa;
   color: #fff;
 }
-
+#deco{
+    color:#e64f59;
+}
 ::selection {
   background-color: #49e4fa;
   color: #fff;

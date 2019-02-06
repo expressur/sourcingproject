@@ -6,6 +6,10 @@
   font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
 }
 
+p{
+    font-size: 12px;
+    color: #9b9b9b ;
+}
 .font-poppins {
   font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
 }

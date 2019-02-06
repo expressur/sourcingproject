@@ -1,4 +1,4 @@
-<?php include 'bdd.php'; ?>
+<?php include 'bdd.php'; session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr" class="no-js">
     <head>
@@ -45,11 +45,26 @@
 
                             <li><a href="search.php">Recherche</a></li>
                             <li><a href="contact.php">Contactez-nous</a></li>
-                            <li><a class="ticker-btn" href="login/inscription.php"><font color="#000000">Inscription</font></a></li>
-                            <li><a class="ticker-btn" href="login/connexion.php"><font color="#000000">Se connecter</font></a></li>
+                            <?php
+                            if ($_SESSION['Id_Utilisateur'] == NULL) {
+                                echo'
+                                <li><a class="ticker-btn" href="login/inscription.php"><font color="#000000">Inscription</font></a></li>
+                                <li><a class="ticker-btn" href="login/connexion.php"><font color="#000000">Se connecter</font></a></li>';
+                            } else {
+                                echo '
+                                 <li class="menu-has-children"><a href=""> Bonjour   ' . $_SESSION['PNom_Utilisateur'] . ' ' . $_SESSION['Nom_Utilisateur'] . '</a>
+				    <ul>
+					<li><a href="elements.html">Mon profil</a></li>
+					<li><a href="search.html">...</a></li>
+					<li><a href="deco.php" id="deco" >DECONNEXION</a></li>
+				     </ul>
+				</li>';
+                            }
+                            ?>
 
                         </ul>
-                    </nav><!-- #nav-menu-container -->		    		
+                    </nav><!--#nav-menu-container -->		    		
                 </div>
             </div>
-        </header><!-- #header -->
+        </header><!--#header -->
+
