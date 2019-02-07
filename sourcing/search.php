@@ -121,8 +121,8 @@
                                 <h6> Type de contrat : ' . $offres[Type_OffreT] . '</h6>					
                             </div>
                             <ul class="btns ">
-                                <li><a href="#"><span class="lnr lnr-heart"></span></a></li>
-                                <li><a href="#">Apply</a></li>
+                                
+                                <li><a href="#">Candidater</a></li>
                             </ul>
                         </div>
                         <p>'

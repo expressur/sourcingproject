@@ -1,5 +1,6 @@
 <?php
 // db configuration
+
 $db_user = 'tmsuser';
 $db_pwd = 'ezOwvGoLo6C4fhvO';
 $db_name = 'talent_manager';
@@ -62,7 +63,7 @@ if(!empty($_POST)){
 		}
 		// INSCRIPTION
 		if($error == false){
-			$req = $bdd->prepare("INSERT INTO utilisateur (Nom_Utilisateur, PNom_Utilisateur, Mdp_Utilisateur, Mail_Utilisateur) VALUES ( ? , ? , ? , ? )");
+			$req = $bdd->prepare("INSERT INTO utilisateur (Nom_Utilisateur, PNom_Utilisateur, Mdp_Utilisateur, Mail_Utilisateur, Id_Type) VALUES ( ? , ? , ? , ? , 4)");
                         $req->execute(array($_POST['Nom_Utilisateur'], $_POST['PNom_Utilisateur'], $u_password, $_POST['Mail_Utilisateur']));
             
             sleep(1);

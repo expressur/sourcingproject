@@ -1,4 +1,6 @@
-<?php include 'bdd.php'; session_start(); ?>
+<?php include 'bdd.php'; 
+
+?>
 <!DOCTYPE html>
 <html lang="fr" class="no-js">
     <head>
@@ -52,15 +54,18 @@
                                 <li><a class="ticker-btn" href="login/connexion.php"><font color="#000000">Se connecter</font></a></li>';
                             } else {
                                 echo '
-                                 <li class="menu-has-children"><a href=""> Bonjour   ' . $_SESSION['PNom_Utilisateur'] . ' ' . $_SESSION['Nom_Utilisateur'] . '</a>
+                                 <li class="menu-has-children"><a id="menu"> Bonjour   ' . $_SESSION['PNom_Utilisateur'] . ' ' . $_SESSION['Nom_Utilisateur'] . '</a>'; ?>
 				    <ul>
 					<li><a href="elements.html">Mon profil</a></li>
-					<li><a href="search.html">...</a></li>
-					<li><a href="deco.php" id="deco" >DECONNEXION</a></li>
+                                        <?php if ($_SESSION['Id_Type'] == 1) 
+                                        {
+                                           echo ' <li><a href="admin/examples/dashboard.html">Menue administration</a></li>';
+                                        } ?>
+					<li><a href="deco.php" id="deco" >Déconnexion</a></li>
 				     </ul>
-				</li>';
-                            }
-                            ?>
+				</li>
+                            <?php } ?>
+                           
 
                         </ul>
                     </nav><!--#nav-menu-container -->		    		
