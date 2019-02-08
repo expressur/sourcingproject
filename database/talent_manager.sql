@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost:3306
--- Généré le :  Jeu 31 Janvier 2019 à 11:04
+-- Généré le :  Ven 08 Février 2019 à 14:59
 -- Version du serveur :  5.7.25-0ubuntu0.18.10.2
 -- Version de PHP :  7.2.10-0ubuntu1
 
@@ -98,25 +98,26 @@ CREATE TABLE `cv_formation` (
 
 CREATE TABLE `offres` (
   `Id_Offre` int(11) NOT NULL,
-  `Description_Offre` text CHARACTER SET latin1 NOT NULL,
+  `Petite_Description_Offre` varchar(200) CHARACTER SET latin1 NOT NULL,
   `Date_Debut_Offre` date NOT NULL,
   `Date_Fin_Offre` date DEFAULT NULL,
   `Remuneration_Offre` int(11) NOT NULL,
   `Remuneration_Type_Offre` varchar(50) CHARACTER SET latin1 NOT NULL,
   `Titre_Offre` varchar(50) CHARACTER SET latin1 NOT NULL,
   `Id_Adresse` int(11) NOT NULL,
-  `Id_OffreT` int(11) NOT NULL
+  `Id_OffreT` int(11) NOT NULL,
+  `Description_Offre` text COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Contenu de la table `offres`
 --
 
-INSERT INTO `offres` (`Id_Offre`, `Description_Offre`, `Date_Debut_Offre`, `Date_Fin_Offre`, `Remuneration_Offre`, `Remuneration_Type_Offre`, `Titre_Offre`, `Id_Adresse`, `Id_OffreT`) VALUES
-(1, 'Juste un petit test!', '2019-01-01', '2019-04-24', 4500, 'Par mois', 'Offre de test', 1, 1),
-(2, 'Un deuxiemme test', '2019-01-20', NULL, 2300, 'Par mois', 'Offre de test 2', 2, 2),
-(3, 'Ceci est un troisieme test', '2019-01-08', NULL, 3502, 'Par mois', 'Offre de test 3', 4, 2),
-(4, '4eme test', '2019-01-01', '2019-01-31', 200, 'Par Jour', 'Offre de test 4', 5, 1);
+INSERT INTO `offres` (`Id_Offre`, `Petite_Description_Offre`, `Date_Debut_Offre`, `Date_Fin_Offre`, `Remuneration_Offre`, `Remuneration_Type_Offre`, `Titre_Offre`, `Id_Adresse`, `Id_OffreT`, `Description_Offre`) VALUES
+(1, 'Lorem ipsum dolor sit amet, consectetur adipisicing.Lorem ipsum dolor sit amet, consectetur adipisicing.', '2019-01-01', '2019-04-24', 4500, 'Par mois', 'Offre de test', 1, 1, ''),
+(2, 'Lorem ipsum dolor sit amet, consectetur adipisicing.Lorem ipsum dolor sit amet, consectetur adipisicing.', '2019-01-20', NULL, 2300, 'Par mois', 'Offre de test 2', 2, 2, ''),
+(3, 'Lorem ipsum dolor sit amet, consectetur adipisicing.Lorem ipsum dolor sit amet, consectetur adipisicing.', '2019-01-08', NULL, 3502, 'Par mois', 'Offre de test 3', 4, 2, ''),
+(4, 'Lorem ipsum dolor sit amet, consectetur adipisicing.Lorem ipsum dolor sit amet, consectetur adipisicing.', '2019-01-01', '2019-01-31', 200, 'Par Jour', 'Offre de test 4', 5, 1, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud \r\n\r\n\r\nexercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur.');
 
 -- --------------------------------------------------------
 
@@ -194,6 +195,14 @@ CREATE TABLE `utilisateur` (
   `Id_Type` int(11) DEFAULT NULL,
   `Id_Cv` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Contenu de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`Id_Utilisateur`, `Nom_Utilisateur`, `PNom_Utilisateur`, `Mail_Utilisateur`, `Mdp_Utilisateur`, `Id_Adresse`, `Id_Offre`, `Id_Offre_OFFRES`, `Id_Type`, `Id_Cv`) VALUES
+(4, 'Bakari', 'Naïm', 'bak77200@gmail.com', '$2y$10$tbo9Q51MAK.VKwiZ8X7UIOYmLgPTZT6.ifnzsZlk7LsT23KU0AyK2', NULL, NULL, NULL, 4, NULL),
+(5, 'ROOT', 'Admin', 'root@gmail.com', '$2y$10$Xso5E4C9Z0BAtl7hxO/LguT1rBqke9dljP4/Upu6VgmnNQN.b8Fz2', NULL, NULL, NULL, 1, NULL);
 
 --
 -- Index pour les tables exportées
@@ -306,7 +315,7 @@ ALTER TABLE `type_u`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `Id_Utilisateur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Utilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Contraintes pour les tables exportées
 --
