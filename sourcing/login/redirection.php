@@ -2,7 +2,7 @@
 include '../bdd.php';
 if ($_SESSION['Id_Type'] == 1)
 {
-    header('Location: ../admin/examples/dashboard.html');
+    header('Location: ../admin/examples/dashboard.php');
 }
 elseif ($_SESSION['Id_Type'] == 2) 
 {

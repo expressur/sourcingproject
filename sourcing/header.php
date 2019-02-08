@@ -59,7 +59,7 @@
 					<li><a href="elements.html">Mon profil</a></li>
                                         <?php if ($_SESSION['Id_Type'] == 1) 
                                         {
-                                           echo ' <li><a href="admin/examples/dashboard.html">Menue administration</a></li>';
+                                           echo ' <li><a href="admin/examples/dashboard.php">Menue administration</a></li>';
                                         } ?>
 					<li><a href="deco.php" id="deco" >Déconnexion</a></li>
 				     </ul>

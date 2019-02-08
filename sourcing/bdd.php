@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -83,4 +83,6 @@ FROM
 offres,adresse
 WHERE
 offres.Id_Adresse = adresse.Id_Adresse');
+
+session_start();
  ?>
