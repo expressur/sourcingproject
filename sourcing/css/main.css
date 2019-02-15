@@ -19,6 +19,14 @@
     color : white;
 }
 
+.profil_txt{
+    color: #777777;
+}
+
+.profil_txt:hover{
+    color : white;
+}
+
 ::selection {
   background-color: #49e4fa;
   color: #fff;

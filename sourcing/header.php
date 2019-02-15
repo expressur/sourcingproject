@@ -41,7 +41,7 @@
                     </div>
                     <nav id="nav-menu-container">
                         <ul class="nav-menu">
-                            <li class="menu-active"><a href="index.php">Acceuil</a></li>
+                            <li class="menu-active"><a href="index.php">Accueil</a></li>
                             <li><a href="about-us.php">A propos de nous</a></li>
                             <li><a href="https://expressur.fr/">Site vitrine</a></li>
 
@@ -56,7 +56,7 @@
                                 echo '
                                  <li class="menu-has-children"><a id="menu"> Bonjour   ' . $_SESSION['PNom_Utilisateur'] . ' ' . $_SESSION['Nom_Utilisateur'] . '</a>'; ?>
 				    <ul>
-					<li><a href="elements.html">Mon profil</a></li>
+                                        <li><a href="profil.php">Mon profil</a></li>
                                         <?php if ($_SESSION['Id_Type'] == 1) 
                                         {
                                            echo ' <li><a href="admin/examples/dashboard.php">Menue administration</a></li>';

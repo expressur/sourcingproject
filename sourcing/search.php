@@ -98,7 +98,7 @@
                        <div class="col-lg-8 post-list">
                 <?php
                 for ($i = 1; $i <= 10; $i++) {
-                    while ($offres = $les_offres->fetch()) {
+                    while ($offres = $r_offres->fetch()) {
                         echo'<div class="single-post d-flex flex-row">
                     <div class="thumb">
                         <img src="img/post.png" alt="">

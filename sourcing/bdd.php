@@ -41,6 +41,28 @@ offres,adresse,offres_type
 WHERE offres.Id_Adresse = adresse.Id_Adresse 
 AND 
 offres_type.Id_OffreT = offres.Id_OffreT
+ORDER BY Id_Offre DESC LIMIT 10');
+
+$r_offres = $bdd->query('
+SELECT 
+Petite_Description_Offre,
+Description_Offre,
+Date_Debut_Offre,
+Date_Fin_Offre,
+Remuneration_Offre,
+Remuneration_Type_Offre,
+Titre_Offre,
+Dep_Adresse,
+Num_Adresse, 
+Ville_Adresse, 
+Voie_Adresse,
+Id_Offre,
+Type_OffreT 
+FROM
+offres,adresse,offres_type 
+WHERE offres.Id_Adresse = adresse.Id_Adresse 
+AND 
+offres_type.Id_OffreT = offres.Id_OffreT
 ORDER BY Id_Offre DESC');
 
 $detail_offre = $bdd->prepare('
@@ -74,7 +96,8 @@ Ville_Adresse
 FROM
 offres,adresse
 WHERE
-offres.Id_Adresse = adresse.Id_Adresse');
+offres.Id_Adresse = adresse.Id_Adresse
+LIMIT 5');
 
 $lieu = $bdd ->query('SELECT
 DISTINCT

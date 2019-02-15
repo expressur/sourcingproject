@@ -1,4 +1,8 @@
 <!-- Start callto-action Area -->
+<?php 
+if($_SESSION['Id_Utilisateur'] == NULL)
+{    
+echo'
 <section class="callto-action-area section-gap" id="join">
     <div class="container">
         <div class="row d-flex justify-content-center">
@@ -12,7 +16,9 @@
             </div>
         </div>	
     </div>	
-</section>
+</section>';
+} 
+?>
 <!-- End calto-action Area -->
 
 <!-- Start download Area -->
