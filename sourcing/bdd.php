@@ -6,6 +6,10 @@
  * and open the template in the editor.
  */
 
+// definition des variables globales
+$ID_UTILISATEUR = isset($_SESSION['Id_Utilisateur']) ? $_SESSION['Id_Utilisateur'] : NULL;
+$ID_OFFRE = isset($_GET['off']) ? $_GET['off'] : NULL;
+
 // db configuration
 $db_user = 'tmsuser';
 $db_pwd = 'ezOwvGoLo6C4fhvO';
@@ -86,7 +90,7 @@ AND
 offres_type.Id_OffreT = offres.Id_OffreT
 AND
 Id_Offre =:off');
-$detail_offre->execute(array('off' =>$_GET['off']));
+$detail_offre->execute(array('off' =>$ID_OFFRE));
 $d_offre = $detail_offre ->fetch();
 
 $lieu_offre = $bdd ->query('

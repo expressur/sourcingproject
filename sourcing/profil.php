@@ -1,7 +1,7 @@
 <!-- header -->
 <?php
 include 'header.php';
-if ($_SESSION['Id_Utilisateur'] == NULL) {
+if ($ID_UTILISATEUR == NULL) {
     header('Location: index.php');
 }
 ?>
