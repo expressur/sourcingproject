@@ -6,10 +6,6 @@
  * and open the template in the editor.
  */
 
-// definition des variables globales
-$ID_UTILISATEUR = isset($_SESSION['Id_Utilisateur']) ? $_SESSION['Id_Utilisateur'] : NULL;
-$ID_OFFRE = isset($_GET['off']) ? $_GET['off'] : NULL;
-
 // db configuration
 $db_user = 'tmsuser';
 $db_pwd = 'ezOwvGoLo6C4fhvO';
@@ -32,19 +28,21 @@ Description_Offre,
 Date_Debut_Offre,
 Date_Fin_Offre,
 Remuneration_Offre,
-Remuneration_Type_Offre,
+Remuneration_Type,
 Titre_Offre,
 Dep_Adresse,
 Num_Adresse, 
 Ville_Adresse, 
 Voie_Adresse,
-Id_Offre,
+offres.Id_Offre,
 Type_OffreT 
 FROM
-offres,adresse,offres_type 
-WHERE offres.Id_Adresse = adresse.Id_Adresse 
+offres,adresse,offre_type,remuneration_type 
+WHERE offres.Id_Offre = adresse.Id_Offre
+AND
+remuneration_type.Id_Remu_Type = offres.Id_Remu_Type
 AND 
-offres_type.Id_OffreT = offres.Id_OffreT
+offre_type.Id_OffreT = offres.Id_OffreT
 ORDER BY Id_Offre DESC LIMIT 10');
 
 $r_offres = $bdd->query('
@@ -54,19 +52,21 @@ Description_Offre,
 Date_Debut_Offre,
 Date_Fin_Offre,
 Remuneration_Offre,
-Remuneration_Type_Offre,
+Remuneration_Type,
 Titre_Offre,
 Dep_Adresse,
 Num_Adresse, 
 Ville_Adresse, 
 Voie_Adresse,
-Id_Offre,
+offres.Id_Offre,
 Type_OffreT 
 FROM
-offres,adresse,offres_type 
-WHERE offres.Id_Adresse = adresse.Id_Adresse 
+offres,adresse,offre_type,remuneration_type 
+WHERE offres.Id_Offre = adresse.Id_Offre
+AND
+remuneration_type.Id_Remu_Type = offres.Id_Remu_Type
 AND 
-offres_type.Id_OffreT = offres.Id_OffreT
+offre_type.Id_OffreT = offres.Id_OffreT
 ORDER BY Id_Offre DESC');
 
 $detail_offre = $bdd->prepare('
@@ -76,7 +76,7 @@ Description_Offre,
 Date_Debut_Offre,
 Date_Fin_Offre,
 Remuneration_Offre,
-Remuneration_Type_Offre,
+Remuneration_Type,
 Titre_Offre,
 Dep_Adresse,
 Num_Adresse, 
@@ -84,13 +84,15 @@ Ville_Adresse,
 Voie_Adresse,
 Type_OffreT 
 FROM
-offres,adresse,offres_type 
-WHERE offres.Id_Adresse = adresse.Id_Adresse 
+offres,adresse,offre_type,remuneration_type
+WHERE offres.Id_Offre = adresse.Id_Offre
 AND 
-offres_type.Id_OffreT = offres.Id_OffreT
+offre_type.Id_OffreT = offres.Id_OffreT
 AND
-Id_Offre =:off');
-$detail_offre->execute(array('off' =>$ID_OFFRE));
+remuneration_type.Id_Remu_Type = offres.Id_Remu_Type
+AND
+offres.Id_Offre =:off');
+$detail_offre->execute(array('off' =>$_GET['off']));
 $d_offre = $detail_offre ->fetch();
 
 $lieu_offre = $bdd ->query('
@@ -100,7 +102,7 @@ Ville_Adresse
 FROM
 offres,adresse
 WHERE
-offres.Id_Adresse = adresse.Id_Adresse
+offres.Id_Offre = adresse.Id_Offre
 LIMIT 5');
 
 $lieu = $bdd ->query('SELECT
@@ -109,7 +111,7 @@ Ville_Adresse
 FROM
 offres,adresse
 WHERE
-offres.Id_Adresse = adresse.Id_Adresse');
+offres.Id_Offre = adresse.Id_Offre');
 
 session_start();
  ?>

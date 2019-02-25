@@ -1,4 +1,5 @@
-<?php include 'bdd.php';?>
+<?php include 'bdd.php';
+?>
 <!DOCTYPE html>
 <html lang="fr" class="no-js">
     <head>
@@ -40,30 +41,35 @@
                     <nav id="nav-menu-container">
                         <ul class="nav-menu">
                             <li class="menu-active"><a href="index.php">Accueil</a></li>
-                            <li><a href="about-us.php">A propos de nous</a></li>
+                            <!-- <li><a href="about-us.php">A propos de nous</a></li> -->
                             <li><a href="https://expressur.fr/">Site vitrine</a></li>
 
                             <li><a href="search.php">Recherche</a></li>
-                            <li><a href="contact.php">Contactez-nous</a></li>
+                            <!-- <li><a href="contact.php">Contactez-nous</a></li> -->
                             <?php
-                            if ($ID_UTILISATEUR == NULL) {
+                            if ($_SESSION['Id_Utilisateur'] == NULL) {
                                 echo'
                                 <li><a class="ticker-btn" href="login/inscription.php"><font color="#000000">Inscription</font></a></li>
                                 <li><a class="ticker-btn" href="login/connexion.php"><font color="#000000">Se connecter</font></a></li>';
                             } else {
                                 echo '
-                                 <li class="menu-has-children"><a id="menu"> Bonjour   ' . $_SESSION['PNom_Utilisateur'] . ' ' . $_SESSION['Nom_Utilisateur'] . '</a>'; ?>
-				    <ul>
-                                        <li><a href="profil.php">Mon profil</a></li>
-                                        <?php if ($_SESSION['Id_Type'] == 1) 
-                                        {
-                                           echo ' <li><a href="admin/examples/dashboard.php">Menue administration</a></li>';
-                                        } ?>
-					<li><a href="deco.php" id="deco" >Déconnexion</a></li>
-				     </ul>
-				</li>
+                                 <li class="menu-has-children"><a id="menu"> Bonjour   ' . $_SESSION['PNom_Utilisateur'] . ' ' . $_SESSION['Nom_Utilisateur'] . '</a>';
+                                ?>
+                                <ul>
+                                    <?php
+                                    if ($_SESSION['Id_Type'] == 4) {
+                                        echo '<li><a href="profil.php">Mon profil</a></li>';
+                                    }
+
+                                    if ($_SESSION['Id_Type'] == 1) {
+                                        echo ' <li><a href="admin/examples/dashboard.php">Menue administration</a></li>';
+                                    }
+                                    ?>
+                                    <li><a href="deco.php" id="deco" >Déconnexion</a></li>
+                                </ul>
+                                </li>
                             <?php } ?>
-                           
+
 
                         </ul>
                     </nav><!--#nav-menu-container -->		    		

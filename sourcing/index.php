@@ -143,7 +143,9 @@ include 'header.php';
                         '</p>
                        
                         <p class="address"><span class="lnr lnr-map"></span> ' . $offres[Num_Adresse] . ' ' . $offres[Voie_Adresse] . ', ' . $offres[Dep_Adresse] . ' ' . $offres[Ville_Adresse] . '</p>
-                        <p class="address"><span class="lnr lnr-database"></span> ' . $offres[Remuneration_Offre] . ' €</p>
+                        <p class="address"><span class="lnr lnr-database"></span> ' . $offres[Remuneration_Offre] . ' € '. $offres[Remuneration_Type].'</p>
+                        <p class="address"> Date de fin : ' . $offres[Date_Fin_Offre] . '</p>
+                        <p class="address"> Date de debut : ' . $offres[Date_Debut_Offre] . '</p>
                     </div>
                 </div>';
                     }
