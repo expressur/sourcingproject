@@ -16,26 +16,30 @@ include 'header.php'
                 <p class="text-white link-nav">
                     <a href="index.html">Acceuil </a> <span class="lnr lnr-arrow-right"></span> <a> Recherche d'offre</a>
                 </p>	
-                <form action="#" class="serach-form-area">
+                <form action="search.php" class="serach-form-area">
                     <div class="row justify-content-center form-wrap">
                         <div class="col-lg-4 form-cols">
-                            <input type="text" class="form-control" name="search" placeholder="what are you looging for?">
+                            <input type="text" class="form-control" name="search" placeholder="Recherche par mot-clé">
                         </div>
                         <div class="col-lg-3 form-cols">
                             <div class="default-select" id="default-selects"">
                                 <select>
-                                    <option value="1">Select area</option>
-                                    <option value="2">Dhaka</option>
-                                    <option value="3">Rajshahi</option>
-                                    <option value="4">Barishal</option>
-                                    <option value="5">Noakhali</option>
+                                    <option value="1">Séléctionnez un endroit</option>
+                                    <?php
+                                    for ($i = 2; $i < 6; $i++) {
+                                        while ($l_offre = $lieu_offre->fetch()) {
+                                            echo'<option value="' . $i++ . '">' . $l_offre[Ville_Adresse] . '</option>';
+                                        }
+                                    }
+                                    ?>
+
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-3 form-cols">
                             <div class="default-select" id="default-selects2">
                                 <select>
-                                    <option value="1">All Category</option>
+                                    <option value="1">Les catégories</option>
                                     <option value="2">Medical</option>
                                     <option value="3">Technology</option>
                                     <option value="4">Goverment</option>
@@ -45,11 +49,11 @@ include 'header.php'
                         </div>
                         <div class="col-lg-2 form-cols">
                             <button type="button" class="btn btn-info">
-                                <span class="lnr lnr-magnifier"></span> Search
+                                <span class="lnr"></span><font color="#000000">Recherche</font>
                             </button>
                         </div>								
                     </div>
-                </form>	
+                </form>
                 <p class="text-white">49 resultat trouver pour <span>"Web developer"</span></p>
             </div>											
         </div>

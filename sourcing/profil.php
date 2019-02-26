@@ -46,7 +46,7 @@ if ($_SESSION['Id_Utilisateur'] == NULL) {
             </div>
 
             <div class="col-lg-4 col-md-6">
-                <a href="#">
+               <?php echo' <a href="mes_offres.php?candidat='.$_SESSION['Id_Utilisateur'].'"> '?>
                     <div class="single-service">
                         <h4><span class="lnr lnr-license"></span>Les offres où j'ai postuler</h4>
                         <p class="profil_txt">

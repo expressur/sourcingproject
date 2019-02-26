@@ -133,7 +133,7 @@ include 'header.php';
                               <div class="title text-center">
                            
                             <ul class="btns ">
-                                <li><a href="#">Candidater</a></li>
+                                <li><a href="candidater.php?off='.$offres[Id_Offre].'&candidat='.$_SESSION['Id_Utilisateur'].'">Candidater</a></li>
                             
                             </ul>
                             </div>

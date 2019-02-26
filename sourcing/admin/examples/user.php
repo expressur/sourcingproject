@@ -12,19 +12,14 @@
                 <div class="card-body">
                   <form>
                     <div class="row">
-                      <div class="col-md-5">
+                      <div class="col-md-7">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Company (disabled)</label>
+                          <label class="bmd-label-floating">Entreprise</label>
                           <input type="text" class="form-control" >
                         </div>
                       </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Username</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
+                     
+                      <div class="col-md-5">
                         <div class="form-group">
                           <label class="bmd-label-floating">Email</label>
                           <input type="email" class="form-control">
@@ -51,41 +46,53 @@
                           <label class="bmd-label-floating">Numero d'adresse</label>
                           <input type="text" class="form-control">
                         </div>
-                          
+                      </div>
+                        <div class="col-md-10">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Voie</label>
+                          <input type="text" class="form-control">
+                        </div>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-4">
+                      <div class="col-md-6">
                         <div class="form-group">
-                          <label class="bmd-label-floating">City</label>
+                          <label class="bmd-label-floating">Ville</label>
                           <input type="text" class="form-control">
                         </div>
                       </div>
-                      <div class="col-md-4">
+                    
+                      <div class="col-md-6">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Country</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Postal Code</label>
+                          <label class="bmd-label-floating">Code postale</label>
                           <input type="text" class="form-control">
                         </div>
                       </div>
                     </div>
+                      
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label>About Me</label>
+                          <label>Type d'utilisateur</label>
                           <div class="form-group">
-                            <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                            <textarea class="form-control" rows="5"></textarea>
+                            <div class="col-lg-3 form-cols">
+                            <div class="default-select" id="default-selects"">
+                                <select>
+                                    <option value="0">Selectionnez un type</option>
+                                    <?php
+                                        while ($type_u = $type_utilisateur->fetch()) {
+                                            echo'<option value="' . $type_u[Id_Type] . '">' . $type_u[Utilisateur_Type] . '</option>';
+                                        }
+                                    ?>
+
+                                </select>
+                            </div>
+                        </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                    <button type="submit" class="btn btn-primary pull-right">Ajouter</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>
