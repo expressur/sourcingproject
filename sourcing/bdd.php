@@ -107,7 +107,8 @@ LIMIT 5');
 
 $lieu = $bdd ->query('SELECT
 DISTINCT
-Ville_Adresse 
+Ville_Adresse,
+Id_Adresse
 FROM
 offres,adresse
 WHERE
@@ -149,6 +150,34 @@ postuler.Id_Offre = offres.Id_Offre
 AND
 utilisateur.Id_Utilisateur =:candidat');
 $mes_offres->execute(array('candidat' =>$_GET['candidat']));
+
+$lieu_recherche = $bdd ->prepare('
+SELECT 
+Petite_Description_Offre,
+Description_Offre,
+Date_Debut_Offre,
+Date_Fin_Offre,
+Remuneration_Offre,
+Remuneration_Type,
+Titre_Offre,
+Dep_Adresse,
+Num_Adresse, 
+Ville_Adresse, 
+Voie_Adresse,
+offres.Id_Offre,
+adresse.Id_Adresse,
+Type_OffreT 
+FROM
+offres,adresse,offre_type,remuneration_type 
+WHERE offres.Id_Offre = adresse.Id_Offre
+AND
+remuneration_type.Id_Remu_Type = offres.Id_Remu_Type
+AND 
+offre_type.Id_OffreT = offres.Id_OffreT
+AND
+adresse.Id_Adresse = :lieu');
+$lieu_recherche ->execute(array('lieu' =>$_GET['lieu']));
+
 
 
 session_start();

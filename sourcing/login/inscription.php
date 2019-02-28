@@ -25,15 +25,39 @@ if(!empty($_POST)){
 			}
 		}
 		
-		
-		/*// TELEPHONE
-		if(empty($_POST["NumeroDeTelephone"])) {
+		/* 
+		// NUM ADRESSE
+		if(empty($_POST["Num_Adresse"])) {
 			if ($error == false) {
-				echo "Téléphone : Aucun numéro de téléphone n'a été entré";
+				echo "Numéro d'adresse : Aucun numéro d'adresse n'a été entré";
+				$error = true;
+			}
+		}
+		
+               // VOIE ADRESSE
+		if(empty($_POST["Voie_Adresse"])) {
+			if ($error == false) {
+				echo "Voie d'adresse : Aucune voie d'adresse n'a été entré";
+				$error = true;
+			}
+		}
+                
+                // DEP ADRESSE
+		if(empty($_POST["Dep_Adresse"])) {
+			if ($error == false) {
+				echo "Departement : Aucun département n'a été entré";
+				$error = true;
+			}
+		}
+                
+                // VILLE
+		if(empty($_POST["Ville_Adresse"])) {
+			if ($error == false) {
+				echo "Ville : Aucune Ville n'a été entré";
 				$error = true;
 			}
 		}*/
-		
+                
 		// IDENTIFIANT
 		if(empty($_POST["Mail_Utilisateur"])) {
 			if ($error == false) {
@@ -62,12 +86,17 @@ if(!empty($_POST)){
 			$u_password = password_hash($_POST["Mdp_Utilisateur"], PASSWORD_DEFAULT);
 		}
 		// INSCRIPTION
-		if($error == false){
-			$req = $bdd->prepare("INSERT INTO utilisateur (Nom_Utilisateur, PNom_Utilisateur, Mdp_Utilisateur, Mail_Utilisateur, Id_Type) VALUES ( ? , ? , ? , ? , 4)");
-                        $req->execute(array($_POST['Nom_Utilisateur'], $_POST['PNom_Utilisateur'], $u_password, $_POST['Mail_Utilisateur']));
+		if($error == false)
+                {
+                    $req = $bdd->prepare("INSERT INTO utilisateur (Nom_Utilisateur, PNom_Utilisateur, Mdp_Utilisateur, Mail_Utilisateur, Id_Type) VALUES ( ? , ? , ? , ? , 4)");
+                    $req->execute(array($_POST['Nom_Utilisateur'], $_POST['PNom_Utilisateur'], $u_password, $_POST['Mail_Utilisateur']));
+                    $id = $bdd->lastInsertId();
             
-            sleep(1);
-            header('Location:connexion.php');
+                    sleep(1);
+                    $insc = $bdd->prepare("INSERT INTO adresse (Num_Adresse, Voie_Adresse, Dep_Adresse, Ville_Adresse, Id_Utilisateur) VALUES (? , ? , ? , ? , ?)");
+                    $insc->execute(array($_POST['Num_Adresse'], $_POST['Voie_Adresse'], $_POST['Dep_Adresse'], $_POST['Ville_Adresse'], $id));
+                    sleep(1);
+                    header('Location:connexion.php');
 		}
 	}
 ?>
@@ -152,14 +181,14 @@ if(!empty($_POST)){
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="" id="">
+                                            <input class="input--style-5" type="text" name="Num_Adresse" id="Num_Adresse">
                                             <label class="label--desc">Numéro</label>
                                         </div>
                                         
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" id="" name="">
+                                            <input class="input--style-5" type="text" id="Voie_Adresse" name="Voie_Adresse">
                                             <label class="label--desc">Voie</label>
                                         </div>
                                     </div>
@@ -173,13 +202,13 @@ if(!empty($_POST)){
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="" id="">
+                                            <input class="input--style-5" type="text" name="Dep_Adresse" id="Dep_Adresse">
                                             <label class="label--desc">Departement</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" id="" name="">
+                                            <input class="input--style-5" type="text" id="Ville_Adresse" name="Ville_Adresse">
                                             <label class="label--desc">Ville</label>
                                         </div>
                                     </div>

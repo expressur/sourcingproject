@@ -21,4 +21,6 @@ postuler
 (Id_Utilisateur,Id_Offre)
 VALUES (?,?)');
 $postuler->execute(array($_GET['candidat'], $_GET['off']));
+
 header('Location:index.php');
+?>

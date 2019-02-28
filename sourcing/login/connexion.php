@@ -119,10 +119,17 @@ if (!empty($_POST)) { // Si tous les input sont remplis
                         </div>
 
                         <div class="text-center p-t-136">
+                            <a class="txt2" href="../index.php">
+                                <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
+                                Revenir a l'ecran d'accueil
+                            </a>
+                            
+                            </br>
+                            
                             <a class="txt2" href="inscription.php">
                                 Créer un compte
                                 <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                            </a>
+                            </a>                            
                         </div>
                     </form>
                 </div>

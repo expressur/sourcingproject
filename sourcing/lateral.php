@@ -5,7 +5,7 @@
                         <?php 
                         while ($li_offre = $lieu->fetch())
                         {
-                            echo'<li><a class="justify-content-between d-flex" href="category.php"><p>'.$li_offre[Ville_Adresse].'</p></a></li>';
+                            echo'<li><a class="justify-content-between d-flex" href="search.php?lieu='.$li_offre[Id_Adresse].'"><p>'.$li_offre[Ville_Adresse].'</p></a></li>';
                         }
                         ?>
                     </ul>

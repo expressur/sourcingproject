@@ -5,8 +5,6 @@ if ($_SESSION['Id_Utilisateur'] == NULL) {
     header('Location: index.php');
 }
 ?>
-
-
 <!-- start banner Area -->
 <section class="banner-area relative" id="home">	
     <div class="overlay overlay-bg"></div>
@@ -27,7 +25,7 @@ if ($_SESSION['Id_Utilisateur'] == NULL) {
 
             <div class="col-lg-8 post-list">
                 <?php
-                for ($i = 1; $i <= 10; $i++) {
+                
                     while ($m_offres = $mes_offres ->fetch()) {
                         echo'<div class="single-post d-flex flex-row">
                     <div class="thumb">
@@ -50,9 +48,9 @@ if ($_SESSION['Id_Utilisateur'] == NULL) {
                                 <a href="single.php?off=' . $m_offres[Id_Offre] . '"><h4>' . $m_offres[Titre_Offre] . '</h4></a>
                                 <h6> Type de contrat : ' . $m_offres[Type_OffreT] . '</h6>					
                             </div>
-                            <ul class="btns ">
+                            <ul>
                                 
-                                <li><a href="#" id="#supprimer">Supprimer</a></li>
+                                <li><a href="supp.php?off='.$m_offres[Id_Offre].'&candidat='.$_SESSION['Id_Utilisateur'].'" class="genric-btn danger-border circle">Supprimer</a></li>
                             </ul>
                         </div>
                         <p>'
@@ -66,10 +64,10 @@ if ($_SESSION['Id_Utilisateur'] == NULL) {
                     </div>
                 </div>';
                     }
-                }
+               
                 ?>											
             </div>
-            <?php include 'lateral.php'; ?>					
+            <?php //include 'lateral.php'; ?>					
         </div>
     </div>
 </div>	
@@ -77,7 +75,7 @@ if ($_SESSION['Id_Utilisateur'] == NULL) {
 
 <!-- start footer Area -->		
 <?php include 'foot.php'; ?>
-<!-- End footer Area -->		
+<!-- End footer Area -->
 
 </body>
 </html>
