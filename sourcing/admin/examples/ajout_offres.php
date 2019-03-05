@@ -6,8 +6,8 @@
             <div class="col-md-8">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title">Edit Profile</h4>
-                  <p class="card-category">Complete your profile</p>
+                  <h4 class="card-title">Création d'une offre</h4>
+                  <p class="card-category">Avant de crée une offre veuillez tout d'abord crée une <a href="user.php">entreprise</a>.</p>
                 </div>
                 <div class="card-body">
                   <form>
@@ -76,15 +76,25 @@
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label>About Me</label>
+                          <label>Description</label>
+                          <div class="col-md-12">
+                              
+                        <div class="col-md-13">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Petite description</label>
+                          <input type="text" class="form-control" rows="5">
+                        </div>
+                      </div>
+                              
+                      </div>
                           <div class="form-group">
-                            <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                            <label class="bmd-label-floating"> Grande description.</label>
                             <textarea class="form-control" rows="5"></textarea>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                    <button type="submit" class="btn btn-primary pull-right">Crée une offre!</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>

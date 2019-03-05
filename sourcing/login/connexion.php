@@ -1,6 +1,4 @@
 <?php
-include '../bdd.php';
-// Afficher les erreurs à l'écran
 
 // Connexion
 include '../bdd.php';

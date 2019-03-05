@@ -1,7 +1,7 @@
 <!-- header -->
 <?php
 include 'header.php';
-if ($_SESSION['Id_Utilisateur'] == NULL) {
+if (empty($_SESSION['Id_Utilisateur'])) {
     header('Location: index.php');
 }
 ?>
@@ -16,7 +16,7 @@ if ($_SESSION['Id_Utilisateur'] == NULL) {
                 <h1 class="text-white">
                     Mon profil				
                 </h1>	
-                <p class="text-white link-nav"><a href="index.html">Accueil </a>  <span class="lnr lnr-arrow-right"></span>  <a> Mon profil</a></p>
+                <p class="text-white link-nav"><a href="index.php">Accueil </a>  <span class="lnr lnr-arrow-right"></span>  <a> Mon profil</a></p>
             </div>											
         </div>
     </div>

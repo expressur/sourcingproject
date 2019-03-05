@@ -47,7 +47,7 @@
                             <li><a href="search.php">Recherche</a></li>
                             <!-- <li><a href="contact.php">Contactez-nous</a></li> -->
                             <?php
-                            if ($_SESSION['Id_Utilisateur'] == NULL) {
+                            if (empty($_SESSION['Id_Utilisateur'])) {
                                 echo'
                                 <li><a class="ticker-btn" href="login/inscription.php"><font color="#000000">Inscription</font></a></li>
                                 <li><a class="ticker-btn" href="login/connexion.php"><font color="#000000">Se connecter</font></a></li>';

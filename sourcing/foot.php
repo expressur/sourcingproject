@@ -1,6 +1,6 @@
 <!-- Start callto-action Area -->
 <?php 
-if($_SESSION['Id_Utilisateur'] == NULL)
+if(empty($_SESSION['Id_Utilisateur']))
 {    
 echo'
 <section class="callto-action-area section-gap" id="join">

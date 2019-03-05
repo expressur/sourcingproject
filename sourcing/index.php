@@ -56,49 +56,6 @@ include 'header.php';
 </section>
 <!-- End banner Area -->	
 
-<!-- Start features Area -->
-<section class="features-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="single-feature">
-                    <h4>Recherche</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing.
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-feature">
-                    <h4>Appliquer</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing.
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-feature">
-                    <h4>Sécurité</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing.
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-feature">
-                    <h4>Notifications</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing.
-                    </p>
-                </div>
-            </div>																		
-        </div>
-    </div>	
-</section>
-<!-- End features Area -->
-
-
-
 <!-- Start post Area -->
 <section class="post-area section-gap">
     <div class="container">
@@ -106,51 +63,9 @@ include 'header.php';
 
             <div class="col-lg-8 post-list">
                 <?php
-                for ($y = 0; $y < 2; $y++) {
-                    while ($offres = $les_offres->fetch()) {
-
-                        echo'<div class="single-post d-flex flex-row">
-                    <div class="thumb">
-                        <img src="img/post.png" alt="">
-                        <ul class="tags">
-                            <li>
-                                <a href="#">Art</a>
-                            </li>
-                            <li>
-                                <a href="#">Media</a>
-                            </li>
-                            <li>
-                                <a href="#">Design</a>					
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="details">
-                        <div class="title d-flex flex-row justify-content-between">
-                            <div class="titles">
-                                <a href="single.php?off=' . $offres[Id_Offre] . '"><h4>' . $offres[Titre_Offre] . '</h4></a>
-                                <h6> Type de contrat : ' . $offres[Type_OffreT] . '</h6>					
-                            </div>
-                              <div class="title text-center">
-                           
-                            <ul class="btns ">
-                                <li><a href="candidater.php?off='.$offres[Id_Offre].'&candidat='.$_SESSION['Id_Utilisateur'].'">Candidater</a></li>
-                            
-                            </ul>
-                            </div>
-                        </div>
-                        <p>'
-                        . $offres[Petite_Description_Offre] .
-                        '</p>
-                       
-                        <p class="address"><span class="lnr lnr-map"></span> ' . $offres[Num_Adresse] . ' ' . $offres[Voie_Adresse] . ', ' . $offres[Dep_Adresse] . ' ' . $offres[Ville_Adresse] . '</p>
-                        <p class="address"><span class="lnr lnr-database"></span> ' . $offres[Remuneration_Offre] . ' € '. $offres[Remuneration_Type].'</p>
-                        <p class="address"> Date de fin : ' . $offres[Date_Fin_Offre] . '</p>
-                        <p class="address"> Date de debut : ' . $offres[Date_Debut_Offre] . '</p>
-                    </div>
-                </div>';
-                    }
-                }
-                ?>											
+                $PAGE='index';
+                include 'offres_list.php';
+                ?>						
                 <a class="text-uppercase loadmore-btn mx-auto d-block" href="search.php"><font color="#000000">Voir plus de job</font></a>
             </div>
             <?php include 'lateral.php'; ?>

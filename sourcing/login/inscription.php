@@ -88,13 +88,19 @@ if(!empty($_POST)){
 		// INSCRIPTION
 		if($error == false)
                 {
-                    $req = $bdd->prepare("INSERT INTO utilisateur (Nom_Utilisateur, PNom_Utilisateur, Mdp_Utilisateur, Mail_Utilisateur, Id_Type) VALUES ( ? , ? , ? , ? , 4)");
-                    $req->execute(array($_POST['Nom_Utilisateur'], $_POST['PNom_Utilisateur'], $u_password, $_POST['Mail_Utilisateur']));
+                    if(empty($_POST["Dep_Adresse"] && $_POST["Ville_Adresse"] && $_POST["Voie_Adresse"] && $_POST["Num_Adresse"] )) {
+                        $id = NULL;
+                    } else {
+ 
+                    $insc = $bdd->prepare("INSERT INTO adresse (Num_Adresse, Voie_Adresse, Dep_Adresse, Ville_Adresse) VALUES (? , ? , ? , ? )");
+                    $insc->execute(array($_POST['Num_Adresse'], $_POST['Voie_Adresse'], $_POST['Dep_Adresse'], $_POST['Ville_Adresse']));
+                        
                     $id = $bdd->lastInsertId();
-            
+                    
+                    }
                     sleep(1);
-                    $insc = $bdd->prepare("INSERT INTO adresse (Num_Adresse, Voie_Adresse, Dep_Adresse, Ville_Adresse, Id_Utilisateur) VALUES (? , ? , ? , ? , ?)");
-                    $insc->execute(array($_POST['Num_Adresse'], $_POST['Voie_Adresse'], $_POST['Dep_Adresse'], $_POST['Ville_Adresse'], $id));
+                    $req = $bdd->prepare("INSERT INTO utilisateur (Nom_Utilisateur, PNom_Utilisateur, Mdp_Utilisateur, Mail_Utilisateur, Id_Type, Id_Adresse) VALUES ( ? , ? , ? , ? , 4, ?)");
+                    $req->execute(array($_POST['Nom_Utilisateur'], $_POST['PNom_Utilisateur'], $u_password, $_POST['Mail_Utilisateur'], $id));
                     sleep(1);
                     header('Location:connexion.php');
 		}

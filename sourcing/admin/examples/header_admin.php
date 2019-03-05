@@ -4,7 +4,7 @@ if ($_SESSION['Id_Type'] == 1)
 {
     $admin = $_SESSION['Id_Type'];
 }
-if ($admin == NULL)
+if (empty($admin))
 {
     header('Location: ../../index.php');
 }
