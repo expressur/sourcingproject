@@ -24,40 +24,6 @@ if(!empty($_POST)){
 				$error = true;
 			}
 		}
-		
-		/* 
-		// NUM ADRESSE
-		if(empty($_POST["Num_Adresse"])) {
-			if ($error == false) {
-				echo "Numéro d'adresse : Aucun numéro d'adresse n'a été entré";
-				$error = true;
-			}
-		}
-		
-               // VOIE ADRESSE
-		if(empty($_POST["Voie_Adresse"])) {
-			if ($error == false) {
-				echo "Voie d'adresse : Aucune voie d'adresse n'a été entré";
-				$error = true;
-			}
-		}
-                
-                // DEP ADRESSE
-		if(empty($_POST["Dep_Adresse"])) {
-			if ($error == false) {
-				echo "Departement : Aucun département n'a été entré";
-				$error = true;
-			}
-		}
-                
-                // VILLE
-		if(empty($_POST["Ville_Adresse"])) {
-			if ($error == false) {
-				echo "Ville : Aucune Ville n'a été entré";
-				$error = true;
-			}
-		}*/
-                
 		// IDENTIFIANT
 		if(empty($_POST["Mail_Utilisateur"])) {
 			if ($error == false) {

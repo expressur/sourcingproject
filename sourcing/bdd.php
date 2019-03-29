@@ -206,9 +206,23 @@ adresse.Id_Adresse in (select adresse.Id_Adresse from adresse WHERE Ville_Adress
 ORDER BY Id_Offre DESC');
 $lieu_recherche ->execute(array('lieu' =>$_GET['lieu']));
 
-//toutes les offres par ville
-//select * from offres where Id_Offre in (select Id_Offre from adresse WHERE Ville_Adresse = 'Vaux le penil')
-
+$info_perso = $bdd ->prepare(
+'SELECT 
+Nom_Utilisateur,
+PNom_Utilisateur,
+Mail_Utilisateur,
+Num_Adresse,
+Voie_Adresse,
+Dep_Adresse,
+Ville_Adresse
+FROM
+utilisateur,adresse
+WHERE
+utilisateur.Id_Adresse = adresse.Id_Adresse
+AND
+Id_Utilisateur = :info');
+$info_perso ->execute(array('info' =>$_GET['info']));
+$infoP = $info_perso->fetch();
 
 session_start();
  ?>
