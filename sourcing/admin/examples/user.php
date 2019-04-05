@@ -78,7 +78,7 @@ if (!empty($_POST)) {
         }
     }
 
-    /* // PASSWORD
+    // PASSWORD
       if(empty($_POST["Mdp_Utilisateur"])){
       if ($error == false) {
       echo "Mot de passe : Aucun mot de passe n'a été rentré";
@@ -86,7 +86,7 @@ if (!empty($_POST)) {
       }
       } else {
       $u_password = password_hash($_POST["Mdp_Utilisateur"], PASSWORD_DEFAULT);
-      } */
+      } 
     // INSCRIPTION
     if ($error == false) {
         
@@ -96,8 +96,8 @@ if (!empty($_POST)) {
         $identifiant = $bdd->lastInsertId();
 
         sleep(1);
-        $req = $bdd->prepare("INSERT INTO utilisateur (Nom_Utilisateur, PNom_Utilisateur, Mail_Utilisateur, Id_Type , NomEntreprise_Utilisateur, Id_Adresse) VALUES ( ? , ? , ? , ? , ? , ?)");
-        $req->execute(array($_POST['Nom_Utilisateur'], $_POST['PNom_Utilisateur'], $_POST['Mail_Utilisateur'], $_POST['Id_Type'], $_POST['NomEntreprise_Utilisateur'], $identifiant));
+        $req = $bdd->prepare("INSERT INTO utilisateur (Nom_Utilisateur, PNom_Utilisateur,Mdp_Utilisateur, Mail_Utilisateur, Id_Type , NomEntreprise_Utilisateur, Id_Adresse) VALUES ( ? , ? , ? , ? , ? , ? , ?)");
+        $req->execute(array($_POST['Nom_Utilisateur'], $_POST['PNom_Utilisateur'], $u_password, $_POST['Mail_Utilisateur'], $_POST['Id_Type'], $_POST['NomEntreprise_Utilisateur'], $identifiant));
         sleep(1);
         header("Refresh:0");
     }
@@ -131,6 +131,14 @@ if (!empty($_POST)) {
                                         <input name="Mail_Utilisateur" id="Mail_Utilisateur" type="email" class="form-control">
                                     </div>
                                 </div>
+                                
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Mot de passe</label>
+                                        <input name="Mdp_Utilisateur" id="Mdp_Utilisateur" type="password" class="form-control">
+                                    </div>
+                                </div>
+                                
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -183,8 +191,8 @@ if (!empty($_POST)) {
                                         <div class="form-group">
                                             <div class="col-lg-3 form-cols">
                                                 <div class="default-select" id="default-selects"">
-                                                    <select name="Id_Type" id="Id_Type">
-                                                        <option value="0">Selectionnez un type</option>
+                                                    <select class="form-control form-control-sm" name="Id_Type" id="Id_Type">
+                                                        <option >Selectionnez un type</option>
                                                         <?php
                                                         while ($type_u = $type_utilisateur->fetch()) {
                                                             echo'<option value="'.$type_u[Id_Type].'">' . $type_u[Utilisateur_Type] . '</option>';

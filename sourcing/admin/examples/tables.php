@@ -6,273 +6,121 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title ">Simple Table</h4>
-                  <p class="card-category"> Here is a subtitle for this table</p>
+                  <h4 class="card-title ">Liste des utilisateur ayant postuler pour une offre</h4>
+                  
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table">
+                    
+                      <table class="table">
                       <thead class=" text-primary">
                         <th>
-                          ID
+                          Nom
                         </th>
                         <th>
-                          Name
+                          Prenom
                         </th>
                         <th>
-                          Country
+                          Titre de l'offre
                         </th>
                         <th>
-                          City
+                          Date de debut
                         </th>
                         <th>
-                          Salary
+                          Rémuneration
+                        </th>
+                        <th>
+                          Lien vers l'offre
                         </th>
                       </thead>
                       <tbody>
+                          <?php
+                          while ($liste_candidat = $liste_candidature ->fetch()) {
+                              echo'
                         <tr>
                           <td>
-                            1
+                            '.$liste_candidat[Nom_Utilisateur].'
                           </td>
                           <td>
-                            Dakota Rice
+                            '.$liste_candidat[PNom_Utilisateur].'
                           </td>
                           <td>
-                            Niger
+                            '.$liste_candidat[Titre_Offre].'
                           </td>
                           <td>
-                            Oud-Turnhout
+                           '.$liste_candidat[Date_Debut_Offre].'
                           </td>
                           <td class="text-primary">
-                            $36,738
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            2
+                            '.$liste_candidat[Remuneration_Offre].' € '.$liste_candidat[Remuneration_Type].'
                           </td>
                           <td>
-                            Minerva Hooper
+                            <a href="../../single.php?off=' . $liste_candidat[Id_Offre] . '"> <FONT color="teal">Cliquez !</FONT></a>
                           </td>
-                          <td>
-                            Curaçao
-                          </td>
-                          <td>
-                            Sinaai-Waas
-                          </td>
-                          <td class="text-primary">
-                            $23,789
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            3
-                          </td>
-                          <td>
-                            Sage Rodriguez
-                          </td>
-                          <td>
-                            Netherlands
-                          </td>
-                          <td>
-                            Baileux
-                          </td>
-                          <td class="text-primary">
-                            $56,142
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            4
-                          </td>
-                          <td>
-                            Philip Chaney
-                          </td>
-                          <td>
-                            Korea, South
-                          </td>
-                          <td>
-                            Overland Park
-                          </td>
-                          <td class="text-primary">
-                            $38,735
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            5
-                          </td>
-                          <td>
-                            Doris Greene
-                          </td>
-                          <td>
-                            Malawi
-                          </td>
-                          <td>
-                            Feldkirchen in Kärnten
-                          </td>
-                          <td class="text-primary">
-                            $63,542
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            6
-                          </td>
-                          <td>
-                            Mason Porter
-                          </td>
-                          <td>
-                            Chile
-                          </td>
-                          <td>
-                            Gloucester
-                          </td>
-                          <td class="text-primary">
-                            $78,615
-                          </td>
-                        </tr>
+                        </tr>';
+                          }
+                          ?>
                       </tbody>
                     </table>
+                      
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-12">
-              <div class="card card-plain">
+              
+              
+              <div class="col-md-12">
+              <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title mt-0"> Table on Plain Background</h4>
-                  <p class="card-category"> Here is a subtitle for this table</p>
+                  <h4 class="card-title ">Liste des entreprise partenaire</h4>
+                  
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
-                    <table class="table table-hover">
-                      <thead class="">
+                    
+                      <table class="table">
+                      <thead class=" text-primary">
                         <th>
-                          ID
+                          Nom de l'entreprise
                         </th>
                         <th>
-                          Name
+                          Nom du responssable
                         </th>
                         <th>
-                          Country
+                          Prénom du responssable
                         </th>
                         <th>
-                          City
-                        </th>
-                        <th>
-                          Salary
+                          Email
                         </th>
                       </thead>
                       <tbody>
+                          <?php
+                          while ($liste_des_entreprise = $liste_entreprise ->fetch()) {
+                              echo'
                         <tr>
-                          <td>
-                            1
+                          <td class="text-primary">
+                            '.$liste_des_entreprise[NomEntreprise_Utilisateur].'
                           </td>
                           <td>
-                            Dakota Rice
+                            '.$liste_des_entreprise[Nom_Utilisateur].'
                           </td>
                           <td>
-                            Niger
+                            '.$liste_des_entreprise[PNom_Utilisateur].'
                           </td>
                           <td>
-                            Oud-Turnhout
+                           '.$liste_des_entreprise[Mail_Utilisateur].'
                           </td>
-                          <td>
-                            $36,738
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            2
-                          </td>
-                          <td>
-                            Minerva Hooper
-                          </td>
-                          <td>
-                            Curaçao
-                          </td>
-                          <td>
-                            Sinaai-Waas
-                          </td>
-                          <td>
-                            $23,789
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            3
-                          </td>
-                          <td>
-                            Sage Rodriguez
-                          </td>
-                          <td>
-                            Netherlands
-                          </td>
-                          <td>
-                            Baileux
-                          </td>
-                          <td>
-                            $56,142
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            4
-                          </td>
-                          <td>
-                            Philip Chaney
-                          </td>
-                          <td>
-                            Korea, South
-                          </td>
-                          <td>
-                            Overland Park
-                          </td>
-                          <td>
-                            $38,735
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            5
-                          </td>
-                          <td>
-                            Doris Greene
-                          </td>
-                          <td>
-                            Malawi
-                          </td>
-                          <td>
-                            Feldkirchen in Kärnten
-                          </td>
-                          <td>
-                            $63,542
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            6
-                          </td>
-                          <td>
-                            Mason Porter
-                          </td>
-                          <td>
-                            Chile
-                          </td>
-                          <td>
-                            Gloucester
-                          </td>
-                          <td>
-                            $78,615
-                          </td>
-                        </tr>
+                        </tr>';
+                          }
+                          ?>
                       </tbody>
                     </table>
+                      
                   </div>
                 </div>
               </div>
             </div>
+              
+           
           </div>
         </div>
       </div>

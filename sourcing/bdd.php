@@ -148,6 +148,55 @@ type_u
 WHERE
 Id_Type <> "1" ');
 
+$nom_entreprise = $bdd ->query(
+'SELECT
+Id_Utilisateur,
+NomEntreprise_Utilisateur
+FROM
+utilisateur
+WHERE
+NomEntreprise_Utilisateur IS NOT NULL');
+
+$offre_type = $bdd ->query(
+'SELECT *
+FROM
+offre_type');
+
+$type_remu = $bdd ->query(
+'SELECT *
+FROM
+remuneration_type
+');
+
+$liste_candidature = $bdd ->query(
+'SELECT 
+Nom_Utilisateur,
+PNom_Utilisateur,
+Titre_Offre,
+Date_Debut_Offre,
+Remuneration_Offre,
+Remuneration_Type,
+offres.Id_Offre
+FROM
+postuler,utilisateur,offres,remuneration_type
+WHERE
+postuler.Id_Utilisateur = utilisateur.Id_Utilisateur
+AND
+postuler.Id_Offre = offres.Id_Offre
+AND
+offres.Id_Remu_Type = remuneration_type.Id_Remu_Type');
+
+$liste_entreprise = $bdd ->query(
+'SELECT 
+Nom_Utilisateur,
+PNom_Utilisateur,
+NomEntreprise_Utilisateur,
+Mail_Utilisateur
+FROM
+utilisateur
+WHERE
+Id_Type = 3');
+
 $mes_offres = $bdd ->prepare(
 'SELECT 
 Petite_Description_Offre,
