@@ -46,54 +46,6 @@ AND
 offre_type.Id_OffreT = offres.Id_OffreT
 ORDER BY Id_Offre DESC';
 
-/*$les_offres = $bdd->query('
-SELECT 
-Petite_Description_Offre,
-Description_Offre,
-Date_Debut_Offre,
-Date_Fin_Offre,
-Remuneration_Offre,
-Remuneration_Type,
-Titre_Offre,
-Dep_Adresse,
-Num_Adresse, 
-Ville_Adresse, 
-Voie_Adresse,
-offres.Id_Offre,
-Type_OffreT 
-FROM
-offres,adresse,offre_type,remuneration_type 
-WHERE offres.Id_Adresse = adresse.Id_Adresse
-AND
-remuneration_type.Id_Remu_Type = offres.Id_Remu_Type
-AND 
-offre_type.Id_OffreT = offres.Id_OffreT
-ORDER BY Id_Offre DESC LIMIT 1');
-
-//liste des offres sans limite
-$r_offres = $bdd->query('
-SELECT 
-Petite_Description_Offre,
-Description_Offre,
-Date_Debut_Offre,
-Date_Fin_Offre,
-Remuneration_Offre,
-Remuneration_Type,
-Titre_Offre,
-Dep_Adresse,
-Num_Adresse, 
-Ville_Adresse, 
-Voie_Adresse,
-offres.Id_Offre,
-Type_OffreT 
-FROM
-offres,adresse,offre_type,remuneration_type 
-WHERE offres.Id_Offre = adresse.Id_Offre
-AND
-remuneration_type.Id_Remu_Type = offres.Id_Remu_Type
-AND 
-offre_type.Id_OffreT = offres.Id_OffreT
-ORDER BY Id_Offre DESC');*/
 
 $detail_offre = $bdd->prepare('
 SELECT 
@@ -140,6 +92,26 @@ offres,adresse
 WHERE
 offres.Id_Adresse = adresse.Id_Adresse
 ');
+
+$categorie = $bdd ->query(
+'SELECT 
+DISTINCT
+Nom_Categorie
+FROM
+categorie');
+
+$categorie_info_offre = $bdd ->prepare(
+'SELECT 
+Nom_Categorie
+FROM
+offres,categorie,beneficier
+WHERE
+beneficier.Id_Offre = offres.Id_Offre
+AND
+beneficier.Id_Categorie = categorie.Id_Categorie
+AND
+offres.Id_Offre =:categorie');
+$categorie_info_offre->execute(array('categorie' =>$_GET['categorie']));
 
 $type_utilisateur = $bdd ->query(
 'SELECT * 

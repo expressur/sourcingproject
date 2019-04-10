@@ -39,7 +39,7 @@ if (empty($_SESSION['Id_Utilisateur'])) {
                     <div class="single-service">
                         <h4><span class="lnr lnr-user"></span>Modifier mes infos personel</h4>
                         <p class="profil_txt">
-                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                            Cliquez ici pour pouvoir modifier vos informations personel.
                         </p>
                     </div>
                 </a>
@@ -50,7 +50,7 @@ if (empty($_SESSION['Id_Utilisateur'])) {
                     <div class="single-service">
                         <h4><span class="lnr lnr-license"></span>Les offres où j'ai postuler</h4>
                         <p class="profil_txt">
-                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                            Cliquez ici pour voir toutes les offres où vous avez postulé.
                         </p>								
                     </div>
                 </a>
@@ -60,38 +60,8 @@ if (empty($_SESSION['Id_Utilisateur'])) {
                     <div class="single-service">
                         <h4><span class="lnr lnr-phone"></span>Mon cv</h4>
                         <p class="profil_txt">
-                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
+                            Cliquez ici pour voir ou envoyer votre CV.
                         </p>								
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <a href="#">
-                    <div class="single-service">
-                        <h4><span class="lnr lnr-rocket"></span>EUH</h4>
-                        <p class="profil_txt">
-                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
-                        </p>				
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <a href="#">
-                    <div class="single-service">
-                        <h4><span class="lnr lnr-diamond"></span>Highly Recomended</h4>
-                        <p class="profil_txt">
-                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
-                        </p>								
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <a href="#">
-                    <div class="single-service">
-                        <h4><span class="lnr lnr-bubble"></span>Positive Reviews</h4>
-                        <p class="profil_txt">
-                            Usage of the Internet is becoming more common due to rapid advancement of technology and power.
-                        </p>									
                     </div>
                 </a>
             </div>						

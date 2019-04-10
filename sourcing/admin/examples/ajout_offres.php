@@ -96,8 +96,7 @@ if (!empty($_POST)) {
         }
     }
 
-    $date_debut = date('Y-m-d', strtotime(str_replace('/','-',$_POST['Date_Debut_Offre'])));
-    $date_fin = date('Y-m-d', strtotime(str_replace('/','-',$_POST['Date_Fin_Offre'])));
+    
    
     // INSCRIPTION
     if ($error == false) {
@@ -116,16 +115,16 @@ if (!empty($_POST)) {
         $id_date = NULL;
             
         $requete = $bdd->prepare("INSERT INTO offres (Petite_Description_Offre, Date_Debut_Offre,Date_Fin_Offre, Remuneration_Offre,Titre_Offre , Description_Offre,Id_Utilisateur_entreprise,Id_OffreT, Id_Remu_Type, Id_Adresse) VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )");
-        $requete->execute(array($_POST['Petite_Description_Offre'], $date_debut,$id_date, $_POST['Remuneration_Offre'], $_POST['Titre_Offre'],$_POST['Description_Offre'],$_POST['Id_Utilisateur_entreprise'],$_POST['Id_OffreT'],$_POST['Id_Remu_Type'], $id_adresse));
+        $requete->execute(array($_POST['Petite_Description_Offre'], $_POST["Date_Debut_Offre"],$id_date, $_POST['Remuneration_Offre'], $_POST['Titre_Offre'],$_POST['Description_Offre'],$_POST['Id_Utilisateur_entreprise'],$_POST['Id_OffreT'],$_POST['Id_Remu_Type'], $id_adresse));
         
         
         }else{
-        
-        $req = $bdd->prepare("INSERT INTO offres (Petite_Description_Offre, Date_Debut_Offre,Date_Fin_Offre, Remuneration_Offre,Titre_Offre , Description_Offre,Id_Utilisateur_entreprise,Id_OffreT, Id_Remu_Type, Id_Adresse) VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )");
-        $req->execute(array($_POST['Petite_Description_Offre'], $date_debut, $date_fin, $_POST['Remuneration_Offre'], $_POST['Titre_Offre'],$_POST['Description_Offre'],$_POST['Id_Utilisateur_entreprise'],$_POST['Id_OffreT'],$_POST['Id_Remu_Type'], $id_adresse));
+        sleep(1);
+        $req_offre = $bdd->prepare("INSERT INTO offres (Petite_Description_Offre, Date_Debut_Offre,Date_Fin_Offre, Remuneration_Offre,Titre_Offre , Description_Offre,Id_Utilisateur_entreprise,Id_OffreT, Id_Remu_Type, Id_Adresse) VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )");
+        $req_offre->execute(array($_POST['Petite_Description_Offre'], $_POST["Date_Debut_Offre"], $_POST["Date_Fin_Offre"], $_POST['Remuneration_Offre'], $_POST['Titre_Offre'],$_POST['Description_Offre'],$_POST['Id_Utilisateur_entreprise'],$_POST['Id_OffreT'],$_POST['Id_Remu_Type'], $id_adresse));
         }
         sleep(1);
-        header("Refresh:0");
+        header('Location:ajout_offres.php');
     }
 }
 ?>

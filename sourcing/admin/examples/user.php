@@ -99,7 +99,7 @@ if (!empty($_POST)) {
         $req = $bdd->prepare("INSERT INTO utilisateur (Nom_Utilisateur, PNom_Utilisateur,Mdp_Utilisateur, Mail_Utilisateur, Id_Type , NomEntreprise_Utilisateur, Id_Adresse) VALUES ( ? , ? , ? , ? , ? , ? , ?)");
         $req->execute(array($_POST['Nom_Utilisateur'], $_POST['PNom_Utilisateur'], $u_password, $_POST['Mail_Utilisateur'], $_POST['Id_Type'], $_POST['NomEntreprise_Utilisateur'], $identifiant));
         sleep(1);
-        header("Refresh:0");
+        header('Location: add.php');
     }
 }
 ?>
@@ -211,7 +211,9 @@ if (!empty($_POST)) {
                         </form>
 
 
-
+                    </div>
+                </div>
+            </div>
                     </div>
                 </div>
             </div>

@@ -22,5 +22,5 @@ postuler
 VALUES (?,?)');
 $postuler->execute(array($_GET['candidat'], $_GET['off']));
 
-header('Location:index.php');
+header('Location:index.php#ancre_postuler');
 ?>

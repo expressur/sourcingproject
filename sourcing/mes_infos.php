@@ -4,6 +4,7 @@ include 'header.php';
 if (empty($_SESSION['Id_Utilisateur'])) {
     header('Location: index.php');
 }
+
 ?>
 <!-- start banner Area -->
 <section class="banner-area relative" id="home">	
@@ -24,7 +25,7 @@ if (empty($_SESSION['Id_Utilisateur'])) {
         <div class="row justify-content-center d-flex">
             <div class="col-lg-8 col-md-8">
                 <h3 class="mb-30">Modifier les informations</h3>
-                <form action="#">
+                <form method="post">
                     <div class="mt-10">
                         <input type="text" name="Pnom" placeholder="<?php echo $infoP[PNom_Utilisateur] ?>"  class="single-input-primary" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Prénom'" required="" class="single-input">
                     </div>

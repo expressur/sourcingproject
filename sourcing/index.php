@@ -57,7 +57,7 @@ include 'header.php';
 <!-- End banner Area -->	
 
 <!-- Start post Area -->
-<section class="post-area section-gap">
+<section id="ancre_postuler" class="post-area section-gap">
     <div class="container">
         <div class="row justify-content-center d-flex">
 
