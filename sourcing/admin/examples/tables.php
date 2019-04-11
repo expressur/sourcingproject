@@ -6,7 +6,7 @@
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h4 class="card-title ">Liste des utilisateur ayant postuler pour une offre</h4>
+                  <h4 class="card-title ">Liste des candidat ayant postuler pour une offre</h4>
                   
                 </div>
                 <div class="card-body">
@@ -21,21 +21,19 @@
                           Prenom
                         </th>
                         <th>
-                          Titre de l'offre
+                          Email
                         </th>
                         <th>
-                          Date de debut
+                          CV
                         </th>
                         <th>
-                          Rémuneration
-                        </th>
-                        <th>
-                          Lien vers l'offre
+                          Nombre d'offres
                         </th>
                       </thead>
                       <tbody>
                           <?php
                           while ($liste_candidat = $liste_candidature ->fetch()) {
+                              $id_candidat = $liste_candidat[Id_Utilisateur];
                               echo'
                         <tr>
                           <td>
@@ -45,19 +43,19 @@
                             '.$liste_candidat[PNom_Utilisateur].'
                           </td>
                           <td>
-                            '.$liste_candidat[Titre_Offre].'
+                            '.$liste_candidat[Mail_Utilisateur].'
                           </td>
                           <td>
-                           '.$liste_candidat[Date_Debut_Offre].'
-                          </td>
-                          <td class="text-primary">
-                            '.$liste_candidat[Remuneration_Offre].' € '.$liste_candidat[Remuneration_Type].'
-                          </td>
-                          <td>
-                            <a href="../../single.php?off=' . $liste_candidat[Id_Offre] . '"> <FONT color="teal">Cliquez !</FONT></a>
-                          </td>
+                          CV
+                        </td>
+                          <td><a  href="liste_offre.php?modal='.$id_candidat.'&idcandidat='.$id_candidat.'">
+                           '.$liste_candidat[nombre].'
+                          </a></td>
+                         
                         </tr>';
+                         
                           }
+  
                           ?>
                       </tbody>
                     </table>
@@ -119,9 +117,10 @@
                 </div>
               </div>
             </div>
-              
+    
            
           </div>
         </div>
       </div>
+      
       <?php include 'foot_admin.php'; ?>

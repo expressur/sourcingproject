@@ -22,6 +22,14 @@ COUNT(*)
 FROM offres');
 $nb_offre = $nombre_offre->fetch();
 
+$nombre_candidat = $bdd->query('
+SELECT 
+COUNT(*)
+FROM utilisateur
+WHERE
+Id_Type = 4');
+$nb_candidat = $nombre_candidat->fetch();
+
 $requete_offres = '
 SELECT 
 Petite_Description_Offre,
@@ -141,22 +149,52 @@ remuneration_type
 ');
 
 $liste_candidature = $bdd ->query(
-'SELECT 
+'SELECT
+DISTINCT
+COUNT(*) AS nombre,
 Nom_Utilisateur,
 PNom_Utilisateur,
+utilisateur.Id_Utilisateur,
+Mail_Utilisateur
+FROM
+utilisateur,postuler,offres
+WHERE
+utilisateur.Id_Utilisateur = postuler.Id_Utilisateur
+AND
+offres.Id_Offre = postuler.Id_Offre
+AND
+utilisateur.Id_Utilisateur GROUP BY utilisateur.Id_Utilisateur');
+
+$modal_liste_offre = $bdd ->prepare(
+'SELECT
 Titre_Offre,
 Date_Debut_Offre,
-Remuneration_Offre,
-Remuneration_Type,
 offres.Id_Offre
 FROM
-postuler,utilisateur,offres,remuneration_type
+postuler,offres,utilisateur
 WHERE
 postuler.Id_Utilisateur = utilisateur.Id_Utilisateur
 AND
 postuler.Id_Offre = offres.Id_Offre
 AND
-offres.Id_Remu_Type = remuneration_type.Id_Remu_Type');
+postuler.Id_Utilisateur = :modal');
+$modal_liste_offre->execute(array('modal' =>$_GET['modal']));
+
+$modal_candidat = $bdd ->prepare(
+'SELECT
+Nom_Utilisateur,
+PNom_Utilisateur,
+offres.Id_Offre
+FROM
+postuler,offres,utilisateur
+WHERE
+postuler.Id_Utilisateur = utilisateur.Id_Utilisateur
+AND
+postuler.Id_Offre = offres.Id_Offre
+AND
+postuler.Id_Utilisateur = :idcandidat');
+$modal_candidat->execute(array('idcandidat' =>$_GET['idcandidat']));
+$modal_liste_candidat = $modal_candidat ->fetch();
 
 $liste_entreprise = $bdd ->query(
 'SELECT 
@@ -244,6 +282,7 @@ AND
 Id_Utilisateur = :info');
 $info_perso ->execute(array('info' =>$_GET['info']));
 $infoP = $info_perso->fetch();
+
 
 session_start();
  ?>

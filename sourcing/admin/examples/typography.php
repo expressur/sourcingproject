@@ -420,4 +420,14 @@
   </script>
 </body>
 
+
+LE PHP EXEMPLE
+ <td class="text-primary">
+                            '.$liste_candidat[Remuneration_Offre].' € '.$liste_candidat[Remuneration_Type].'
+                          </td>
+                          <td>
+                            <a href="../../single.php?off=' . $liste_candidat[Id_Offre] . '"> <FONT color="teal">Cliquez !</FONT></a>
+                          </td>
+                          
+                          
 </html>

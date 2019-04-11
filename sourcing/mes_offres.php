@@ -50,7 +50,7 @@ if (empty($_SESSION['Id_Utilisateur'])) {
                             </div>
                             <ul>
                                 
-                                <li><button id="delet" type="submit" class="genric-btn danger-border circle">Supprimer</button></li>
+                                <li><button id="delette" type="submit" class="genric-btn danger-border circle">Supprimer</button></li>
                             </ul>
                         </div>
                         <p>'
@@ -64,20 +64,6 @@ if (empty($_SESSION['Id_Utilisateur'])) {
                     </div>
                 </div>';
                         
-                      ?>
-                <script type="text/javascript">
-                        $(function () {
-    $("#delet").on('click', function () {
-        var Status = $(this).val();
-        $.ajax({
-            url: 'supp.php?off=<?php echo $m_offres[Id_Offre].'&candidat='.$_SESSION['Id_Utilisateur']?>',
-            type:"GET"
-        });
-        setTimeout("location.reload(true);",500);
-    });
-});
-                </script>
-                <?php
                     }
                 ?>											
             </div>

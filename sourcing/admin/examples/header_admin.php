@@ -69,7 +69,8 @@ if (empty($admin))
               <p>Les listes</p>
             </a>
           </li>
-          <li class="nav-item ">
+          
+          <!--<li class="nav-item ">
             <a class="nav-link" href="./typography.php">
               <i class="material-icons">library_books</i>
               <p>Typography</p>
@@ -80,7 +81,7 @@ if (empty($admin))
               <i class="material-icons">bubble_chart</i>
               <p>Icons</p>
             </a>
-          </li>
+          </li>-->
           
        
           
@@ -114,9 +115,6 @@ if (empty($admin))
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">Profile</a>
-                  <a class="dropdown-item" href="#">Settings</a>
-                  <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="../../deco.php">Déconnexion</a>
                 </div>
               </li>
