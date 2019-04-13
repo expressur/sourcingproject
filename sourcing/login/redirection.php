@@ -6,11 +6,11 @@ if ($_SESSION['Id_Type'] == 1)
 }
 elseif ($_SESSION['Id_Type'] == 2) 
 {
-    //header('Location: ../index.php');
+    header('Location: ../admin/examples/dashboard.php');
 }
 elseif ($_SESSION['Id_Type'] == 3) 
 {
-    //header('Location: ../index.php');
+    header('Location: ../admin/examples/dashboard.php');
 }
 elseif ($_SESSION['Id_Type'] == 4)
 {

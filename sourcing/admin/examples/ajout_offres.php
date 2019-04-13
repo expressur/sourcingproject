@@ -4,7 +4,7 @@ if (!empty($_POST)) {
     $error = false;
 
     // NOM
-    if (empty($_POST["Id_Utilisateur"])) {
+    if (empty($_POST["Id_Utilisateur_entreprise"])) {
         echo "Aucune entreprise rentrée";
         $error = true;
     }
@@ -142,7 +142,7 @@ if (!empty($_POST)) {
                         <form method="post">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <select name="Id_Utilisateur" id="Id_Utilisateur" class="form-control form-control-sm">
+                                    <select name="Id_Utilisateur_entreprise" id="Id_Utilisateur_entreprise" class="form-control form-control-sm">
                                         <option>Entreprise</option>
                                         <?php
                                             while ($entreprise = $nom_entreprise ->fetch()){
@@ -262,5 +262,9 @@ if (!empty($_POST)) {
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
 
             <?php include 'foot_admin.php'; ?>

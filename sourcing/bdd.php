@@ -1,5 +1,5 @@
 <?php
-//ini_set("display_errors",0);error_reporting(0);
+ini_set("display_errors",0);error_reporting(0);
 //ini_set('display_errors', 1);
 /* 
  * To change this license header, choose License Headers in Project Properties.
@@ -55,6 +55,7 @@ offre_type.Id_OffreT = offres.Id_OffreT
 ORDER BY Id_Offre DESC';
 
 
+
 $detail_offre = $bdd->prepare('
 SELECT 
 Petite_Description_Offre,
@@ -63,6 +64,7 @@ Date_Debut_Offre,
 Date_Fin_Offre,
 Remuneration_Offre,
 Remuneration_Type,
+Id_Offre,
 Titre_Offre,
 Dep_Adresse,
 Num_Adresse, 
@@ -121,12 +123,26 @@ AND
 offres.Id_Offre =:categorie');
 $categorie_info_offre->execute(array('categorie' =>$_GET['categorie']));
 
+//Requete pour trouver les categories pour une offre donnee
+$requet_categorie_offre = 'SELECT 
+*
+FROM
+categorie
+WHERE
+Id_Categorie IN
+(SELECT Id_Categorie FROM beneficier
+ WHERE
+ Id_Offre =';
+
+
 $type_utilisateur = $bdd ->query(
 'SELECT * 
 FROM 
 type_u 
 WHERE
-Id_Type <> "1" ');
+Id_Type <> "1"
+AND
+Id_Type <> "4" ');
 
 $nom_entreprise = $bdd ->query(
 'SELECT

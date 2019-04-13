@@ -118,6 +118,28 @@ if (!empty($_POST)) {
 
                         <form method="post">
                             <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Type d'utilisateur</label>
+                                        <div class="form-group">
+                                            <div class="col-lg-3 form-cols">
+                                                <div class="default-select" id="default-selects"">
+                                                    <select class="form-control form-control-sm" name="Id_Type" id="Id_Type">
+                                                        <option >Selectionnez un type</option>
+                                                        <?php
+                                                        while ($type_u = $type_utilisateur->fetch()) {
+                                                            echo'<option value="'.$type_u[Id_Type].'">' . $type_u[Utilisateur_Type] . '</option>';
+                                                        }
+                                                        ?>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-7">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Entreprise</label>
@@ -155,13 +177,13 @@ if (!empty($_POST)) {
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Numero d'adresse</label>
                                         <input name="Num_Adresse" id="Num_Adresse" type="text" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Voie</label>
                                         <input name="Voie_Adresse" id="Voie_Adresse" type="text" class="form-control">
@@ -184,28 +206,6 @@ if (!empty($_POST)) {
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Type d'utilisateur</label>
-                                        <div class="form-group">
-                                            <div class="col-lg-3 form-cols">
-                                                <div class="default-select" id="default-selects"">
-                                                    <select class="form-control form-control-sm" name="Id_Type" id="Id_Type">
-                                                        <option >Selectionnez un type</option>
-                                                        <?php
-                                                        while ($type_u = $type_utilisateur->fetch()) {
-                                                            echo'<option value="'.$type_u[Id_Type].'">' . $type_u[Utilisateur_Type] . '</option>';
-                                                        }
-                                                        ?>
-
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <button type="submit" class="btn btn-primary pull-right">Ajouter</button>
                             <div class="clearfix"></div>
                         </form>

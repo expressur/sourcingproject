@@ -46,7 +46,7 @@ include 'header.php'
                                 <h6> Type de contrat : <?php echo $d_offre[Type_OffreT]; ?></h6>					
                             </div>
                             <ul class="btns">
-                                <li><a href="#">Candidater</a></li>
+                                 <li><a href="candidater.php?off=<?php echo $d_offre[Id_Offre] . '&candidat=' . $_SESSION['Id_Utilisateur'];?>">Postuler</a></li>
                             </ul>
                         </div>
                         <p>

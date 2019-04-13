@@ -63,9 +63,21 @@ if (empty($_SESSION['Id_Utilisateur'])) {
                         <p class="address"> Date de debut : ' . $m_offres[Date_Debut_Offre] . '</p>
                     </div>
                 </div>';
-                        
-                    }
-                ?>											
+                        ?>
+                <script type="text/javascript">
+                    $(function () {
+    $("#delette").on('click', function () {
+        var Status = $(this).val();
+        $.ajax({
+            url: 'supp.php?',
+            type:"GET",
+            data: 'off=' + $m_offres[Id_Offre] + 'candidat=' + $_SESSION['Id_Utilisateur']
+        });
+        setTimeout("location.reload(true);",500);
+    });
+});
+</script>
+                  <?php }?>											
             </div>
             <?php //include 'lateral.php'; ?>					
         </div>

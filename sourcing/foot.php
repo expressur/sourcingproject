@@ -63,16 +63,6 @@ echo'
 
     });
     
-    $(function () {
-    $("#delette").on('click', function () {
-        var Status = $(this).val();
-        $.ajax({
-            url: 'supp.php?',
-            type:"GET",
-            data: 'off=' + $m_offres[Id_Offre] + 'candidat=' + $_SESSION['Id_Utilisateur']
-        });
-        setTimeout("location.reload(true);",500);
-    });
-});
+
 </script>
 

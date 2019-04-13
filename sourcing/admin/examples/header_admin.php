@@ -1,6 +1,6 @@
 <?php 
 include '../../bdd.php';
-if ($_SESSION['Id_Type'] == 1)
+if ($_SESSION['Id_Type'] == 1 || $_SESSION['Id_Type'] == 2 || $_SESSION['Id_Type'] == 3)
 {
     $admin = $_SESSION['Id_Type'];
 }

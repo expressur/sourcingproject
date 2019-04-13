@@ -12,20 +12,25 @@ if (isset($PAGE) && $PAGE == 'index') {
 
 $resultat = $bdd->query($requete);
 while ($offres = $resultat->fetch() /* $offres = $les_offres->fetch() */) {
+    $requete_categorie = $requet_categorie_offre.' '.$offres[Id_Offre].')';
+    
+    $resultat_categories = $bdd->query($requete_categorie);
     echo'<div class="single-post d-flex flex-row">
                     <div class="thumb">
                         <img src="img/post.png" alt="">
-                        <ul class="tags">
-                            <li>
-                                <a href="#">Art</a>
-                            </li>
-                            <li>
-                                <a href="#">Media</a>
-                            </li>
-                            <li>
-                                <a href="#">Design</a>					
-                            </li>
-                        </ul>
+                        <ul class="tags">';
+                            if($requet_categorie_offre!= NULL){
+                                while ($cat_offre = $resultat_categories->fetch()){
+                                 echo '<li>
+                                    <a>'.$cat_offre[Nom_Categorie].'</a>
+                                </li>';
+                                } // end while
+                            } else {
+                              echo '<li>
+                                    <a>-VIDE-</a>
+                                </li>';  
+                            }
+                       echo' </ul>
                     </div>
                     <div class="details">
                         <div class="title d-flex flex-row justify-content-between">
