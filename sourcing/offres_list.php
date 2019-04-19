@@ -17,7 +17,7 @@ while ($offres = $resultat->fetch() /* $offres = $les_offres->fetch() */) {
     $resultat_categories = $bdd->query($requete_categorie);
     echo'<div class="single-post d-flex flex-row">
                     <div class="thumb">
-                        <img src="img/post.png" alt="">
+                        <img src="img/job.png" alt="">
                         <ul class="tags">';
                             if($requet_categorie_offre!= NULL){
                                 while ($cat_offre = $resultat_categories->fetch()){

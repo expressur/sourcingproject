@@ -76,7 +76,7 @@ include 'header.php'
                     while ($l_recherche = $lieu_recherche->fetch()) {
                         echo'<div class="single-post d-flex flex-row">
                     <div class="thumb">
-                        <img src="img/post.png" alt="">
+                        <img src="img/job.png" alt="">
                         <ul class="tags">
                             <li>
                                 <a href="#">Art</a>

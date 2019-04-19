@@ -104,8 +104,11 @@ if(!empty($_POST)){
 <body>
     <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
         <div class="wrapper wrapper--w790">
+            <a href="../index.php" class="button button1">Retour a l'écran d'accueil</a>
             <div class="card card-5">
+                
                 <div class="card-heading">
+                    
                     <h2 class="title">Formulaire d'inscription</h2>
                 </div>
                 <div class="card-body">
@@ -116,13 +119,13 @@ if(!empty($_POST)){
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="PNom_Utilisateur" id="PNom_Utilisateur">
+                                            <input class="input--style-5" type="text" value="<?php echo $_POST['PNom_Utilisateur']; ?>" name="PNom_Utilisateur" id="PNom_Utilisateur">
                                             <label class="label--desc">Prénom *</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" id="Nom_Utilisateur" name="Nom_Utilisateur">
+                                            <input class="input--style-5"  value="<?php echo $_POST['Nom_Utilisateur']; ?>" type="text" id="Nom_Utilisateur" name="Nom_Utilisateur">
                                             <label class="label--desc">Nom de famille *</label>
                                         </div>
                                     </div>
@@ -133,7 +136,7 @@ if(!empty($_POST)){
                             <div class="name">Mail *</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="email" id= "Mail_Utilisateur" name="Mail_Utilisateur">
+                                    <input class="input--style-5" type="email" value="<?php echo $_POST['Mail_Utilisateur']; ?>" id= "Mail_Utilisateur" name="Mail_Utilisateur">
                                 </div>
                             </div>
                         </div>
@@ -153,14 +156,14 @@ if(!empty($_POST)){
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="Num_Adresse" id="Num_Adresse">
+                                            <input class="input--style-5" type="text"  value="<?php echo $_POST['Num_Adresse']; ?>" name="Num_Adresse" id="Num_Adresse">
                                             <label class="label--desc">Numéro</label>
                                         </div>
                                         
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" id="Voie_Adresse" name="Voie_Adresse">
+                                            <input class="input--style-5" type="text" value="<?php echo $_POST['Voie_Adresse']; ?>" id="Voie_Adresse" name="Voie_Adresse">
                                             <label class="label--desc">Voie</label>
                                         </div>
                                     </div>
@@ -174,13 +177,13 @@ if(!empty($_POST)){
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="Dep_Adresse" id="Dep_Adresse">
+                                            <input class="input--style-5" value="<?php echo $_POST['Dep_Adresse']; ?>" type="text" name="Dep_Adresse" id="Dep_Adresse">
                                             <label class="label--desc">Departement</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" id="Ville_Adresse" name="Ville_Adresse">
+                                            <input class="input--style-5" type="text" value="<?php echo $_POST['Ville_Adresse']; ?>" id="Ville_Adresse" name="Ville_Adresse">
                                             <label class="label--desc">Ville</label>
                                         </div>
                                     </div>
@@ -190,6 +193,7 @@ if(!empty($_POST)){
                         
                         <center><div>
                             <button class="btn btn--radius-2 btn--red" type="submit">S'INSCRIRE</button>
+                            
                         </div>
                        <p> </br>Vous êtes obliger de remplir les champs où il y a l'astérisque (*). <p></center>
                     </form>

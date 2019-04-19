@@ -35,11 +35,13 @@ include 'header.php';
                         <div class="col-lg-3 form-cols">
                             <div class="default-select" id="default-selects2">
                                 <select>
-                                    <option value="1">Les catégories</option>
-                                    <option value="2">Medical</option>
-                                    <option value="3">Technology</option>
-                                    <option value="4">Goverment</option>
-                                    <option value="5">Development</option>
+                                    <option>Séléctionnez une catégorie</option>
+                                    <?php
+                                    while ($categorie_recherche = $recherche_categorie->fetch())
+                                    {
+                                        echo'<option>'.$categorie_recherche[Nom_Categorie].'</option>';
+                                    }
+                                    ?>       
                                 </select>
                             </div>										
                         </div>

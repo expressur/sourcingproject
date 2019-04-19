@@ -151,7 +151,9 @@ NomEntreprise_Utilisateur
 FROM
 utilisateur
 WHERE
-NomEntreprise_Utilisateur IS NOT NULL');
+NomEntreprise_Utilisateur IS NOT NULL
+AND 
+Id_Type = 3');
 
 $offre_type = $bdd ->query(
 'SELECT *
@@ -298,6 +300,22 @@ AND
 Id_Utilisateur = :info');
 $info_perso ->execute(array('info' =>$_GET['info']));
 $infoP = $info_perso->fetch();
+
+$barre_recherche = $bdd->prepare(
+'SELECT * 
+FROM 
+offres 
+WHERE
+Titre_Offre LIKE %:recherche%');
+$barre_recherche ->execute(array('recherche' =>$_GET['recherche']));
+$recherche = $barre_recherche->fetch();
+
+$recherche_categorie = $bdd ->query(
+'SELECT 
+Nom_Categorie
+FROM
+categorie
+LIMIT 5');
 
 
 session_start();

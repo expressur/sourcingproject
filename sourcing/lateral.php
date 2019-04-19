@@ -16,7 +16,7 @@
                         <?php
                         while ($cat = $categorie->fetch())
                         {
-                            echo'<li><a class="justify-content-between d-flex" href="search.php?categorie='.$cat[Nom_Categorie].'"><p>'.$cat[Nom_Categorie].'</p></a></li>';
+                            echo'<li><a class="justify-content-between d-flex" href="search.php?categorie='.$cat[Nom_Categorie].'#ancre"><p>'.$cat[Nom_Categorie].'</p></a></li>';
                         }
                         ?>
                     </ul>

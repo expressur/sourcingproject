@@ -26,7 +26,7 @@ include 'header.php'
             <div class="col-lg-8 post-list">
                 <div class="single-post d-flex flex-row">
                     <div class="thumb">
-                        <img src="img/post.png" alt="">
+                        <img src="img/job.png" alt="">
                         <ul class="tags">
                             <li>
                                 <a href="#">Art</a>

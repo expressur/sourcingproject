@@ -142,22 +142,25 @@ if (!empty($_POST)) {
                         <form method="post">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <select name="Id_Utilisateur_entreprise" id="Id_Utilisateur_entreprise" class="form-control form-control-sm">
-                                        <option>Entreprise</option>
-                                        <?php
-                                            while ($entreprise = $nom_entreprise ->fetch()){
-                                                echo '<option value="'.$entreprise[Id_Utilisateur].'">'.$entreprise[NomEntreprise_Utilisateur].'</option>';
-                                            }
-                                        ?>
-                                    </select>
-                                </div>
-                                
-                                <div class="col-md-4">
                                     <select name="Id_OffreT" id="Id_OffreT" class="form-control form-control-sm">
                                         <option  value="0">Type d'offre</option>
                                         <?php
                                             while ($type_offre = $offre_type ->fetch()){
                                                 echo '<option value="'.$type_offre[Id_OffreT].'">'.$type_offre[Type_OffreT].'</option>';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                
+                            </div>
+                            </br>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <select name="Id_Utilisateur_entreprise" id="Id_Utilisateur_entreprise" class="form-control form-control-sm">
+                                        <option>Entreprise</option>
+                                        <?php
+                                            while ($entreprise = $nom_entreprise ->fetch()){
+                                                echo '<option value="'.$entreprise[Id_Utilisateur].'">'.$entreprise[NomEntreprise_Utilisateur].'</option>';
                                             }
                                         ?>
                                     </select>
@@ -173,7 +176,7 @@ if (!empty($_POST)) {
                                         ?>
                                     </select>
                                 </div>
-                            </div>
+                        </div>
                             </br>
                             <div class="row">
                                 <div class="col-md-6">

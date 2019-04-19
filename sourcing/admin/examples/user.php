@@ -154,13 +154,20 @@ if (!empty($_POST)) {
                                     </div>
                                 </div>
                                 
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Mot de passe</label>
                                         <input name="Mdp_Utilisateur" id="Mdp_Utilisateur" type="password" class="form-control">
                                     </div>
+                                    
                                 </div>
-                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Confirmer le mot de passe</label>
+                                        <input name="Mdp" id="Mdp" type="password" class="form-control">
+                                    </div>
+                                    
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
