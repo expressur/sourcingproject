@@ -1,9 +1,4 @@
-<!-- header -->
-<?php
-include 'header.php'
-?>
-
-
+<?php include 'header.php'?>
 <!-- start banner Area -->
 <section class="banner-area relative" id="home">	
     <div class="overlay overlay-bg"></div>
@@ -18,34 +13,8 @@ include 'header.php'
                 </p>	
                 <form action="search.php" class="serach-form-area">
                     <div class="row justify-content-center form-wrap">
-                        <div class="col-lg-4 form-cols">
+                        <div class="col-lg-7 form-cols">
                             <input type="text" class="form-control" name="search" placeholder="Recherche par mot-clé">
-                        </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects"">
-                                <select>
-                                    <option value="1">Séléctionnez un endroit</option>
-                                    <?php
-                                    for ($i = 2; $i < 6; $i++) {
-                                        while ($l_offre = $lieu_offre->fetch()) {
-                                            echo'<option value="' . $i++ . '">' . $l_offre[Ville_Adresse] . '</option>';
-                                        }
-                                    }
-                                    ?>
-
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects2">
-                                <select>
-                                    <option value="1">Les catégories</option>
-                                    <option value="2">Medical</option>
-                                    <option value="3">Technology</option>
-                                    <option value="4">Goverment</option>
-                                    <option value="5">Development</option>
-                                </select>
-                            </div>										
                         </div>
                         <div class="col-lg-2 form-cols">
                             <button type="button" class="btn btn-info">
@@ -54,7 +23,6 @@ include 'header.php'
                         </div>								
                     </div>
                 </form>
-                <p class="text-white">49 resultat trouver pour <span>"Web developer"</span></p>
             </div>											
         </div>
     </div>
@@ -71,23 +39,30 @@ include 'header.php'
                 if (empty($_GET['lieu'])) {
                     $PAGE = 'search_empty';
                     include 'offres_list.php';
-
                 } else {
-                    while ($l_recherche = $lieu_recherche->fetch()) {
-                        echo'<div class="single-post d-flex flex-row">
+                    if (empty($_SESSION['Id_Utilisateur'])) {
+
+                        $resultat_categories = $bdd->query($requete_categorie);
+                        while ($l_recherche = $lieu_recherche->fetch()) {
+                            $requete_categorie = $requet_categorie_offre . ' ' . $offres[Id_Offre] . ')';
+
+                            $resultat_categories = $bdd->query($requete_categorie);
+                            echo'<div class="single-post d-flex flex-row">
                     <div class="thumb">
                         <img src="img/job.png" alt="">
-                        <ul class="tags">
-                            <li>
-                                <a href="#">Art</a>
-                            </li>
-                            <li>
-                                <a href="#">Media</a>
-                            </li>
-                            <li>
-                                <a href="#">Design</a>					
-                            </li>
-                        </ul>
+                        <ul class="tags">';
+                            if ($requet_categorie_offre != NULL) {
+                                while ($cat_offre = $resultat_categories->fetch()) {
+                                    echo '<li>
+                                    <a>' . $cat_offre[Nom_Categorie] . '</a>
+                                </li>';
+                                } // end while
+                            } else {
+                                echo '<li>
+                                    <a>-VIDE-</a>
+                                </li>';
+                            }
+                            echo' </ul>
                     </div>
                     <div class="details">
                         <div class="title d-flex flex-row justify-content-between">
@@ -101,8 +76,8 @@ include 'header.php'
                             </ul>
                         </div>
                         <p>'
-                        . $l_recherche[Petite_Description_Offre] .
-                        '</p>
+                            . $l_recherche[Petite_Description_Offre] .
+                            '</p>
                        
                         <p class="address"><span class="lnr lnr-map"></span> ' . $l_recherche[Num_Adresse] . ' ' . $l_recherche[Voie_Adresse] . ', ' . $l_recherche[Dep_Adresse] . ' ' . $l_recherche[Ville_Adresse] . '</p>
                         <p class="address"><span class="lnr lnr-database"></span> ' . $l_recherche[Remuneration_Offre] . ' € ' . $l_recherche[Remuneration_Type] . '</p>
@@ -110,17 +85,88 @@ include 'header.php'
                         <p class="address"> Date de fin : ' . $l_recherche[Date_Fin_Offre] . '</p>
                     </div>
                 </div>';
+                        }
+                    
+                    } else {
+                        $i = 0;
+                        $resultat_postuler = $bdd->query($requete_candidat_postuler . $_SESSION['Id_Utilisateur']);
+                        $tableau = array();
+//secho $requete_candidat_postuler . $_SESSION["Id_Utilisateur"].'</br>';
+                        while ($check_postuler = $resultat_postuler->fetch()) {
+                            //echo $check_postuler[Id_Offre].'</br>';
+                            $tableau[$i] = $check_postuler[Id_Offre];
+                            $i ++;
+                        }
+                        $resultat = $bdd->query($requete);
+                        while ($l_recherche = $lieu_recherche->fetch()) {
+                            $requete_categorie = $requet_categorie_offre . ' ' . $l_recherche[Id_Offre] . ')';
+
+                            $resultat_categories = $bdd->query($requete_categorie);
+                            echo'<div class="single-post d-flex flex-row">
+                    <div class="thumb">
+                        <img src="img/job.png" alt="">
+                        <ul class="tags">';
+                            if ($requet_categorie_offre != NULL) {
+                                while ($cat_offre = $resultat_categories->fetch()) {
+                                    echo '<li>
+                                    <a>' . $cat_offre[Nom_Categorie] . '</a>
+                                </li>';
+                                } // end while
+                            } else {
+                                echo '<li>
+                                    <a>-VIDE-</a>
+                                </li>';
+                            }
+                            echo' </ul>
+                    </div>
+                    <div class="details">
+                        <div class="title d-flex flex-row justify-content-between">
+                            <div class="titles">
+                                <a href="single.php?off=' . $l_recherche[Id_Offre] . '"><h4>' . $l_recherche[Titre_Offre] . '</h4></a>
+                                <h6> Type de contrat : ' . $l_recherche[Type_OffreT] . '</h6>					
+                            </div>
+                              <div class="title text-center">
+                           
+                            <ul class="btns ">';
+                            $trouver = FALSE;
+
+                            for ($i = 0; $i < count($tableau); $i++) {
+
+                                if ($l_recherche[Id_Offre] == $tableau[$i]) {
+                                    $trouver = TRUE;
+
+                                    break;
+                                }
+                            }
+
+                            if ($trouver) {
+                                echo '<li><a>A deja postuler</a></li>';
+                            } else
+                                echo' <li><a href="candidater.php?off=' . $l_recherche[Id_Offre] . '&candidat=' . $_SESSION['Id_Utilisateur'] . '">Postuler</a></li>';
+                            echo' </ul>
+                            </div>
+                        </div>
+                        <p>' . $l_recherche[Petite_Description_Offre] . '</p>
+                       
+                        <p class="address"><span class="lnr lnr-map"></span> ' . $l_recherche[Num_Adresse] . ' ' . $l_recherche[Voie_Adresse] . ', ' . $l_recherche[Dep_Adresse] . ' ' . $l_recherche[Ville_Adresse] . '</p>
+                        <p class="address"><span class="lnr lnr-database"></span> ' . $l_recherche[Remuneration_Offre] . ' € ' . $l_recherche[Remuneration_Type] . '</p>
+                        <p class="address"> Date de debut : ' . $l_recherche[Date_Debut_Offre] . '</p>
+                        <p class="address"> Date de fin : ' . $l_recherche[Date_Fin_Offre] . '</p>
+                        
+                    </div>
+                </div>';
+                        }
                     }
                 }
                 ?>											
             </div>
-            <?php include 'lateral.php'; ?>					
+                <?php include 'lateral.php'; ?>					
         </div>
     </div>
 </div>	
 </section>
 <!-- End post Area -->
-<?php include 'foot.php'; ?>		
+                <?php include 'foot.php'; ?>		
 
 </body>
 </html>

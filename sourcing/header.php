@@ -1,5 +1,5 @@
-<?php include 'bdd.php';
-?>
+        <?php include 'bdd.php';?>
+
 <!DOCTYPE html>
 <html lang="fr" class="no-js">
     <head>
@@ -43,12 +43,14 @@
                             <li class="menu-active"><a href="index.php">Accueil</a></li>
                             <!-- <li><a href="about-us.php">A propos de nous</a></li> -->
                             <li><a href="https://expressur.fr/">Site vitrine</a></li>
+                            
 
                             <li><a href="search.php">Recherche</a></li>
                             <!-- <li><a href="contact.php">Contactez-nous</a></li> -->
                             <?php
                             if (empty($_SESSION['Id_Utilisateur'])) {
                                 echo'
+                                    <li><a href="entreprise.php">Demande d\'inscription d\'une entreprise</a></li>
                                 <li><a class="ticker-btn" href="login/inscription.php"><font color="#000000">Inscription</font></a></li>
                                 <li><a class="ticker-btn" href="login/connexion.php"><font color="#000000">Se connecter</font></a></li>';
                             } else {

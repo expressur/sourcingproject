@@ -1,6 +1,6 @@
 <?php
 ini_set("display_errors",0);error_reporting(0);
-//ini_set('display_errors', 1);
+ini_set('display_errors', 1);
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -21,6 +21,9 @@ SELECT
 COUNT(*)
 FROM offres');
 $nb_offre = $nombre_offre->fetch();
+
+$requete_candidat_postuler ='
+SELECT Id_Offre FROM postuler WHERE Id_Utilisateur =';
 
 $nombre_candidat = $bdd->query('
 SELECT 
@@ -251,8 +254,10 @@ AND
 postuler.Id_Utilisateur = utilisateur.Id_Utilisateur
 AND
 postuler.Id_Offre = offres.Id_Offre
-AND
-utilisateur.Id_Utilisateur =:candidat');
+
+    AND
+    utilisateur.Id_Utilisateur =:candidat');
+
 $mes_offres->execute(array('candidat' =>$_GET['candidat']));
 
 $lieu_recherche = $bdd ->prepare('

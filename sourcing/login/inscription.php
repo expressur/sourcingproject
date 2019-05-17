@@ -1,13 +1,6 @@
 <?php
 // db configuration
-
-$db_user = 'tmsuser';
-$db_pwd = 'ezOwvGoLo6C4fhvO';
-$db_name = 'talent_manager';
-$db_host = 'localhost';
-        
-//db_connection
- $bdd = new PDO('mysql:host='.$db_host.';dbname='.$db_name.';charset=utf8', $db_user,$db_pwd);	
+include '../bdd.php';	
 if(!empty($_POST)){
 		$error = false;
 		
@@ -112,31 +105,33 @@ if(!empty($_POST)){
                     <h2 class="title">Formulaire d'inscription</h2>
                 </div>
                 <div class="card-body">
-                    <form method="post">
+                    
+                    <form method="post">  
                         <div class="form-row m-b-55">
                             <div class="name">Identité *</div>
                             <div class="value">
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" value="<?php echo $_POST['PNom_Utilisateur']; ?>" name="PNom_Utilisateur" id="PNom_Utilisateur">
+                                            <input class="input--style-5" type="text" required="" name="PNom_Utilisateur" >
                                             <label class="label--desc">Prénom *</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5"  value="<?php echo $_POST['Nom_Utilisateur']; ?>" type="text" id="Nom_Utilisateur" name="Nom_Utilisateur">
+                                            <input class="input--style-5" required="" type="text"  name="Nom_Utilisateur">
                                             <label class="label--desc">Nom de famille *</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="form-row">
                             <div class="name">Mail *</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="email" value="<?php echo $_POST['Mail_Utilisateur']; ?>" id= "Mail_Utilisateur" name="Mail_Utilisateur">
+                                    <input class="input--style-5" type="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" value="<?php echo $_POST['Mail_Utilisateur']; ?> " required="" id= "Mail_Utilisateur" name="Mail_Utilisateur">
                                 </div>
                             </div>
                         </div>
@@ -144,7 +139,7 @@ if(!empty($_POST)){
                             <div class="name">Mot de passe *</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="password" name="Mdp_Utilisateur" id="Mdp_Utilisateur">
+                                    <input class="input--style-5" type="password" required="" name="Mdp_Utilisateur" id="Mdp_Utilisateur">
                                 </div>
                             </div>
                         </div> 

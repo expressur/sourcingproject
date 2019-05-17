@@ -52,6 +52,12 @@ if (empty($admin))
             </a>
           </li>
           <li class="nav-item ">
+              <a class="nav-link" href="./suivi.php">
+              <i class="material-icons">Suivi</i>
+              <p>Suivi</p>
+            </a>
+          </li>
+          <li class="nav-item ">
               <a class="nav-link" href="./user.php">
               <i class="material-icons">person</i>
               <p>Ajouter des utilisateurs</p>

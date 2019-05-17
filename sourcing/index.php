@@ -14,37 +14,10 @@ include 'header.php';
                 </h1>	
                 <form action="search.php" class="serach-form-area">
                     <div class="row justify-content-center form-wrap">
-                        <div class="col-lg-4 form-cols">
+                        <div class="col-lg-7 form-cols">
                             <input type="text" class="form-control" name="search" placeholder="Recherche par mot-clé">
                         </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects"">
-                                <select>
-                                    <option value="1">Séléctionnez un endroit</option>
-                                    <?php
-                                    for ($i = 2; $i < 6; $i++) {
-                                        while ($l_offre = $lieu_offre->fetch()) {
-                                            echo'<option value="' . $i++ . '">' . $l_offre[Ville_Adresse] . '</option>';
-                                        }
-                                    }
-                                    ?>
-
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 form-cols">
-                            <div class="default-select" id="default-selects2">
-                                <select>
-                                    <option>Séléctionnez une catégorie</option>
-                                    <?php
-                                    while ($categorie_recherche = $recherche_categorie->fetch())
-                                    {
-                                        echo'<option>'.$categorie_recherche[Nom_Categorie].'</option>';
-                                    }
-                                    ?>       
-                                </select>
-                            </div>										
-                        </div>
+                        
                         <div class="col-lg-2 form-cols">
                             <button type="button" class="btn btn-info">
                                 <span class="lnr"></span><font color="#000000">Recherche</font>
@@ -70,16 +43,18 @@ include 'header.php';
                 ?>						
                 <a class="text-uppercase loadmore-btn mx-auto d-block" href="search.php"><font color="#000000">Voir plus de job</font></a>
             </div>
+            
             <?php include 'lateral.php'; ?>
+            
         </div>
     </div>	
 </section>
 <!-- End post Area -->
 
 
-<?php include 'foot.php'; ?>
-<!-- End footer Area -->		
+    <?php include 'foot.php'; ?>
+		
 
 
 </body>
-</php>
+

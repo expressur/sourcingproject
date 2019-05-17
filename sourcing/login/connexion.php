@@ -87,15 +87,15 @@ if (!empty($_POST)) { // Si tous les input sont remplis
                             Se connecter
                         </span>
 
-                        <div class="wrap-input100 validate-input" data-validate = "Valid eMail_Utilisateur is required: ex@abc.xyz">
-                            <input class="input100" type="email" name="Mail_Utilisateur" placeholder="EMail">
+                        <div class="wrap-input100 validate-input" data-validate = "adresse email requis par exemple: ex@abc.xyz">
+                            <input class="input100" type="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" name="Mail_Utilisateur" placeholder="EMail">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>
                             </span>
                         </div>
 
-                        <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                        <div class="wrap-input100 validate-input" data-validate = "Mot de passe requis">
                             <input class="input100" type="password" name="Mdp_Utilisateur" placeholder="Mot de passe">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
