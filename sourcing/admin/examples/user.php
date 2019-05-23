@@ -84,9 +84,14 @@ if (!empty($_POST)) {
       echo "Mot de passe : Aucun mot de passe n'a été rentré";
       $error = true;
       }
-      } else {
+      } elseif ($_POST["Mdp_Utilisateur"] == $_POST["Mdp"]) {
       $u_password = password_hash($_POST["Mdp_Utilisateur"], PASSWORD_DEFAULT);
-      } 
+      }
+      else {
+            echo "Mot de passe :Les mots de passe ne corresponde pas";
+            $error = true; 
+            
+      }
     // INSCRIPTION
     if ($error == false) {
         
@@ -124,7 +129,7 @@ if (!empty($_POST)) {
                                         <div class="form-group">
                                             <div class="col-lg-3 form-cols">
                                                 <div class="default-select" id="default-selects"">
-                                                    <select class="form-control form-control-sm" name="Id_Type" id="Id_Type">
+                                                    <select class="form-control form-control-sm" required name="Id_Type" id="Id_Type">
                                                         <option >Selectionnez un type</option>
                                                         <?php
                                                         while ($type_u = $type_utilisateur->fetch()) {
@@ -143,28 +148,28 @@ if (!empty($_POST)) {
                                 <div class="col-md-7">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Entreprise</label>
-                                        <input name="NomEntreprise_Utilisateur" id="NomEntreprise_Utilisateur"type="text" class="form-control" >
+                                        <input value="<?php echo $_POST["NomEntreprise_Utilisateur"];?>" name="NomEntreprise_Utilisateur" id="NomEntreprise_Utilisateur"type="text" class="form-control" >
                                     </div>
                                 </div>
 
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Email</label>
-                                        <input name="Mail_Utilisateur" id="Mail_Utilisateur" type="email" class="form-control">
+                                        <input required name="Mail_Utilisateur" value="<?php echo $_POST["Mail_Utilisateur"];?>" id="Mail_Utilisateur" type="email" class="form-control">
                                     </div>
                                 </div>
                                 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Mot de passe</label>
-                                        <input name="Mdp_Utilisateur" id="Mdp_Utilisateur" type="password" class="form-control">
+                                        <input required name="Mdp_Utilisateur" id="Mdp_Utilisateur" type="password" class="form-control">
                                     </div>
                                     
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Confirmer le mot de passe</label>
-                                        <input name="Mdp" id="Mdp" type="password" class="form-control">
+                                        <input required name="Mdp" id="Mdp" type="password" class="form-control">
                                     </div>
                                     
                                 </div>
@@ -173,13 +178,13 @@ if (!empty($_POST)) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Prenom</label>
-                                        <input name="PNom_Utilisateur" id="PNom_Utilisateur" type="text" class="form-control">
+                                        <input required value="<?php echo $_POST["PNom_Utilisateur"];?>" name="PNom_Utilisateur" id="PNom_Utilisateur" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Nom</label>
-                                        <input name="Nom_Utilisateur" id="Nom_Utilisateur" type="text" class="form-control">
+                                        <input required value="<?php echo $_POST["Nom_Utilisateur"];?>" name="Nom_Utilisateur" id="Nom_Utilisateur" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -187,13 +192,13 @@ if (!empty($_POST)) {
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Numero d'adresse</label>
-                                        <input name="Num_Adresse" id="Num_Adresse" type="text" class="form-control">
+                                        <input required value="<?php echo $_POST["Num_Adresse"];?>" name="Num_Adresse" id="Num_Adresse" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Voie</label>
-                                        <input name="Voie_Adresse" id="Voie_Adresse" type="text" class="form-control">
+                                        <input required value="<?php echo $_POST["Voie_Adresse"];?>" name="Voie_Adresse" id="Voie_Adresse" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -201,14 +206,14 @@ if (!empty($_POST)) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Ville</label>
-                                        <input name="Ville_Adresse" id="Ville_Adresse" type="text" class="form-control">
+                                        <input required value="<?php echo $_POST["Ville_Adresse"];?>" name="Ville_Adresse" id="Ville_Adresse" type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Code postale</label>
-                                        <input name="Dep_Adresse" id="Dep_Adresse" type="text" class="form-control">
+                                        <input required value="<?php echo $_POST["Dep_Adresse"];?>" name="Dep_Adresse" id="Dep_Adresse" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>

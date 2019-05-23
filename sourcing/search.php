@@ -140,7 +140,7 @@
                             }
 
                             if ($trouver) {
-                                echo '<li><a>A deja postuler</a></li>';
+                               echo '<button id="postuler" type="submit" class="genric-btn disable" >A Déjà postuler</button>';
                             } else
                                 echo' <li><a href="candidater.php?off=' . $l_recherche[Id_Offre] . '&candidat=' . $_SESSION['Id_Utilisateur'] . '">Postuler</a></li>';
                             echo' </ul>

@@ -65,73 +65,7 @@ include 'header.php'
                     </p>
 
                 </div>
-                <div class="single-post job-experience">
-                    <h4 class="single-title">Experience requis</h4>
-                    <ul>
-                        <li>
-                            <img src="img/pages/list.jpg" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-                        </li>
-                        <li>
-                            <img src="img/pages/list.jpg" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-                        </li>
-                        <li>
-                            <img src="img/pages/list.jpg" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-                        </li>	
-                        <li>
-                            <img src="img/pages/list.jpg" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-                        </li>
-                        <li>
-                            <img src="img/pages/list.jpg" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-                        </li>
-                        <li>
-                            <img src="img/pages/list.jpg" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-                        </li>																											
-                    </ul>
-                </div>
-                <div class="single-post job-experience">
-                    <h4 class="single-title">Job Features & Overviews</h4>
-                    <ul>
-                        <li>
-                            <img src="img/pages/list.jpg" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-                        </li>
-                        <li>
-                            <img src="img/pages/list.jpg" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-                        </li>
-                        <li>
-                            <img src="img/pages/list.jpg" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-                        </li>	
-                        <li>
-                            <img src="img/pages/list.jpg" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-                        </li>													
-                    </ul>
-                </div>	
-                <div class="single-post job-experience">
-                    <h4 class="single-title">Education Requirements</h4>
-                    <ul>
-                        <li>
-                            <img src="img/pages/list.jpg" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-                        </li>
-                        <li>
-                            <img src="img/pages/list.jpg" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-                        </li>
-                        <li>
-                            <img src="img/pages/list.jpg" alt="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaut enim ad minim veniam.</span>
-                        </li>																										
-                    </ul>
-                </div>														
+													
             </div>
             <?php include 'lateral.php'; ?>
         </div>

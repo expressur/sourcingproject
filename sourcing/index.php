@@ -12,7 +12,7 @@ include 'header.php';
                 <h1 class="text-white">
                     <span><?php echo $nb_offre['0']; ?></span> offres au total sur notre site!				
                 </h1>	
-                <form action="search.php" class="serach-form-area">
+                <form method="post" action="search.php" class="serach-form-area">
                     <div class="row justify-content-center form-wrap">
                         <div class="col-lg-7 form-cols">
                             <input type="text" class="form-control" name="search" placeholder="Recherche par mot-clé">

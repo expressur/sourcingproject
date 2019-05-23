@@ -4,6 +4,11 @@ include 'header.php';
 if (empty($_SESSION['Id_Utilisateur'])) {
     header('Location: index.php');
 }
+$extensions_valides = array( 'doc' , 'pdf' , 'docx' );
+$extension_upload = strtolower(  substr(  strrchr($_FILES['cv']['name'], '.')  ,1)  );
+$nom = 'CV_de_'.$_SESSION['PNom_Utilisateur'].'_'.$_SESSION['Nom_Utilisateur'].'_'. md5(uniqid(rand(), true));
+mkdir('cv/', 0777, true);
+$resultat = move_uploaded_file($_FILES['cv']['tmp_name'],$nom);
 ?>
 <!-- start banner Area -->
 <section class="banner-area relative" id="home">	
@@ -22,12 +27,13 @@ if (empty($_SESSION['Id_Utilisateur'])) {
 <section class="post-area section-gap">
     <div class="container">
         <div class="row justify-content-center d-flex">
-
+            <?php echo $nom; ?>
             <div class="col-lg-8 post-list">
-                <form method="post" action="reception.php" enctype="multipart/form-data">
+                <form method="post">
                     <label for="description">Titre du CV</label><br />
                     <input type="text" name="titre" id="titre" /><br />
-                    <label for="cv">CV(PDF, DOC, DOCX | Max 1 MO) :</label><br/>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
+                    <label for="cv">CV(PDF, DOC, DOCX | Max 5 MO) :</label><br/>
                     <input type="file" name="cv" id="icone" /><br />
 
                     <label for="description">Description de votre CV :</label><br />

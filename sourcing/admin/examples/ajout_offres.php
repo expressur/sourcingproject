@@ -210,13 +210,13 @@ if (!empty($_POST)) {
                             </div>
                             
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Numero d'adresse</label>
                                         <input name="Num_Adresse" id="Num_Adresse" type="text" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-9">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Voie</label>
                                         <input name="Voie_Adresse" id="Voie_Adresse" type="text" class="form-control">

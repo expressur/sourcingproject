@@ -121,7 +121,7 @@ while ($offres = $resultat->fetch() /* $offres = $les_offres->fetch() */) {
                        
                         if($trouver)
                         {
-                        echo '<li><a href="candidater.php?off=' . $offres[Id_Offre] . '&candidat=' . $_SESSION['Id_Utilisateur'] . '">A deja postuler</a></li>';
+                        echo '<button id="postuler" type="submit" class="genric-btn disable" >A Déjà postuler</button>';
                         }
                        else 
                            echo' <li><a href="candidater.php?off=' . $offres[Id_Offre] . '&candidat=' . $_SESSION['Id_Utilisateur'] . '">Postuler</a></li>';    

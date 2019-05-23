@@ -1,6 +1,7 @@
 <?php
 ini_set("display_errors",0);error_reporting(0);
 ini_set('display_errors', 1);
+$id_user = $_SESSION['Id_Utilisateur'];
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -289,7 +290,7 @@ ORDER BY Id_Offre DESC');
 $lieu_recherche ->execute(array('lieu' =>$_GET['lieu']));
 
 $info_perso = $bdd ->prepare(
-'SELECT 
+"SELECT 
 Nom_Utilisateur,
 PNom_Utilisateur,
 Mail_Utilisateur,
@@ -302,8 +303,8 @@ utilisateur,adresse
 WHERE
 utilisateur.Id_Adresse = adresse.Id_Adresse
 AND
-Id_Utilisateur = :info');
-$info_perso ->execute(array('info' =>$_GET['info']));
+Id_Utilisateur =?");
+$info_perso->execute(array($id_user));
 $infoP = $info_perso->fetch();
 
 $barre_recherche = $bdd->prepare(

@@ -35,7 +35,7 @@ if (empty($_SESSION['Id_Utilisateur'])) {
         <div class="row">
 
             <div class="col-lg-4 col-md-6">
-               <?php echo' <a href="mes_infos.php?info='.$_SESSION['Id_Utilisateur'].'"> '?>
+               <?php echo' <a href="mes_infos.php?info='.$id_user.'"> '?>
                     <div class="single-service">
                         <h4><span class="lnr lnr-user"></span>Modifier mes infos personel</h4>
                         <p class="profil_txt">

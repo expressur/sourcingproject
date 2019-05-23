@@ -45,28 +45,28 @@ if (empty($admin))
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
+             <?php if ($_SESSION['Id_Type'] == 1) 
+                {?>
           <li class="nav-item ">
             <a class="nav-link" href="./dashboard.php">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
+                <?php }?>
+          <?php if ($_SESSION['Id_Type'] == 1 || $_SESSION['Id_Type'] == 2) 
+                {?>
           <li class="nav-item ">
               <a class="nav-link" href="./suivi.php">
               <i class="material-icons">Suivi</i>
               <p>Suivi</p>
             </a>
           </li>
+                
           <li class="nav-item ">
               <a class="nav-link" href="./user.php">
               <i class="material-icons">person</i>
               <p>Ajouter des utilisateurs</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-              <a class="nav-link" href="./ajout_offres.php">
-              <i class="material-icons">library_books</i>
-              <p>Ajouter des offres</p>
             </a>
           </li>
           <li class="nav-item ">
@@ -75,6 +75,24 @@ if (empty($admin))
               <p>Les listes</p>
             </a>
           </li>
+          <li class="nav-item ">
+              <a class="nav-link" href="./ajout_offres.php">
+              <i class="material-icons">library_books</i>
+              <p>Ajouter des offres</p>
+            </a>
+          </li>
+          <?php }?>
+          <?php if ($_SESSION['Id_Type'] == 3) 
+                {?>
+          <li class="nav-item ">
+              <a class="nav-link" href="./envoie_offre.php">
+              <i class="material-icons">person</i>
+              <p>Envoie d'offre</p>
+            </a>
+          </li>
+                <?php }?>
+          
+          
           
           <!--<li class="nav-item ">
             <a class="nav-link" href="./typography.php">

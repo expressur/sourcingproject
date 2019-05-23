@@ -41,9 +41,13 @@ if(!empty($_POST)){
 				echo "Mot de passe : Aucun mot de passe n'a été rentré";
 				$error = true;
 			}
-		} else {
+		} elseif($_POST["Mdp_Utilisateur"] == $_POST["Mdp_2"]) {
 			$u_password = password_hash($_POST["Mdp_Utilisateur"], PASSWORD_DEFAULT);
 		}
+                else {
+                    echo "Mot de passe :Les mots de passe ne corresponde pas";
+				$error = true;
+                }
 		// INSCRIPTION
 		if($error == false)
                 {
@@ -135,11 +139,22 @@ if(!empty($_POST)){
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
+                        <div class="form-row m-b-55">
                             <div class="name">Mot de passe *</div>
                             <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="password" required="" name="Mdp_Utilisateur" id="Mdp_Utilisateur">
+                                <div class="row row-space">
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="password" required="" name="Mdp_Utilisateur" >
+                                            <label class="label--desc">Insérer le mot de passe *</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" required="" type="password"  name="Mdp_2">
+                                            <label class="label--desc">Confirmer le mot de passe *</label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div> 
