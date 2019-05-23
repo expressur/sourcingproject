@@ -61,7 +61,7 @@
                                     <?php
                                     if ($_SESSION['Id_Type'] == 4) {
                                         echo '<li><a href="profil.php">Mon profil</a></li>';
-                                        echo' <li><a href="mes_offres.php?candidat='.$_SESSION['Id_Utilisateur'].'"> Voir mes offres </a></li> ';
+                                        echo' <li><a href="mes_offres.php"> Voir mes offres </a></li> ';
                                     }
 
                                     if ($_SESSION['Id_Type'] == 1) {

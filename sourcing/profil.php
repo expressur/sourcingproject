@@ -35,7 +35,7 @@ if (empty($_SESSION['Id_Utilisateur'])) {
         <div class="row">
 
             <div class="col-lg-4 col-md-6">
-               <?php echo' <a href="mes_infos.php?info='.$id_user.'"> '?>
+                <a href="mes_infos.php">
                     <div class="single-service">
                         <h4><span class="lnr lnr-user"></span>Modifier mes infos personel</h4>
                         <p class="profil_txt">
@@ -46,7 +46,7 @@ if (empty($_SESSION['Id_Utilisateur'])) {
             </div>
 
             <div class="col-lg-4 col-md-6">
-               <?php echo' <a href="mes_offres.php?candidat='.$_SESSION['Id_Utilisateur'].'"> '?>
+              <a href="mes_offres.php">
                     <div class="single-service">
                         <h4><span class="lnr lnr-license"></span>Les offres où j'ai postuler</h4>
                         <p class="profil_txt">
@@ -56,7 +56,7 @@ if (empty($_SESSION['Id_Utilisateur'])) {
                 </a>
             </div>
             <div class="col-lg-4 col-md-6">
-                <?php echo' <a href="cv.php?cv='.$_SESSION['Id_Utilisateur'].'"> '?>
+                <a href="cv.php">
                     <div class="single-service">
                         <h4><span class="lnr lnr-phone"></span>Mon cv</h4>
                         <p class="profil_txt">

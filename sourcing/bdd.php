@@ -1,4 +1,5 @@
 <?php
+session_start();
 ini_set("display_errors",0);error_reporting(0);
 ini_set('display_errors', 1);
 $id_user = $_SESSION['Id_Utilisateur'];
@@ -257,9 +258,9 @@ AND
 postuler.Id_Offre = offres.Id_Offre
 
     AND
-    utilisateur.Id_Utilisateur =:candidat');
+    utilisateur.Id_Utilisateur =?');
 
-$mes_offres->execute(array('candidat' =>$_GET['candidat']));
+$mes_offres->execute(array($id_user));
 
 $lieu_recherche = $bdd ->prepare('
 SELECT 
@@ -322,7 +323,4 @@ Nom_Categorie
 FROM
 categorie
 LIMIT 5');
-
-
-session_start();
  ?>

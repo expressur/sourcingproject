@@ -39,7 +39,7 @@ else
     <div class="container">
         <div class="row justify-content-center d-flex">
             <div class="col-lg-8 col-md-8">
-                <h3 class="mb-30">Modifier les informations<?php echo $id_user ?></h3>
+                <h3 class="mb-30">Modifier les informations</h3>
                 <form method="post">
                     <div class="mt-10">
                         <input type="text" name="Pnom" value="<?php echo $infoP[PNom_Utilisateur] ?>"  class="single-input-primary" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Prénom'"  class="single-input">
