@@ -41,10 +41,9 @@
                     include 'offres_list.php';
                 } else {
                     if (empty($_SESSION['Id_Utilisateur'])) {
-
-                        $resultat_categories = $bdd->query($requete_categorie);
+ $resultat = $bdd->query($requete);
                         while ($l_recherche = $lieu_recherche->fetch()) {
-                            $requete_categorie = $requet_categorie_offre . ' ' . $offres[Id_Offre] . ')';
+                            $requete_categorie = $requet_categorie_offre . ' ' . $l_recherche[Id_Offre] . ')';
 
                             $resultat_categories = $bdd->query($requete_categorie);
                             echo'<div class="single-post d-flex flex-row">
