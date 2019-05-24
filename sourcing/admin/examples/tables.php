@@ -1,4 +1,5 @@
-<?php include 'header_admin.php'; ?>
+<?php include 'header_admin.php'; 
+$nombres_offres = $nb_offre[0]?>
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
@@ -117,8 +118,80 @@
                 </div>
               </div>
             </div>
-    
-           
+              
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Liste des offres</h4>
+                  
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    
+                      <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          Nom de l'offre
+                        </th>
+                        <th>
+                          Voir l'offre en entier
+                        </th>
+                        <th>
+                          Supprimer l'offre
+                        </th>
+                      </thead>
+                      <tbody>
+                          <?php
+                          while ($liste_supprimer = $liste_supprimer_offre->fetch()) {
+                              echo'
+                        <tr>
+                          <td class="text-primary">
+                            '.$liste_supprimer[Titre_Offre].'
+                          </td>
+                          
+                          <td>
+                            <a href="../../single.php?off=' . $liste_supprimer[Id_Offre] . '"> <FONT color="teal">Cliquez !</FONT></a>
+                          </td>
+                          <td>
+                          
+                            <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter'.$i.'">
+                          Supprimer l\'offre
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter'.$i.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                               <center><b> Etes vous sur de vouoir supprimer cette offre? </br> Vous ne pourrez pas revenir en arrière!</b></center>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                <a href="supprimer_offre.php?off='.$liste_supprimer[Id_Offre].'" class="btn btn-danger">Supprimer l\' offre</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                          </td>
+                        </tr>';
+                          $i++;
+                          }
+                          ?>
+                      </tbody>
+                    </table>
+                      
+                  </div>
+                </div>
+              </div>
+            </div>
+              
           </div>
         </div>
       </div>

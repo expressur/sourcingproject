@@ -106,14 +106,17 @@ FROM
 offres,adresse
 WHERE
 offres.Id_Adresse = adresse.Id_Adresse
-');
+ORDER BY Id_Offre DESC
+LIMIT 8');
 
 $categorie = $bdd ->query(
 'SELECT 
 DISTINCT
 Nom_Categorie
 FROM
-categorie');
+categorie
+ORDER BY Id_Categorie DESC
+LIMIT 8');
 
 $categorie_info_offre = $bdd ->prepare(
 'SELECT 
@@ -200,7 +203,8 @@ postuler.Id_Utilisateur = utilisateur.Id_Utilisateur
 AND
 postuler.Id_Offre = offres.Id_Offre
 AND
-postuler.Id_Utilisateur = :modal');
+postuler.Id_Utilisateur = :modal
+ORDER BY Id_Offre DESC');
 $modal_liste_offre->execute(array('modal' =>$_GET['modal']));
 
 $modal_candidat = $bdd ->prepare(
@@ -323,4 +327,23 @@ Nom_Categorie
 FROM
 categorie
 LIMIT 5');
+
+$ajout_catégorie = $bdd->query(
+'SELECT * 
+FROM 
+categorie');
+
+$ajout_catégorie2 = $bdd->query(
+'SELECT * 
+FROM 
+categorie');
+
+$liste_supprimer_offre = $bdd->query(
+'SELECT
+ Id_Offre,
+ Titre_Offre
+ FROM
+ offres');
+
+
  ?>

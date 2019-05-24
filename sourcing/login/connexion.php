@@ -88,7 +88,7 @@ if (!empty($_POST)) { // Si tous les input sont remplis
                         </span>
 
                         <div class="wrap-input100 validate-input" data-validate = "adresse email requis par exemple: ex@abc.xyz">
-                            <input class="input100" type="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" name="Mail_Utilisateur" placeholder="EMail">
+                            <input class="input100" value="<?php echo $_POST['Mail_Utilisateur'];?>" type="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" name="Mail_Utilisateur" placeholder="EMail">
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <i class="fa fa-envelope" aria-hidden="true"></i>

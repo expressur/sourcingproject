@@ -9,7 +9,7 @@
                     Recherche d'offre				
                 </h1>
                 <p class="text-white link-nav">
-                    <a href="index.html">Acceuil </a> <span class="lnr lnr-arrow-right"></span> <a> Recherche d'offre</a>
+                    <a href="index.php">Acceuil </a> <span class="lnr lnr-arrow-right"></span> <a> Recherche d'offre</a>
                 </p>	
                 <form action="search.php" class="serach-form-area">
                     <div class="row justify-content-center form-wrap">

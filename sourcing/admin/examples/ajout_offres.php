@@ -124,6 +124,12 @@ if (!empty($_POST)) {
         $req_offre->execute(array($_POST['Petite_Description_Offre'], $_POST["Date_Debut_Offre"], $_POST["Date_Fin_Offre"], $_POST['Remuneration_Offre'], $_POST['Titre_Offre'],$_POST['Description_Offre'],$_POST['Id_Utilisateur_entreprise'],$_POST['Id_OffreT'],$_POST['Id_Remu_Type'], $id_adresse));
         }
         sleep(1);
+        $id_offre = $bdd->lastInsertId();
+        $req_categorie1 = $bdd->prepare("INSERT INTO beneficier (Id_Offre, Id_Categorie) VALUES (? , ? )");
+        $req_categorie1->execute(array($id_offre, $_POST['cat1']));
+        sleep(1);
+        $req_categorie2 = $bdd->prepare("INSERT INTO beneficier (Id_Offre, Id_Categorie) VALUES (? , ? )");
+        $req_categorie2->execute(array($id_offre, $_POST['cat2']));
         header('Location:ajout_offres.php');
     }
 }
@@ -143,10 +149,31 @@ if (!empty($_POST)) {
                             <div class="row">
                                 <div class="col-md-4">
                                     <select name="Id_OffreT" id="Id_OffreT" class="form-control form-control-sm">
-                                        <option  value="0">Type d'offre</option>
+                                        <option >Type d'offre</option>
                                         <?php
                                             while ($type_offre = $offre_type ->fetch()){
                                                 echo '<option value="'.$type_offre[Id_OffreT].'">'.$type_offre[Type_OffreT].'</option>';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <select name="cat1" id="cat1" class="form-control form-control-sm">
+                                        <option  >Catégorie 1</option>
+                                        <?php
+                                            while ($add_cat = $ajout_catégorie ->fetch()){
+                                                echo '<option value="'.$add_cat[Id_Categorie].'">'.$add_cat[Nom_Categorie].'</option>';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <select name="cat2" id="cat2" class="form-control form-control-sm">
+                                        <option  >Catégorie 2</option>
+                                       <?php
+                                            while ($add_categorie = $ajout_catégorie2 ->fetch()){
+                                                echo '<option value="'.$add_categorie[Id_Categorie].'">'.$add_categorie[Nom_Categorie].'</option>';
                                             }
                                         ?>
                                     </select>

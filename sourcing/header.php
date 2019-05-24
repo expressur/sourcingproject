@@ -64,7 +64,15 @@
                                         echo' <li><a href="mes_offres.php"> Voir mes offres </a></li> ';
                                     }
 
-                                    if ($_SESSION['Id_Type'] == 1) {
+                                    elseif ($_SESSION['Id_Type'] == 1) {
+                                        echo ' <li><a href="admin/examples/dashboard.php">Menue administration</a></li>';
+                                    }
+                                    
+                                    elseif ($_SESSION['Id_Type'] == 3) {
+                                        echo ' <li><a href="admin/examples/dashboard.php">Menue administration</a></li>';
+                                        echo '<li><a href="mes_infos.php">Modifier mon profil entreprise</a></li>';
+                                    }
+                                    else {
                                         echo ' <li><a href="admin/examples/dashboard.php">Menue administration</a></li>';
                                     }
                                     ?>

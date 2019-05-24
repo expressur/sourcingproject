@@ -58,11 +58,18 @@ if (empty($admin))
                 {?>
           <li class="nav-item ">
               <a class="nav-link" href="./suivi.php">
-              <i class="material-icons">Suivi</i>
+              <i class="material-icons">S</i>
               <p>Suivi</p>
             </a>
           </li>
-                
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="./ajout_categorie.php">
+              <i class="material-icons">A</i>
+              <p>Ajouter une catégorie</p>
+            </a>
+          </li>
+          
           <li class="nav-item ">
               <a class="nav-link" href="./user.php">
               <i class="material-icons">person</i>
@@ -117,9 +124,7 @@ if (empty($admin))
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
-          <div class="navbar-wrapper">
-              <a class="navbar-brand" href="dashboard.php">Accueil administration</a>
-          </div>
+          
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
@@ -139,7 +144,14 @@ if (empty($admin))
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="../../deco.php">Déconnexion</a>
+                    <?php
+                    if ($_SESSION['Id_Type'] == 3) {
+                        echo'<a class="dropdown-item" href="../../mes_infos.php">Modifier mon profil entreprise</a>
+                        <div class="dropdown-divider"></div>';
+                    }
+                        
+                    ?>
+                    <a class="dropdown-item" href="../../deco.php">Déconnexion</a>
                 </div>
               </li>
             </ul>
