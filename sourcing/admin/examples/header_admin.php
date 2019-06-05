@@ -97,6 +97,13 @@ if (empty($admin))
               <p>Envoie d'offre</p>
             </a>
           </li>
+          
+          <li class="nav-item ">
+              <a class="nav-link" href="./entreprise_offre.php">
+              <i class="material-icons">content_paste</i>
+              <p>Liste de mes offres</p>
+            </a>
+          </li>
                 <?php }?>
           
           

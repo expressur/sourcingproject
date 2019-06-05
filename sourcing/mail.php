@@ -51,5 +51,5 @@ $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
 //=====Envoi de l'e-mail.
 mail($mail,$sujet,$message,$header);
 //==========
-header('Location:index.php');
+//header('Location:index.php');
 ?>
