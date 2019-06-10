@@ -69,11 +69,11 @@
                                     }
                                     
                                     elseif ($_SESSION['Id_Type'] == 3) {
-                                        echo ' <li><a href="admin/examples/dashboard.php">Menue administration</a></li>';
+                                        echo ' <li><a href="admin/examples/entreprise_offre.php">Menue administration</a></li>';
                                         echo '<li><a href="mes_infos.php">Modifier mon profil entreprise</a></li>';
                                     }
                                     else {
-                                        echo ' <li><a href="admin/examples/dashboard.php">Menue administration</a></li>';
+                                        echo ' <li><a href="admin/examples/suivi.php">Menue administration</a></li>';
                                     }
                                     ?>
                                     <li><a href="deco.php" id="deco" >Déconnexion</a></li>

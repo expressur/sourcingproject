@@ -43,6 +43,7 @@ if (!empty($_POST)) { // Si tous les input sont remplis
         $_SESSION['Id_Utilisateur'] = $userinfo['Id_Utilisateur']; // On récupère l'id, le nom, le prénom, le badge, ... de l'utilisateur
         $_SESSION['PNom_Utilisateur'] = $userinfo['PNom_Utilisateur'];
         $_SESSION['Nom_Utilisateur'] = $userinfo['Nom_Utilisateur'];
+        $_SESSION['Nom_entreprise'] = $userinfo['NomEntreprise_Utilisateur'];
         $_SESSION['Id_Type'] = $userinfo['Id_Type'];
         $_SESSION['Mail_Utilisateur'] = $userinfo['Mail_Utilisateur'];
         header('Location: redirection.php'); // On redirige l'utilisateur sur la page d'accueil

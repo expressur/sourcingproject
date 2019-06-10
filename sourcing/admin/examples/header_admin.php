@@ -56,12 +56,7 @@ if (empty($admin))
                 <?php }?>
           <?php if ($_SESSION['Id_Type'] == 1 || $_SESSION['Id_Type'] == 2) 
                 {?>
-          <li class="nav-item ">
-              <a class="nav-link" href="./suivi.php">
-              <i class="material-icons">S</i>
-              <p>Suivi</p>
-            </a>
-          </li>
+         
           
           <li class="nav-item ">
               <a class="nav-link" href="./ajout_categorie.php">
@@ -76,16 +71,23 @@ if (empty($admin))
               <p>Ajouter des utilisateurs</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./tables.php">
-              <i class="material-icons">content_paste</i>
-              <p>Les listes</p>
-            </a>
-          </li>
+          
           <li class="nav-item ">
               <a class="nav-link" href="./ajout_offres.php">
               <i class="material-icons">library_books</i>
               <p>Ajouter des offres</p>
+            </a>
+          </li>
+           <li class="nav-item ">
+              <a class="nav-link" href="./suivi.php">
+              <i class="material-icons">S</i>
+              <p>Suivi</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./tables.php">
+              <i class="material-icons">content_paste</i>
+              <p>Les listes</p>
             </a>
           </li>
           <?php }?>

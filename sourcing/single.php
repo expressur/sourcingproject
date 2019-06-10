@@ -1,5 +1,22 @@
 <?php
-include 'header.php'
+include 'header.php';
+$requete_categorie = $requet_categorie_offre.' '.$d_offre[Id_Offre].')';
+$resultat_categories = $bdd->query($requete_categorie);
+$i=0;
+if (!empty($_SESSION["Id_Utilisateur"]))
+{
+    $resultat_postuler = $bdd->query ($requete_candidat_postuler . $_SESSION['Id_Utilisateur']);
+    $tableau = array();
+    //secho $requete_candidat_postuler . $_SESSION["Id_Utilisateur"].'</br>';
+    while($check_postuler = $resultat_postuler->fetch())
+    {
+        //echo $check_postuler[Id_Offre].'</br>';
+        $tableau[$i] = $check_postuler[Id_Offre];
+        $i ++;
+    } 
+}
+
+$resultat = $bdd->query($requete);
 ?>
 
 
@@ -28,25 +45,52 @@ include 'header.php'
                     <div class="thumb">
                         <img src="img/job.png" alt="">
                         <ul class="tags">
-                            <li>
-                                <a href="#">Art</a>
-                            </li>
-                            <li>
-                                <a href="#">Media</a>
-                            </li>
-                            <li>
-                                <a href="#">Design</a>					
-                            </li>
+                            <?php
+                           if($requet_categorie_offre!= NULL){
+                                while ($cat_offre = $resultat_categories->fetch()){
+                                 echo '<li>
+                                    <a>'.$cat_offre[Nom_Categorie].'</a>
+                                </li>';
+                                } // end while
+                            } else {
+                              echo '<li>
+                                    <a>-VIDE-</a>
+                                </li>';  
+                            }?>
                         </ul>
                     </div>
                     <div class="details">
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
                                 <a href="#"><h4><?php echo $d_offre[Titre_Offre]; ?> </h4></a>
+                                <h5> Nom de l'entreprise : <b><?php echo $d_offre[NomEntreprise_Utilisateur];?> </b></h5>
                                 <h6> Type de contrat : <?php echo $d_offre[Type_OffreT]; ?></h6>					
                             </div>
                             <ul class="btns">
-                                 <li><a href="candidater.php?off=<?php echo $d_offre[Id_Offre] . '&candidat=' . $_SESSION['Id_Utilisateur'];?>">Postuler</a></li>
+                                <?php 
+                                $trouver = FALSE;
+                       
+                      for($i=0;$i<count($tableau);$i++)
+                       {
+                           
+                           if($d_offre[Id_Offre] == $tableau[$i]) 
+                           {
+                               $trouver = TRUE;
+                               
+                               break;
+                           }
+                       }
+                       
+                        if($trouver)
+                        {
+                        echo '<button id="postuler" type="submit" class="genric-btn disable" >A Déjà postuler</button>';
+                        }
+                       else 
+                       { ?> <li><a href="candidater.php?off=<?php echo $d_offre[Id_Offre] . '&candidat=' . $_SESSION['Id_Utilisateur'];?>">Postuler</a></li>
+                       <?php
+                       } ?>
+                                
+                                 
                             </ul>
                         </div>
                         <p>

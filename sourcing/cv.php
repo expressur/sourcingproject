@@ -6,7 +6,11 @@ if (empty($_SESSION['Id_Utilisateur'])) {
 }
 $extensions_valides = array( 'doc' , 'pdf' , 'docx' );
 $extension_upload = strtolower(  substr(  strrchr($_FILES['cv']['name'], '.')  ,1)  );
+
 $nom = 'CV_de_'.$_SESSION['PNom_Utilisateur'].'_'.$_SESSION['Nom_Utilisateur'].'_'. md5(uniqid(rand(), true));
+$nom = strtr($nom,
+     'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
+     'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
 mkdir('cv/', 0777, true);
 $resultat = move_uploaded_file($_FILES['cv']['tmp_name'],$nom);
 ?>
@@ -29,7 +33,7 @@ $resultat = move_uploaded_file($_FILES['cv']['tmp_name'],$nom);
         <div class="row justify-content-center d-flex">
             <?php echo $nom; ?>
             <div class="col-lg-8 post-list">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     <label for="description">Titre du CV</label><br />
                     <input type="text" name="titre" id="titre" /><br />
                     <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />

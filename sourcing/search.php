@@ -36,10 +36,10 @@
 
             <div class="col-lg-8 post-list">
                 <?php
-                if (empty($_GET['lieu'])) {
+                if (empty($_GET['lieu'] || $_GET['categorie'])) {
                     $PAGE = 'search_empty';
                     include 'offres_list.php';
-                } else {
+                } elseif($_GET['lieu']) {
                     if (empty($_SESSION['Id_Utilisateur'])) {
  $resultat = $bdd->query($requete);
                         while ($l_recherche = $lieu_recherche->fetch()) {
@@ -67,6 +67,7 @@
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
                                 <a href="single.php?off=' . $l_recherche[Id_Offre] . '"><h4>' . $l_recherche[Titre_Offre] . '</h4></a>
+                                    <h5> Nom de l\'entreprise : <b>'.$l_recherche[NomEntreprise_Utilisateur].' </b></h5>
                                 <h6> Type de contrat : ' . $l_recherche[Type_OffreT] . '</h6>					
                             </div>
                             <ul class="btns ">
@@ -122,6 +123,7 @@
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
                                 <a href="single.php?off=' . $l_recherche[Id_Offre] . '"><h4>' . $l_recherche[Titre_Offre] . '</h4></a>
+                                    <h5> Nom de l\'entreprise : <b>'.$l_recherche[NomEntreprise_Utilisateur].' </b></h5>
                                 <h6> Type de contrat : ' . $l_recherche[Type_OffreT] . '</h6>					
                             </div>
                               <div class="title text-center">
@@ -157,6 +159,129 @@
                         }
                     }
                 }
+                
+                else{
+                     if (empty($_SESSION['Id_Utilisateur'])) {
+ $resultat = $bdd->query($requete);
+                        while ($c_recherche = $categorie_recherche->fetch()) {
+                            $requete_categorie = $requet_categorie_offre . ' ' . $c_recherche[Id_Offre] . ')';
+
+                            $resultat_categories = $bdd->query($requete_categorie);
+                            echo'<div class="single-post d-flex flex-row">
+                    <div class="thumb">
+                        <img src="img/job.png" alt="">
+                        <ul class="tags">';
+                            if ($requet_categorie_offre != NULL) {
+                                while ($cat_offre = $resultat_categories->fetch()) {
+                                    echo '<li>
+                                    <a>' . $cat_offre[Nom_Categorie] . '</a>
+                                </li>';
+                                } // end while
+                            } else {
+                                echo '<li>
+                                    <a>-VIDE-</a>
+                                </li>';
+                            }
+                            echo' </ul>
+                    </div>
+                    <div class="details">
+                        <div class="title d-flex flex-row justify-content-between">
+                            <div class="titles">
+                                <a href="single.php?off=' . $c_recherche[Id_Offre] . '"><h4>' . $c_recherche[Titre_Offre] . '</h4></a>
+                                    <h5> Nom de l\'entreprise : <b>'.$c_recherche[NomEntreprise_Utilisateur].' </b></h5>
+                                <h6> Type de contrat : ' . $c_recherche[Type_OffreT] . '</h6>					
+                            </div>
+                            <ul class="btns ">
+                                
+                                <li><a href="candidater.php?off=' . $c_recherche[Id_Offre] . '&candidat=' . $_SESSION['Id_Utilisateur'] . '">Postuler</a></li>
+                            </ul>
+                        </div>
+                        <p>'
+                            . $c_recherche[Petite_Description_Offre] .
+                            '</p>
+                       
+                        <p class="address"><span class="lnr lnr-map"></span> ' . $c_recherche[Num_Adresse] . ' ' . $c_recherche[Voie_Adresse] . ', ' . $c_recherche[Dep_Adresse] . ' ' . $c_recherche[Ville_Adresse] . '</p>
+                        <p class="address"><span class="lnr lnr-database"></span> ' . $c_recherche[Remuneration_Offre] . ' € ' . $c_recherche[Remuneration_Type] . '</p>
+                        <p class="address"> Date de debut : ' . $c_recherche[Date_Debut_Offre] . '</p>                        
+                        <p class="address"> Date de fin : ' . $c_recherche[Date_Fin_Offre] . '</p>
+                    </div>
+                </div>';
+                        }
+                    
+                    } else {
+                        $i = 0;
+                        $resultat_postuler = $bdd->query($requete_candidat_postuler . $_SESSION['Id_Utilisateur']);
+                        $tableau = array();
+//secho $requete_candidat_postuler . $_SESSION["Id_Utilisateur"].'</br>';
+                        while ($check_postuler = $resultat_postuler->fetch()) {
+                            //echo $check_postuler[Id_Offre].'</br>';
+                            $tableau[$i] = $check_postuler[Id_Offre];
+                            $i ++;
+                        }
+                        $resultat = $bdd->query($requete);
+                        while ($c_recherche = $categorie_recherche->fetch()) {
+                            $requete_categorie = $requet_categorie_offre . ' ' . $c_recherche[Id_Offre] . ')';
+
+                            $resultat_categories = $bdd->query($requete_categorie);
+                            echo'<div class="single-post d-flex flex-row">
+                    <div class="thumb">
+                        <img src="img/job.png" alt="">
+                        <ul class="tags">';
+                            if ($requet_categorie_offre != NULL) {
+                                while ($cat_offre = $resultat_categories->fetch()) {
+                                    echo '<li>
+                                    <a>' . $cat_offre[Nom_Categorie] . '</a>
+                                </li>';
+                                } // end while
+                            } else {
+                                echo '<li>
+                                    <a>-VIDE-</a>
+                                </li>';
+                            }
+                            echo' </ul>
+                    </div>
+                    <div class="details">
+                        <div class="title d-flex flex-row justify-content-between">
+                            <div class="titles">
+                                <a href="single.php?off=' . $c_recherche[Id_Offre] . '"><h4>' . $c_recherche[Titre_Offre] . '</h4></a>
+                                    <h5> Nom de l\'entreprise : <b>'.$c_recherche[NomEntreprise_Utilisateur].' </b></h5>
+                                <h6> Type de contrat : ' . $c_recherche[Type_OffreT] . '</h6>					
+                            </div>
+                              <div class="title text-center">
+                           
+                            <ul class="btns ">';
+                            $trouver = FALSE;
+
+                            for ($i = 0; $i < count($tableau); $i++) {
+
+                                if ($c_recherche[Id_Offre] == $tableau[$i]) {
+                                    $trouver = TRUE;
+
+                                    break;
+                                }
+                            }
+
+                            if ($trouver) {
+                               echo '<button id="postuler" type="submit" class="genric-btn disable" >A Déjà postuler</button>';
+                            } else
+                                echo' <li><a href="candidater.php?off=' . $c_recherche[Id_Offre] . '&candidat=' . $_SESSION['Id_Utilisateur'] . '">Postuler</a></li>';
+                            echo' </ul>
+                            </div>
+                        </div>
+                        <p>' . $c_recherche[Petite_Description_Offre] . '</p>
+                       
+                        <p class="address"><span class="lnr lnr-map"></span> ' . $c_recherche[Num_Adresse] . ' ' . $c_recherche[Voie_Adresse] . ', ' . $c_recherche[Dep_Adresse] . ' ' . $c_recherche[Ville_Adresse] . '</p>
+                        <p class="address"><span class="lnr lnr-database"></span> ' . $c_recherche[Remuneration_Offre] . ' € ' . $c_recherche[Remuneration_Type] . '</p>
+                        <p class="address"> Date de debut : ' . $c_recherche[Date_Debut_Offre] . '</p>
+                        <p class="address"> Date de fin : ' . $c_recherche[Date_Fin_Offre] . '</p>
+                        
+                    </div>
+                </div>';
+                        }
+                    }
+                }
+                
+                
                 ?>											
             </div>
                 <?php include 'lateral.php'; ?>					

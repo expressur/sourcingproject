@@ -41,6 +41,7 @@ while ($offres = $resultat->fetch() /* $offres = $les_offres->fetch() */) {
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
                                 <a href="single.php?off=' . $offres[Id_Offre] . '"><h4>' . $offres[Titre_Offre] . '</h4></a>
+                                     <h5> Nom de l\'entreprise : <b>'.$offres[NomEntreprise_Utilisateur].' </b></h5>
                                 <h6> Type de contrat : ' . $offres[Type_OffreT] . '</h6>					
                             </div>
                               <div class="title text-center">
@@ -101,6 +102,7 @@ while ($offres = $resultat->fetch() /* $offres = $les_offres->fetch() */) {
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
                                 <a href="single.php?off=' . $offres[Id_Offre] . '"><h4>' . $offres[Titre_Offre] . '</h4></a>
+                                    <h5> Nom de l\'entreprise : <b>'.$offres[NomEntreprise_Utilisateur].' </b></h5>
                                 <h6> Type de contrat : ' . $offres[Type_OffreT] . '</h6>					
                             </div>
                               <div class="title text-center">
