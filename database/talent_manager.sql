@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 30 mai 2019 à 17:56
+-- Généré le :  ven. 21 juin 2019 à 17:29
 -- Version du serveur :  5.7.24
 -- Version de PHP :  7.2.14
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `adresse` (
   `Dep_Adresse` int(11) NOT NULL,
   `Ville_Adresse` varchar(100) NOT NULL,
   PRIMARY KEY (`Id_Adresse`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -63,9 +63,10 @@ CREATE TABLE IF NOT EXISTS `candidat_cv` (
   `Id_Cv` int(11) NOT NULL AUTO_INCREMENT,
   `Fichier_Cv` text NOT NULL,
   `Titre_Cv` varchar(50) NOT NULL,
-  `Description_Cv` text,
-  PRIMARY KEY (`Id_Cv`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Id_Utilisateur` int(11) NOT NULL,
+  PRIMARY KEY (`Id_Cv`),
+  KEY `candidat_cv_utilisateur_FK` (`Id_Utilisateur`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -78,21 +79,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `Id_Categorie` int(11) NOT NULL AUTO_INCREMENT,
   `Nom_Categorie` varchar(50) NOT NULL,
   PRIMARY KEY (`Id_Categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `creer`
---
-
-DROP TABLE IF EXISTS `creer`;
-CREATE TABLE IF NOT EXISTS `creer` (
-  `Id_Offre` int(11) NOT NULL,
-  `Id_Utilisateur` int(11) NOT NULL,
-  PRIMARY KEY (`Id_Offre`,`Id_Utilisateur`),
-  KEY `creer_utilisateur0_FK` (`Id_Utilisateur`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -118,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `offres` (
   KEY `offres_adresse0_FK` (`Id_Adresse`),
   KEY `offres_offre_type1_FK` (`Id_OffreT`),
   KEY `offres_remuneration_type2_FK` (`Id_Remu_Type`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -187,6 +174,22 @@ INSERT INTO `remuneration_type` (`Id_Remu_Type`, `Remuneration_Type`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `suivre`
+--
+
+DROP TABLE IF EXISTS `suivre`;
+CREATE TABLE IF NOT EXISTS `suivre` (
+  `Id_Utilisateur` int(11) NOT NULL,
+  `Id_Utilisateur_suivre` int(11) NOT NULL,
+  `Date_suivi` date NOT NULL,
+  `Description_suivi` text,
+  PRIMARY KEY (`Id_Utilisateur`,`Id_Utilisateur_suivre`),
+  KEY `suivre_utilisateur0_FK` (`Id_Utilisateur_suivre`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `type_u`
 --
 
@@ -219,16 +222,15 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `Nom_Utilisateur` varchar(50) NOT NULL,
   `PNom_Utilisateur` varchar(50) NOT NULL,
   `Mail_Utilisateur` varchar(100) NOT NULL,
-  `Mdp_Utilisateur` text,
+  `Mdp_Utilisateur` text NOT NULL,
   `NomEntreprise_Utilisateur` varchar(50) DEFAULT NULL,
-  `Id_Cv` int(11) DEFAULT NULL,
   `Id_Type` int(11) NOT NULL,
   `Id_Adresse` int(11) DEFAULT NULL,
+  `numéro_utilisateur` int(11) NOT NULL,
   PRIMARY KEY (`Id_Utilisateur`),
-  KEY `utilisateur_candidat_cv_FK` (`Id_Cv`),
-  KEY `utilisateur_type_u0_FK` (`Id_Type`),
-  KEY `utilisateur_adresse1_FK` (`Id_Adresse`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+  KEY `utilisateur_type_u_FK` (`Id_Type`),
+  KEY `utilisateur_adresse0_FK` (`Id_Adresse`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Contraintes pour les tables déchargées
@@ -242,11 +244,10 @@ ALTER TABLE `beneficier`
   ADD CONSTRAINT `beneficier_offres_FK` FOREIGN KEY (`Id_Offre`) REFERENCES `offres` (`Id_Offre`);
 
 --
--- Contraintes pour la table `creer`
+-- Contraintes pour la table `candidat_cv`
 --
-ALTER TABLE `creer`
-  ADD CONSTRAINT `creer_offres_FK` FOREIGN KEY (`Id_Offre`) REFERENCES `offres` (`Id_Offre`),
-  ADD CONSTRAINT `creer_utilisateur0_FK` FOREIGN KEY (`Id_Utilisateur`) REFERENCES `utilisateur` (`Id_Utilisateur`);
+ALTER TABLE `candidat_cv`
+  ADD CONSTRAINT `candidat_cv_utilisateur_FK` FOREIGN KEY (`Id_Utilisateur`) REFERENCES `utilisateur` (`Id_Utilisateur`);
 
 --
 -- Contraintes pour la table `offres`
@@ -265,12 +266,18 @@ ALTER TABLE `postuler`
   ADD CONSTRAINT `postuler_utilisateur_FK` FOREIGN KEY (`Id_Utilisateur`) REFERENCES `utilisateur` (`Id_Utilisateur`);
 
 --
+-- Contraintes pour la table `suivre`
+--
+ALTER TABLE `suivre`
+  ADD CONSTRAINT `suivre_utilisateur0_FK` FOREIGN KEY (`Id_Utilisateur_suivre`) REFERENCES `utilisateur` (`Id_Utilisateur`),
+  ADD CONSTRAINT `suivre_utilisateur_FK` FOREIGN KEY (`Id_Utilisateur`) REFERENCES `utilisateur` (`Id_Utilisateur`);
+
+--
 -- Contraintes pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  ADD CONSTRAINT `utilisateur_adresse1_FK` FOREIGN KEY (`Id_Adresse`) REFERENCES `adresse` (`Id_Adresse`),
-  ADD CONSTRAINT `utilisateur_candidat_cv_FK` FOREIGN KEY (`Id_Cv`) REFERENCES `candidat_cv` (`Id_Cv`),
-  ADD CONSTRAINT `utilisateur_type_u0_FK` FOREIGN KEY (`Id_Type`) REFERENCES `type_u` (`Id_Type`);
+  ADD CONSTRAINT `utilisateur_adresse0_FK` FOREIGN KEY (`Id_Adresse`) REFERENCES `adresse` (`Id_Adresse`),
+  ADD CONSTRAINT `utilisateur_type_u_FK` FOREIGN KEY (`Id_Type`) REFERENCES `type_u` (`Id_Type`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
