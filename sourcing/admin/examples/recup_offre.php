@@ -6,7 +6,7 @@ if(!empty($_FILES['doc']['tmp_name'])){
         
         $typeMime = mime_content_type($_FILES['doc']['tmp_name']);
         
-        if($typeMime == 'application/pdf' || $typeMime == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || $typeMime == 'application/msword')
+        if($typeMime == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || $typeMime == 'application/msword')
         {
             $size = filesize($_FILES['doc']['tmp_name']);
             if($size > 3000000)

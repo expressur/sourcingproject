@@ -101,8 +101,8 @@ if (!empty($_POST)) {
         $identifiant = $bdd->lastInsertId();
 
         sleep(1);
-        $req = $bdd->prepare("INSERT INTO utilisateur (Nom_Utilisateur, PNom_Utilisateur,Mdp_Utilisateur, Mail_Utilisateur, Id_Type , NomEntreprise_Utilisateur, Id_Adresse) VALUES ( ? , ? , ? , ? , ? , ? , ?)");
-        $req->execute(array($_POST['Nom_Utilisateur'], $_POST['PNom_Utilisateur'], $u_password, $_POST['Mail_Utilisateur'], $_POST['Id_Type'], $_POST['NomEntreprise_Utilisateur'], $identifiant));
+        $req = $bdd->prepare("INSERT INTO utilisateur (Nom_Utilisateur, PNom_Utilisateur,Mdp_Utilisateur, Mail_Utilisateur, Id_Type , NomEntreprise_Utilisateur,numéro_utilisateur, Id_Adresse) VALUES ( ? , ? , ? , ? , ? , ? , ? , ?)");
+        $req->execute(array($_POST['Nom_Utilisateur'], $_POST['PNom_Utilisateur'], $u_password, $_POST['Mail_Utilisateur'], $_POST['Id_Type'], $_POST['NomEntreprise_Utilisateur'], $_POST['numero'], $identifiant));
         sleep(1);
         header('Location: add.php');
     }
@@ -128,15 +128,19 @@ if (!empty($_POST)) {
                                         <label>Type d'utilisateur</label>
                                         <div class="form-group">
                                             <div class="col-lg-3 form-cols">
-                                                <div class="default-select" id="default-selects"">
+                                                <div class="default-select" id="default-selects">
                                                     <select class="form-control form-control-sm" required name="Id_Type" id="Id_Type">
                                                         <option >Selectionnez un type</option>
-                                                        <?php
-                                                        while ($type_u = $type_utilisateur->fetch()) {
-                                                            echo'<option value="'.$type_u[Id_Type].'">' . $type_u[Utilisateur_Type] . '</option>';
-                                                        }
-                                                        ?>
-
+                                                        <?php if ($_SESSION['Id_Type'] == 1)
+                                                        {
+                                                            echo'
+                                                            <option value="1">Administrateur</option>
+                                                            <option value="2">Interne</option>
+                                                            <option value="3">Entreprise</option>';
+                                                        } elseif($_SESSION['Id_Type'] == 2)
+                                                            { 
+                                                            echo '<option value="3">Entreprise</option>';
+                                                            }?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -148,14 +152,21 @@ if (!empty($_POST)) {
                                 <div class="col-md-7">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Entreprise</label>
-                                        <input value="<?php echo $_POST["NomEntreprise_Utilisateur"];?>" name="NomEntreprise_Utilisateur" id="NomEntreprise_Utilisateur"type="text" class="form-control" >
+                                        <input  name="NomEntreprise_Utilisateur" id="NomEntreprise_Utilisateur"type="text" class="form-control" >
                                     </div>
                                 </div>
-
+                                
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Numéro de téléphone </label>
+                                        <input required name="numero" id="numero" type="tel" class="form-control">
+                                    </div>
+                                </div>
+                                
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Email</label>
-                                        <input required name="Mail_Utilisateur" value="<?php echo $_POST["Mail_Utilisateur"];?>" id="Mail_Utilisateur" type="email" class="form-control">
+                                        <input required name="Mail_Utilisateur" id="Mail_Utilisateur" type="email" class="form-control">
                                     </div>
                                 </div>
                                 
@@ -178,13 +189,13 @@ if (!empty($_POST)) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Prenom</label>
-                                        <input required value="<?php echo $_POST["PNom_Utilisateur"];?>" name="PNom_Utilisateur" id="PNom_Utilisateur" type="text" class="form-control">
+                                        <input required name="PNom_Utilisateur" id="PNom_Utilisateur" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Nom</label>
-                                        <input required value="<?php echo $_POST["Nom_Utilisateur"];?>" name="Nom_Utilisateur" id="Nom_Utilisateur" type="text" class="form-control">
+                                        <input required  name="Nom_Utilisateur" id="Nom_Utilisateur" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -192,13 +203,13 @@ if (!empty($_POST)) {
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Numero d'adresse</label>
-                                        <input required value="<?php echo $_POST["Num_Adresse"];?>" name="Num_Adresse" id="Num_Adresse" type="text" class="form-control">
+                                        <input required name="Num_Adresse" id="Num_Adresse" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Voie</label>
-                                        <input required value="<?php echo $_POST["Voie_Adresse"];?>" name="Voie_Adresse" id="Voie_Adresse" type="text" class="form-control">
+                                        <input required name="Voie_Adresse" id="Voie_Adresse" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -206,14 +217,14 @@ if (!empty($_POST)) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Ville</label>
-                                        <input required value="<?php echo $_POST["Ville_Adresse"];?>" name="Ville_Adresse" id="Ville_Adresse" type="text" class="form-control">
+                                        <input required name="Ville_Adresse" id="Ville_Adresse" type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Code postale</label>
-                                        <input required value="<?php echo $_POST["Dep_Adresse"];?>" name="Dep_Adresse" id="Dep_Adresse" type="text" class="form-control">
+                                        <input required name="Dep_Adresse" id="Dep_Adresse" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -226,8 +237,156 @@ if (!empty($_POST)) {
                     </div>
                 </div>
             </div>
+             <?php if ($_SESSION['Id_Type'] == 1 )
+            {?>
+             <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Liste des entreprise partenaire</h4>
+                  
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    
+                      <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          Nom de l'entreprise
+                        </th>
+                        <th>
+                          Nom du responssable
+                        </th>
+                        <th>
+                          Prénom du responssable
+                        </th>
+                        <th>
+                          Email
+                        </th>
+                      </thead>
+                      <tbody>
+                          <?php
+                          while ($liste_des_entreprise = $liste_entreprise ->fetch()) {
+                              echo'
+                        <tr>
+                          <td class="text-primary">
+                            '.$liste_des_entreprise[NomEntreprise_Utilisateur].'
+                          </td>
+                          <td>
+                            '.$liste_des_entreprise[Nom_Utilisateur].'
+                          </td>
+                          <td>
+                            '.$liste_des_entreprise[PNom_Utilisateur].'
+                          </td>
+                          <td>
+                           '.$liste_des_entreprise[Mail_Utilisateur].'
+                          </td>
+                        </tr>';
+                          }
+                          ?>
+                      </tbody>
+                    </table>
+                      
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Liste des utilisateur deja existant</h4>
+                  
+                </div>
+            <div class="card-body">
+                  <div class="table-responsive">
+                    
+                      <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          Nom 
+                        </th>
+                        <th>
+                          Prénom
+                        </th>
+                        <th>
+                          Numéro de téléphone
+                        </th>
+                        <th>
+                          Mail
+                        </th>
+                        <th>
+                          Type d'utilisateur
+                        </th>
+                        <th>
+                          Supprimer l'utilisateur
+                        </th>
+                      </thead>
+                      <tbody>
+                          <?php
+                          while ($liste_utilisateur = $liste_des_utilisateurs->fetch()) {
+                              echo'
+                        <tr>
+                          <td class="text-primary">
+                            '.$liste_utilisateur[Nom_Utilisateur].'
+                          </td>
+                          
+                           <td class="text-primary">
+                            '.$liste_utilisateur[PNom_Utilisateur].'
+                          </td>
+                           <td class="text-primary">
+                            0'.$liste_utilisateur[numéro_utilisateur].'
+                          </td>
+                          <td class="text-primary">
+                            '.$liste_utilisateur[Mail_Utilisateur].'
+                          </td>
+                          <td class="text-primary">
+                            '.$liste_utilisateur[Utilisateur_Type].'
+                          </td>
+                          <td>
+                          
+                            <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter'.$i.'">
+                          Supprimer l\'utilisateur
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter'.$i.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Suppression</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                               <center><b> Etes vous sur de vouoir supprimer cet utilisateur? </br> Vous ne pourrez pas revenir en arrière!</b></center>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                <a href="supprimer_user.php?user='.$liste_utilisateur[Id_Utilisateur].'" class="btn btn-danger">Supprimer l\' utilisateur</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                          </td>
+                        </tr>';
+                          $i++;
+                          }
+                          ?>
+                      </tbody>
+                    </table>
+                      
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php }?>
+            
                     </div>
                 </div>
             </div>
+</div>
 
             <?php include 'foot_admin.php'; ?>

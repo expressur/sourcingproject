@@ -71,6 +71,76 @@ if (!empty($_POST)) {
                 </div>
             </div>
                     </div>
+        
+        <?php if ($_SESSION['Id_Type'] == 1 )
+            {?>
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Liste de toutes les catégories</h4>
+                  
+                </div>
+            <div class="card-body">
+                  <div class="table-responsive">
+                    
+                      <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          Nom de la catégorie
+                        </th>
+                        <th>
+                          Supprimer la catégorie
+                        </th>
+                      </thead>
+                      <tbody>
+                          <?php
+                          while ($liste_categorie = $liste_des_categorie->fetch()) {
+                              echo'
+                        <tr>
+                          <td class="text-primary">
+                            '.$liste_categorie[Nom_Categorie].'
+                          </td>
+                          <td>
+                          
+                            <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter'.$i.'">
+                          Supprimer la catégorie
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter'.$i.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Suppression</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                               <center><b> Etes vous sur de vouoir supprimer cette catégorie? </br> Vous ne pourrez pas revenir en arrière!</b></center>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                <a href="supprimer_categorier.php?cat='.$liste_categorie[Id_Categorie].'" class="btn btn-danger">Supprimer la catégorie</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                          </td>
+                        </tr>';
+                          $i++;
+                          }
+                          ?>
+                      </tbody>
+                    </table>
+                      
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php }?>
+        
                 </div>
             </div>
 

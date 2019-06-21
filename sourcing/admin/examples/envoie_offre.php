@@ -16,7 +16,7 @@
                                 <div class="col-md-10">
 
                                     <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-                                    <label class="bmd-label-floating" for="doc">Document (PDF, DOC, DOCX | Max 5 MO) :</label><br/>
+                                    <label class="bmd-label-floating" for="doc">Document (DOC, DOCX | Max 3 MO) :</label><br/>
                                     <input class="form-control" type="file" name="doc" id="icone" /><br />
                                     <button type="submit" class="btn btn-primary pull-right">Envoyer une offre!</button>
                                     <div class="clearfix"></div>
@@ -29,4 +29,6 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
         <?php include 'foot_admin.php'; ?>

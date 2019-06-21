@@ -1,23 +1,6 @@
 <?php
-session_start();
-ini_set("display_errors",0);error_reporting(0);
-ini_set('display_errors', 1);
-$id_user = $_SESSION['Id_Utilisateur'];
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+include 'connexion_bdd.php';
 
-// db configuration
-$db_user = 'tmsuser';
-$db_pwd = 'ezOwvGoLo6C4fhvO';
-$db_name = 'talent_manager';
-$db_host = 'localhost';
-        
-//db_connection
- $bdd = new PDO('mysql:host='.$db_host.';dbname='.$db_name.';charset=utf8', $db_user,$db_pwd);
- 
  $nombre_offre = $bdd->query('
 SELECT 
 COUNT(*)
@@ -191,6 +174,7 @@ COUNT(*) AS nombre,
 Nom_Utilisateur,
 PNom_Utilisateur,
 utilisateur.Id_Utilisateur,
+numéro_utilisateur,
 Mail_Utilisateur
 FROM
 utilisateur,postuler,offres
@@ -355,7 +339,17 @@ $info_perso = $bdd ->prepare(
 "SELECT 
 Nom_Utilisateur,
 PNom_Utilisateur,
-Mail_Utilisateur,
+numéro_utilisateur,
+Mail_Utilisateur
+FROM
+utilisateur
+WHERE
+Id_Utilisateur =?");
+$info_perso->execute(array($id_user));
+$infoP = $info_perso->fetch();
+
+$info_perso_addresse = $bdd->prepare(
+"SELECT 
 Num_Adresse,
 Voie_Adresse,
 Dep_Adresse,
@@ -366,8 +360,8 @@ WHERE
 utilisateur.Id_Adresse = adresse.Id_Adresse
 AND
 Id_Utilisateur =?");
-$info_perso->execute(array($id_user));
-$infoP = $info_perso->fetch();
+$info_perso_addresse->execute(array($id_user));
+$infoA = $info_perso_addresse->fetch();
 
 $barre_recherche = $bdd->prepare(
 'SELECT * 
@@ -402,5 +396,87 @@ $liste_supprimer_offre = $bdd->query(
  FROM
  offres');
 
+$liste_des_cv = $bdd->query('SELECT
+ Id_Cv,
+ Titre_Cv
+ FROM
+ candidat_cv
+ WHERE
+ Id_Utilisateur ='.$id_user.'
+ORDER BY Id_Cv DESC
+LIMIT 5');
 
+$liste_des_utilisateurs = $bdd->query('SELECT
+Nom_Utilisateur,
+PNom_Utilisateur,
+Nom_Utilisateur,
+numéro_utilisateur,
+Utilisateur_Type,
+Id_Utilisateur,
+Mail_Utilisateur
+FROM
+utilisateur,type_u
+WHERE
+type_u.Id_Type = utilisateur.Id_Type
+AND
+Id_Utilisateur <>'.$id_user);
+
+$liste_des_categorie = $bdd->query('SELECT * FROM categorie');
+
+$liste_des_non_suivi = $bdd->query('SELECT
+utilisateur.Id_Utilisateur,
+Nom_Utilisateur,
+PNom_Utilisateur,
+Mail_Utilisateur,
+numéro_utilisateur
+FROM
+utilisateur
+LEFT JOIN
+suivre
+ON
+utilisateur.Id_Utilisateur = suivre.Id_Utilisateur_suivre
+WHERE
+suivre.Id_Utilisateur_suivre IS NULL
+AND
+utilisateur.Id_Type = 4');
+
+$nombre_nv_candidat =$bdd->query('SELECT
+COUNT(*)
+FROM
+utilisateur
+LEFT JOIN
+suivre
+ON
+utilisateur.Id_Utilisateur = suivre.Id_Utilisateur_suivre
+WHERE
+suivre.Id_Utilisateur_suivre IS NULL
+AND
+utilisateur.Id_Type = 4');
+$nv_candidat = $nombre_nv_candidat->fetch();
+
+$liste_mes_suivi = $bdd->query('SELECT
+utilisateur.Id_Utilisateur,
+Nom_Utilisateur,
+PNom_Utilisateur,
+Mail_Utilisateur,
+numéro_utilisateur
+FROM
+utilisateur,suivre
+WHERE
+utilisateur.Id_Utilisateur = suivre.Id_Utilisateur_suivre
+AND
+suivre.Id_Utilisateur ='.$id_user);
+
+$liste_pas_mes_suivi = $bdd->query('SELECT
+utilisateur.Id_Utilisateur,
+Nom_Utilisateur,
+PNom_Utilisateur,
+Mail_Utilisateur,
+numéro_utilisateur
+FROM
+utilisateur,suivre
+WHERE
+utilisateur.Id_Utilisateur = suivre.Id_Utilisateur_suivre
+AND
+suivre.Id_Utilisateur <>'.$id_user);
  ?>

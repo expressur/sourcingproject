@@ -4,15 +4,6 @@ include 'header.php';
 if (empty($_SESSION['Id_Utilisateur'])) {
     header('Location: index.php');
 }
-$extensions_valides = array( 'doc' , 'pdf' , 'docx' );
-$extension_upload = strtolower(  substr(  strrchr($_FILES['cv']['name'], '.')  ,1)  );
-
-$nom = 'CV_de_'.$_SESSION['PNom_Utilisateur'].'_'.$_SESSION['Nom_Utilisateur'].'_'. md5(uniqid(rand(), true));
-$nom = strtr($nom,
-     'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
-     'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
-mkdir('cv/', 0777, true);
-$resultat = move_uploaded_file($_FILES['cv']['tmp_name'],$nom);
 ?>
 <!-- start banner Area -->
 <section class="banner-area relative" id="home">	
@@ -29,27 +20,66 @@ $resultat = move_uploaded_file($_FILES['cv']['tmp_name'],$nom);
     </div>
 </section>
 <section class="post-area section-gap">
-    <div class="container">
-        <div class="row justify-content-center d-flex">
-            <?php echo $nom; ?>
-            <div class="col-lg-8 post-list">
-                <form method="post" enctype="multipart/form-data">
-                    <label for="description">Titre du CV</label><br />
-                    <input type="text" name="titre" id="titre" /><br />
-                    <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
-                    <label for="cv">CV(PDF, DOC, DOCX | Max 5 MO) :</label><br/>
-                    <input type="file" name="cv" id="icone" /><br />
+   <div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Envoie d'un cv</h4>
 
-                    <label for="description">Description de votre CV :</label><br />
-                    <textarea name="description" id="description"></textarea><br />
-                    <input type="submit" name="submit" value="Envoyer" />
-                </form>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="up_cv.php" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label class="bmd-label-floating">Titre du cv :</label><br/>
+                                    <input class="form-control" type="text" name="titre_cv" /><br>
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
+                                    <label class="bmd-label-floating" for="doc">Document (DOC, DOCX | Max 3 MO) :</label><br/>
+                                    <input class="form-controlclass btn btn-secondary" type="file" name="doc" id="icone" /><br>
+                                    <button type="submit" class="btn btn-secondary pull-right">Envoyer mon dernier cv!</button>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
+                </div>
             </div>
-            <?php //include 'lateral.php'; ?>					
+            <div class="card-body">
+                  <div class="table-responsive" >
+                    
+                      <table class="table">
+                      <thead class=" text-secondary">
+                        <th>
+                        <center> Titre du cv</center>
+                        </th>
+                      </thead>
+                      <tbody>
+                          <?php
+                          while ($liste_cv = $liste_des_cv ->fetch()) {?>
+                           
+                        <tr>
+                          <td>
+                              <form method="post" action="telecharger_cv.php">
+                                  <input hidden="" name="id_cv" value="<?php echo $liste_cv[Id_Cv];?>">
+                                  <input hidden="" name="check" value="1">
+                                  <center> <button class="btn btn-secondary"> <?php echo $liste_cv[Titre_Cv]; ?></button></center>
+                              </form>
+                          </td>
+                        </tr>
+                         
+                         <?php }?>
+                      </tbody>
+                    </table>
+                      
+                  </div>
+                </div>
         </div>
     </div>
-</div>	
+</div>
+    
 </section>
 
 <!-- start footer Area -->		

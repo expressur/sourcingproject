@@ -33,19 +33,30 @@
     </head>
     <body>
         <header id="header" id="home">
+           <?php if($_SESSION['nvpass']==1)
+                {
+               echo'
+            <div class="alert alert-danger" role="alert">
+                <center>PENSEZ A MODIFIER VOTRE MOT DE PASSE !</br> Ce message ne s\'affichera pas a votre prochaine connexion !</center>
+            </div>';
+               }?>
             <div class="container">
+                
                 <div class="row align-items-center justify-content-between d-flex">
+                    
                     <div id="logo">
                         <a id="monBouton" ><img src="img/job.png" alt="" title="" /></a>
                     </div>
+                    
                     <nav id="nav-menu-container">
+                        
                         <ul class="nav-menu">
                             <li class="menu-active"><a href="index.php">Accueil</a></li>
                             <!-- <li><a href="about-us.php">A propos de nous</a></li> -->
                             <li><a href="https://expressur.fr/">Site vitrine</a></li>
                             
 
-                            <li><a href="search.php">Recherche</a></li>
+                            <li><a href="search.php">Toutes les offres</a></li>
                             <!-- <li><a href="contact.php">Contactez-nous</a></li> -->
                             <?php
                             if (empty($_SESSION['Id_Utilisateur'])) {
@@ -63,17 +74,15 @@
                                         echo '<li><a href="profil.php">Mon profil</a></li>';
                                         echo' <li><a href="mes_offres.php"> Voir mes offres </a></li> ';
                                     }
-
-                                    elseif ($_SESSION['Id_Type'] == 1) {
-                                        echo ' <li><a href="admin/examples/dashboard.php">Menue administration</a></li>';
-                                    }
                                     
                                     elseif ($_SESSION['Id_Type'] == 3) {
                                         echo ' <li><a href="admin/examples/entreprise_offre.php">Menue administration</a></li>';
                                         echo '<li><a href="mes_infos.php">Modifier mon profil entreprise</a></li>';
                                     }
-                                    else {
+                                    else
+                                    {
                                         echo ' <li><a href="admin/examples/suivi.php">Menue administration</a></li>';
+                                        echo '<li><a href="mes_infos.php">Modifier mon profil</a></li>';
                                     }
                                     ?>
                                     <li><a href="deco.php" id="deco" >Déconnexion</a></li>

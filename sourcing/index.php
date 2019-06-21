@@ -1,18 +1,22 @@
 <!-- header -->
 <?php
 include 'header.php';
+//var_dump($_SESSION);
 ?>
 
 <!-- start banner Area -->
 <section class="banner-area relative" id="home">	
+    
     <div class="overlay overlay-bg"></div>
     <div class="container">
         <div class="row fullscreen d-flex align-items-center justify-content-center">
             <div class="banner-content col-lg-12">
                 <h1 class="text-white">
                     <span><?php echo $nb_offre['0']; ?></span> offres au total sur notre site!				
-                </h1>	
-                <form method="post" action="search.php" class="serach-form-area">
+                </h1>
+                </br>
+                
+                <!--<form method="post" action="search.php" class="serach-form-area">
                     <div class="row justify-content-center form-wrap">
                         <div class="col-lg-7 form-cols">
                             <input type="text" class="form-control" name="search" placeholder="Recherche par mot-clé">
@@ -24,7 +28,8 @@ include 'header.php';
                             </button>
                         </div>								
                     </div>
-                </form>	
+                </form>	-->
+                <h3 class="text-white">Notre <font color="#193FFF">talent</font> au service de vos <font color="#63d0e8">besoins!</font></h3>
             </div>											
         </div>
     </div>

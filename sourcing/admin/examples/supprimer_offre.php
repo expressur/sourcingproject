@@ -70,4 +70,4 @@ WHERE
 Id_Adresse ='.$id_addresse);
 
 
-header('Location: tables.php');
+header('Location: dashboard.php');

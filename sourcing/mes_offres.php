@@ -52,7 +52,7 @@ if (empty($_SESSION['Id_Utilisateur'])) {
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
                                 <a href="single.php?off=' . $m_offres[Id_Offre] . '"><h4>' . $m_offres[Titre_Offre] . '</h4></a>
-                                     <h5> Nom de l\'entreprise : <b>'.$m_offres[NomEntreprise_Utilisateur].'</b></h5>
+                                     
                                 <h6> Type de contrat : ' . $m_offres[Type_OffreT] . '</h6>					
                             </div>
                             <ul>

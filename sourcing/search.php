@@ -6,12 +6,12 @@
         <div class="row search-page-top d-flex align-items-center justify-content-center">
             <div class="banner-content col-lg-12">
                 <h1 class="text-white">
-                    Recherche d'offre				
+                    Toutes les offres				
                 </h1>
                 <p class="text-white link-nav">
-                    <a href="index.php">Acceuil </a> <span class="lnr lnr-arrow-right"></span> <a> Recherche d'offre</a>
+                    <a href="index.php">Acceuil </a> <span class="lnr lnr-arrow-right"></span> <a> Toutes les offres</a>
                 </p>	
-                <form action="search.php" class="serach-form-area">
+                <!--<form action="search.php" class="serach-form-area">
                     <div class="row justify-content-center form-wrap">
                         <div class="col-lg-7 form-cols">
                             <input type="text" class="form-control" name="search" placeholder="Recherche par mot-clé">
@@ -22,7 +22,7 @@
                             </button>
                         </div>								
                     </div>
-                </form>
+                </form>-->
             </div>											
         </div>
     </div>
@@ -67,7 +67,7 @@
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
                                 <a href="single.php?off=' . $l_recherche[Id_Offre] . '"><h4>' . $l_recherche[Titre_Offre] . '</h4></a>
-                                    <h5> Nom de l\'entreprise : <b>'.$l_recherche[NomEntreprise_Utilisateur].' </b></h5>
+                                    
                                 <h6> Type de contrat : ' . $l_recherche[Type_OffreT] . '</h6>					
                             </div>
                             <ul class="btns ">
@@ -123,7 +123,7 @@
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
                                 <a href="single.php?off=' . $l_recherche[Id_Offre] . '"><h4>' . $l_recherche[Titre_Offre] . '</h4></a>
-                                    <h5> Nom de l\'entreprise : <b>'.$l_recherche[NomEntreprise_Utilisateur].' </b></h5>
+                                    
                                 <h6> Type de contrat : ' . $l_recherche[Type_OffreT] . '</h6>					
                             </div>
                               <div class="title text-center">
@@ -188,7 +188,7 @@
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
                                 <a href="single.php?off=' . $c_recherche[Id_Offre] . '"><h4>' . $c_recherche[Titre_Offre] . '</h4></a>
-                                    <h5> Nom de l\'entreprise : <b>'.$c_recherche[NomEntreprise_Utilisateur].' </b></h5>
+                                   
                                 <h6> Type de contrat : ' . $c_recherche[Type_OffreT] . '</h6>					
                             </div>
                             <ul class="btns ">
@@ -244,7 +244,7 @@
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
                                 <a href="single.php?off=' . $c_recherche[Id_Offre] . '"><h4>' . $c_recherche[Titre_Offre] . '</h4></a>
-                                    <h5> Nom de l\'entreprise : <b>'.$c_recherche[NomEntreprise_Utilisateur].' </b></h5>
+                                    
                                 <h6> Type de contrat : ' . $c_recherche[Type_OffreT] . '</h6>					
                             </div>
                               <div class="title text-center">

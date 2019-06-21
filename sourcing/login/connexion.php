@@ -1,5 +1,4 @@
 <?php
-
 // Connexion
 include '../bdd.php';
 if (!empty($_POST)) { // Si tous les input sont remplis
@@ -46,6 +45,7 @@ if (!empty($_POST)) { // Si tous les input sont remplis
         $_SESSION['Nom_entreprise'] = $userinfo['NomEntreprise_Utilisateur'];
         $_SESSION['Id_Type'] = $userinfo['Id_Type'];
         $_SESSION['Mail_Utilisateur'] = $userinfo['Mail_Utilisateur'];
+        $_SESSION['nvpass'] = $_GET['up'];
         header('Location: redirection.php'); // On redirige l'utilisateur sur la page d'accueil
         exit();
     }
@@ -58,7 +58,7 @@ if (!empty($_POST)) { // Si tous les input sont remplis
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--===============================================================================================-->	
-        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <link rel="icon" type="image/png" href="images/icons/job.png"/>
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
         <!--===============================================================================================-->
@@ -84,6 +84,7 @@ if (!empty($_POST)) { // Si tous les input sont remplis
                     </div>
 
                     <form method="POST" class="login100-form validate-form">
+                        
                         <span class="login100-form-title">
                             Se connecter
                         </span>
@@ -112,7 +113,7 @@ if (!empty($_POST)) { // Si tous les input sont remplis
 
                         <div class="text-center p-t-12">
 
-                            <a class="txt2" href="#">
+                            <a class="txt2" href="pass_oublie.php">
                                 Mot de pass oublié ?
                             </a>
                         </div>

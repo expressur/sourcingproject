@@ -1,74 +1,4 @@
-<?php
-// db configuration
-include '../bdd.php';	
-if(!empty($_POST)){
-		$error = false;
-		
-		// NOM
-		if(empty($_POST["Nom_Utilisateur"])) {
-			echo "Nom : Aucun nom n'a été entré";
-			$error = true;
-		}
-		
-		// PRENOM
-		if(empty($_POST["PNom_Utilisateur"])) {
-			if ($error == false) {
-				echo "Prénom : Aucun prénom n'a été entré";
-				$error = true;
-			}
-		}
-		// IDENTIFIANT
-		if(empty($_POST["Mail_Utilisateur"])) {
-			if ($error == false) {
-				echo "Identifiant : Aucun identifiant n'a été entré";
-				$error = true;
-			}
-		}else {
-			$check_u_login = $bdd->prepare("SELECT Id_Utilisateur FROM utilisateur WHERE Mail_Utilisateur = ?");
-			$check_u_login->execute([$_POST["Mail_Utilisateur"]]);
-			$u_login = $check_u_login->fetch();
-			if($u_login) {
-				if ($error == false) {
-					echo "Identifiant : Cet identifiant est déjà utilisé";
-					$error = true;
-				}
-			}
-		}
-		
-		// PASSWORD
-		if(empty($_POST["Mdp_Utilisateur"])){
-			if ($error == false) {
-				echo "Mot de passe : Aucun mot de passe n'a été rentré";
-				$error = true;
-			}
-		} elseif($_POST["Mdp_Utilisateur"] == $_POST["Mdp_2"]) {
-			$u_password = password_hash($_POST["Mdp_Utilisateur"], PASSWORD_DEFAULT);
-		}
-                else {
-                    echo "Mot de passe :Les mots de passe ne corresponde pas";
-				$error = true;
-                }
-		// INSCRIPTION
-		if($error == false)
-                {
-                    if(empty($_POST["Dep_Adresse"] && $_POST["Ville_Adresse"] && $_POST["Voie_Adresse"] && $_POST["Num_Adresse"] )) {
-                        $id = NULL;
-                    } else {
- 
-                    $insc = $bdd->prepare("INSERT INTO adresse (Num_Adresse, Voie_Adresse, Dep_Adresse, Ville_Adresse) VALUES (? , ? , ? , ? )");
-                    $insc->execute(array($_POST['Num_Adresse'], $_POST['Voie_Adresse'], $_POST['Dep_Adresse'], $_POST['Ville_Adresse']));
-                        
-                    $id = $bdd->lastInsertId();
-                    
-                    }
-                    sleep(1);
-                    $req = $bdd->prepare("INSERT INTO utilisateur (Nom_Utilisateur, PNom_Utilisateur, Mdp_Utilisateur, Mail_Utilisateur, Id_Type, Id_Adresse) VALUES ( ? , ? , ? , ? , 4, ?)");
-                    $req->execute(array($_POST['Nom_Utilisateur'], $_POST['PNom_Utilisateur'], $u_password, $_POST['Mail_Utilisateur'], $id));
-                    sleep(1);
-                    header('Location:connexion.php');
-		}
-	}
-?>
+<?php include '../bdd.php';?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -89,7 +19,7 @@ if(!empty($_POST)){
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-
+    <link rel="icon" type="image/png" href="images/icons/job.png"/>
     <!-- Vendor CSS-->
     <link href="vendor/select2/ins.css" rel="stylesheet" media="all">
     <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
@@ -110,35 +40,46 @@ if(!empty($_POST)){
                 </div>
                 <div class="card-body">
                     
-                    <form method="post">  
+                    <form action="mail_inscription.php" method="post">  
                         <div class="form-row m-b-55">
                             <div class="name">Identité *</div>
                             <div class="value">
                                 <div class="row row-space">
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" required="" name="PNom_Utilisateur" >
+                                            <input class="input--style-5" type="text" required="" value="<?php echo $_POST['PNom_Utilisateur']; ?> " name="PNom_Utilisateur" >
                                             <label class="label--desc">Prénom *</label>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="input-group-desc">
-                                            <input class="input--style-5" required="" type="text"  name="Nom_Utilisateur">
+                                            <input class="input--style-5" required="" type="text" value="<?php echo $_POST['Nom_Utilisateur']; ?> " name="Nom_Utilisateur">
                                             <label class="label--desc">Nom de famille *</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="form-row">
-                            <div class="name">Mail *</div>
+                        <div class="form-row m-b-55">
+                            <div class="name">Plus d'informations *</div>
                             <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="email" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" value="<?php echo $_POST['Mail_Utilisateur']; ?> " required="" id= "Mail_Utilisateur" name="Mail_Utilisateur">
+                                <div class="row row-space">
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="email" value="<?php echo $_POST['Mail_Utilisateur']; ?> " required="" id= "Mail_Utilisateur" name="Mail_Utilisateur" >
+                                            <label class="label--desc">Email *</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" required="" type="tel" value="<?php echo $_POST['numero']; ?> " name="numero">
+                                            <label class="label--desc">Numéro de téléphone*</label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
+                        
                         <div class="form-row m-b-55">
                             <div class="name">Mot de passe *</div>
                             <div class="value">

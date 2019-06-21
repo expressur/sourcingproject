@@ -33,11 +33,7 @@ if (empty($admin))
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
-        Tip 2: you can also add an image using data-image tag
-    -->
       <div class="logo">
           <a href="../../index.php" class="simple-text logo-normal">
           Index du site
@@ -60,36 +56,36 @@ if (empty($admin))
           
           <li class="nav-item ">
               <a class="nav-link" href="./ajout_categorie.php">
-              <i class="material-icons">A</i>
-              <p>Ajouter une catégorie</p>
+              <i class="material-icons">list_alt</i>
+              <p>Catégorie</p>
             </a>
           </li>
           
           <li class="nav-item ">
               <a class="nav-link" href="./user.php">
               <i class="material-icons">person</i>
-              <p>Ajouter des utilisateurs</p>
+              <p>Utilisateurs</p>
             </a>
           </li>
           
           <li class="nav-item ">
               <a class="nav-link" href="./ajout_offres.php">
               <i class="material-icons">library_books</i>
-              <p>Ajouter des offres</p>
+              <p>Offres</p>
             </a>
           </li>
            <li class="nav-item ">
               <a class="nav-link" href="./suivi.php">
-              <i class="material-icons">S</i>
+              <i class="material-icons">event</i>
               <p>Suivi</p>
             </a>
           </li>
-          <li class="nav-item ">
+         <!-- <li class="nav-item ">
             <a class="nav-link" href="./tables.php">
               <i class="material-icons">content_paste</i>
               <p>Les listes</p>
             </a>
-          </li>
+          </li>-->
           <?php }?>
           <?php if ($_SESSION['Id_Type'] == 3) 
                 {?>
@@ -108,24 +104,6 @@ if (empty($admin))
           </li>
                 <?php }?>
           
-          
-          
-          <!--<li class="nav-item ">
-            <a class="nav-link" href="./typography.php">
-              <i class="material-icons">library_books</i>
-              <p>Typography</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./icons.php">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
-            </a>
-          </li>-->
-          
-       
-          
-        
         </ul>
       </div>
     </div>
@@ -153,13 +131,8 @@ if (empty($admin))
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                    <?php
-                    if ($_SESSION['Id_Type'] == 3) {
-                        echo'<a class="dropdown-item" href="../../mes_infos.php">Modifier mon profil entreprise</a>
-                        <div class="dropdown-divider"></div>';
-                    }
-                        
-                    ?>
+                   <a class="dropdown-item" href="../../mes_infos.php">Modifier mon profil</a>
+                        <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="../../deco.php">Déconnexion</a>
                 </div>
               </li>

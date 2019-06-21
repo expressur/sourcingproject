@@ -63,7 +63,7 @@ $resultat = $bdd->query($requete);
                         <div class="title d-flex flex-row justify-content-between">
                             <div class="titles">
                                 <a href="#"><h4><?php echo $d_offre[Titre_Offre]; ?> </h4></a>
-                                <h5> Nom de l'entreprise : <b><?php echo $d_offre[NomEntreprise_Utilisateur];?> </b></h5>
+                                
                                 <h6> Type de contrat : <?php echo $d_offre[Type_OffreT]; ?></h6>					
                             </div>
                             <ul class="btns">
